@@ -1,0 +1,12 @@
+@import 'styles/core/responsive';
+.navbar{
+    .nav-item{
+        .nav-link{
+            @extend .font_size__13;
+            @extend %transition;
+            &.active, &:hover{
+                color: var(--primaryColor) !important;
+            }
+        }
+    }
+}

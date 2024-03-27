@@ -1,0 +1,12 @@
+{
+    "layout":{
+        "navbar":{
+            "whoWeAre":"من نحن؟",
+            "bolg":"المدونة",
+            "contactUs":"اتصل بنا",
+            "lang":"English",
+            "signIn":"تسجيل دخول",
+            "account":"حسابي"
+        }
+    }
+}

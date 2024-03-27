@@ -1,0 +1,140 @@
+/*-------------------------------------- start global -----------------------*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--white);
+    font-family: var(--fontRegular);
+}
+
+a {
+    text-decoration: none !important;
+    @extend .transition;
+}
+
+ul{
+    padding-inline-start: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: var(--fontRegular) !important;
+}
+
+.white_color {
+    color: var(--white);
+}
+
+.black_color {
+    color: var(--black);
+}
+
+.grey_color {
+    color: var(--grey);
+}
+.grey_bg {
+    background-color: var(--grey);
+}
+
+.primary_color {
+    color: var(--primaryColor);
+}
+
+.secondary_color {
+    color: var(--secondaryColor);
+}
+
+.primary_bg {
+    background-color: var(--primaryColor);
+}
+
+.secondary_bg {
+    background-color: var(--secondaryColor);
+}
+
+.primary_color__filter{
+    filter : var(--primaryColorFilter);
+}
+.white_color__filter{
+    filter : var(--whiteColorFilter);
+}
+
+.primary_hover{
+    &:hover{
+        @extend .primary_color;
+    }
+}
+
+.font_black {
+    font-family: var(--fontBlack);
+}
+
+.font_bold {
+    font-family: var(--fontBold);
+}
+
+.font_regular {
+    font-family: var(--fontRegular);
+}
+
+.font_extra__bold {
+    font-family: var(--fontExtraBold);
+}
+.font_semi__bold {
+    font-family: var(--fontSemiBold);
+}
+.font_light {
+    font-family: var(--fontLight);
+}
+
+.transition{
+    @extend %transition;
+}
+
+.z_index__3{
+    z-index: 3;
+}
+
+
+@for $i from 1 through 30 {
+    .border_radius__#{$i * 5} {
+        border-radius: #{$i * 5}px;
+    }
+}
+
+.form-check-input{
+    --bs-form-check-bg: transparent;
+    --bs-border-width: 2px;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.13em;
+}
+
+.date_picker__input{
+    background: url(/assets/img/svg/calendar-icon.svg) no-repeat scroll 10px center, 0% 0% no-repeat;
+    background-color: var(--white);
+    border-radius: var(--bs-border-radius);
+    padding-inline-start: 35px !important;
+} 
+
+.form-control{
+    @extend .font_size__13;
+    color: var(--bs-gray);
+    padding: 10px;
+}
+.form-label{
+    @extend .white_color, .font_size__12;
+}
+/*------------------------- end global -----------------------*/

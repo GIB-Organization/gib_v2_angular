@@ -1,0 +1,187 @@
+{
+    "appName": "GIB",
+    "public": {
+        "name": "Full Name",
+        "email": "Email",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message"
+    },
+    "layout": {
+        "navbar": {
+            "home": "Home",
+            "whoWeAre": "Who We Are?",
+            "bolg": "Blog",
+            "contactUs": " Contact Us",
+            "lang": "عربي",
+            "login": "Login",
+            "account": "My Account"
+        },
+        "footerContact": {
+            "title": "Insure your car, we offer this service for you",
+            "description": "Contact us for more information about the services we provide.",
+            "phoneCall": "Call Us: {{phone}} "
+        },
+        "footer": {
+            "description": "An electronic insurance platform that provides professional service at competitive prices that supports the customer to choose between the various insurance companies authorized by the Central Bank of Saudi Arabia and compare prices for many insurance products.",
+            "location": "Office 404, 4th Floor, Madarat Towers 2, (Old) King Abdulaziz Rd, Al Wizarat, P.O. Box 28629, Riyadh - 11447, KSA",
+            "contactUs": " Contact Us",
+            "importantLinks": "Important links",
+            "links": {
+                "privacyPolicy": "Privacy Policy",
+                "terms": "Terms and Conditions",
+                "faqs": "Common Questions",
+                "contactUs": " Contact Us"
+            },
+            "authorizedBy": "Authorized By",
+            "copyrights": "All rights reserved"
+        }
+    },
+    "views": {
+        "home": {
+            "insuranceTabs": {
+                "carInsurance": "Car Insurance",
+                "medicalInsurance": "Medical Insurance",
+                "medicalFaultsInsurance": "Medical Faults Insurance"
+            },
+            "insuranceForm": {
+                "insurancePurpose": "Insurance purpose",
+                "newInsurance": "New Insurance",
+                "ownershipTransfer": "Ownership transfer",
+                "registerType": "Vehicle Register Type",
+                "form": "Form",
+                "customCard": "Custom Cards",
+                "id": "ID number / residence",
+                "serialNumber": "Serial Number",
+                "insuranceDate": "Insurance start date",
+                "confirmCode": "Confirmation code",
+                "termsConditionsAgree": "I agree with terms and conditions",
+                "showOffers": "Show Offers"
+            },
+            "partnersLogos": {
+                "platform": "{{appName}} Platform ,,,,",
+                "easyFast": "Easy and fast from start to finish"
+            },
+            "applySteps": {
+                "howTo": "How do you apply for insurance?",
+                "selectInsuranceTitle": "Select insurance options",
+                "selectInsuranceDesc": "With {{appName}}, nothing is impossible, with one click of a button, you receive the insurance policy.",
+                "compareOffersTitle": "Compare offers for companies",
+                "compareOffersDesc": "Without suffering and research, and because your comfort matters to us, we gathered our insurance companies, but we were honored and chose the offer that suits you .",
+                "makePaymentTitle": "Make the payment",
+                "makePaymentDesc": "Because we have provided you with all the payment methods you need, all you have to do is choose the payment system that suits you."
+            },
+            "faqs": {
+                "title": "Common Questions"
+            }
+        },
+        "about": {
+            "aboutCompany": "About the company",
+            "description": "An electronic insurance platform that provides professional service at competitive prices that supports the customer to choose between the various insurance companies authorized by the Central Bank of Saudi Arabia and compare prices for many insurance products.",
+            "vision": "Vision",
+            "visionDesc": "Leadership and excellence by providing our services with high quality and highly skilled local expertise, and to be the first choice for the client.",
+            "message": "Message",
+            "messageDesc": "To carry out our work with the highest standards and provide the best services using the finest modern technologies at competitive prices within the reach of our customers.",
+            "companyGoals": "Company Goals",
+            "goals": {
+                "goal1": "In conjunction with Vision 2030 and the presence of our platform of information technology and artificial intelligence, which makes us an addition in the insurance market.",
+                "goal2": "Reaching the largest segment of customers with our offered insurance products.",
+                "goal3": "Distinguished work and continuous development, which contributes to achieving the desires of our customers.",
+                "goal4": "Providing several options from insurance companies and insurance products at competitive prices."
+            }
+        },
+        "contact": {
+            "title": "Contact Us",
+            "description": "Send any inquiry you have so that we can communicate with you and answer it",
+            "contactDirect": "Or contact us directly"
+        },
+        "blog": {
+            "title": "Blog"
+        },
+        "privacyPolicy": {
+            "privacyPolicy": "Privacy Policy",
+            "privacyUserInformation": "Privacy of user information",
+            "privacyUserInformationText": "The privacy and protection of your personal information is important to us, as we at KRIZ believe that your personal information is private and confidential, and accordingly we dedicate our efforts to protect your privacy and provide you with the highest standards of protection, and this policy describes what personal information we collect, how to deal with it and how to protect it.",
+            "usePersonalinformation": "Use of your personal information",
+            "usePersonalinformationText": "We may use the information recorded on the site to make surveys and take opinions in order to develop the site and provide a more user-friendly and effective experience for site customers and users. We can also communicate with you when needed to provide the required service or if you wish to see our new products and services, answer your inquiries and implement your requests as much as possible. Informing you by messages of everything related to your request and the implementation of the service.",
+            "shareinformation": "Who do we share information with",
+            "shareinformationText": "We do not share your information with third parties unless these parties are necessary to complete your request and the requested service. Your information will be used and sent to insurance companies authorized by the Saudi Central Bank to obtain insurance quotes and provide the service requested by you, and in an exceptional case (such as investigations and cases) The employees of the supervisory authorities or those who need to be informed of this may see it, subject to the provisions of the law and the orders of the judicial authorities.",
+            "securityMeasures": "Security measures for your personal information",
+            "securityMeasuresText": "We take measures to protect all of your personal information from unauthorized access, use or disclosure. Otherwise, the Internet is not considered a secure medium, knowing that the customer will be communicated and informed of any illegal access and that it is protected through encryption. You must also enter your username and password each time you wish to use our platform, and never share your username and password or any details of your account with anyone. If you are concerned that your username or password has been compromised, please contact our customer support team immediately or change your password immediately.",
+            "implementationStatement": "Implementation of this privacy statement",
+            "implementationStatementText": "If you have any additional questions about this policy or if you would like more information about our procedures to protect your information, please contact us.",
+            "policyChanges": "Changes that may be made to this policy ",
+            "policyChangesText": "From time to time we may be required to make changes to the Company`s information privacy policy. The updated version will be kept on the company`s website.",
+            "protectionInformation": "Protecting your personal information",
+            "protectionInformationText": "In order for us to help you protect your personal information, we recommend the following:",
+            "protection1": "Contact us immediately when you think that someone has obtained your password, user code, or any other confidential information.",
+            "protection2": "Do not give out confidential information over the phone or the Internet unless you know the identity of the person or party receiving the information.",
+            "protection3": "Use a secure browser when performing online transactions while closing unused applications on the network, and make sure your antivirus software is always up to date.",
+            "cookies": "Cookies ",
+            "cookiesText1": "Cookies are small text files that websites store on your computer, mobile device (smart phone) or tablets. When you visit our site, we use cookies to make our site user-friendly and to develop our site in order to meet your interests and needs.",
+            "cookiesText2": "The cookies used on the Site do not include any information that others can read or understand about you, such as your name or any account number or insurance policy number. It does not contain any personal information about you. Most web browsers allow you to turn off the functionality of cookies. If you want to know how this works, please check the help menu in your browser. However, this action will restrict the services that you can use."
+        },
+        "termsAndConditions": {
+            "termsAndConditions": "Terms and Conditions",
+            "termsAndConditionText": "These terms and conditions apply to your use of the website on the Rukeez website. As any person’s use of the {{appName}} website, this is his approval and acceptance, and he is in his full legal capacity, legally and legally, for all articles and provisions of this agreement, and it is a confirmation of your commitment to its regulations and to what was mentioned therein, and this agreement applies to all types of dealings between the user and the site. This agreement is considered valid and effective once you agree to it and start registering on Rukeez. Note that we have the right to change the terms and conditions from time to time whenever necessary without informing you, and this requires you to review these terms and conditions periodically.",
+            "introductionsAnddefinitions": "Introduction and Definitions:",
+            "userDefintion": "The User",
+            "userDefintionText": "This phrase means every customer who enters the site and benefit from its products and services",
+            "weDefintion": "We",
+            "weDefintionText": "{{appName}} Electronic Insurance Brokerage Company.",
+            "appDefintionText": "This term means the website of {{appName}} Company, and this definition includes all forms of websites on the World Wide Web, whether it is an electronic application or a website.",
+            "userInfoDefintion": "User information",
+            "userInfoDefintionText": "Details of the personal information you provide through the Rukeez website to request and benefit from the service.",
+            "contentDefintion": "Content",
+            "contentDefintionText": "Means any, comments, messages, data, information, text, image, video, or other material transmitted to or displayed on the Site",
+            "websiteDefintion": "The Website",
+            "websiteDefintionText": "Means the website on the World Wide Web.",
+            "userEligibility": "Legal User Eligibility:",
+            "userEligibilityText1": "The user declares that he is legally qualified to deal with the site, or that he is at least eighteen years old.",
+            "userEligibilityText2": "You warrant that you have the legal right and capacity to use the Rukeez website as provided in these terms and conditions.",
+            "userEligibilityText3": "The user agrees that if he violates this article, he will bear the consequences of such violation before third parties.",
+            "accountsAndRegistration": "Accounts and Registration Obligations:",
+            "accountsAndRegistrationText": "Once you enter our website as a user, you are obligated to disclose specific information and choose a user name and a secret password to use when accessing the website services. By doing so, you have agreed to:",
+            "accountsAndRegistration1": "To be responsible for maintaining the confidentiality of your account information and the confidentiality of your password, and thus agree to immediately notify Rukeez of any unauthorized use of your account information on the site or any other breach of your confidential information.",
+            "accountsAndRegistration2": "{{appName}} website will not be responsible in any way for any loss that you may suffer directly or indirectly, morally or materially, as a result of disclosing user name or password information.",
+            "accountsAndRegistration3": "You are obligated to use your account on the site yourself, as you are responsible, and in the event that others use it, this is a presumption that you have authorized them to use the site in your name and for your account.",
+            "accountsAndRegistration4": "You are obligated when using the site to use it with all seriousness and credibility, and if it appears to the site that you disclosed information that is untrue, incorrect, not current, incomplete, illegal or in violation of what was stated in the use agreement, you bear absolute responsibility.",
+            "accountsAndRegistration5": "In the event of non-compliance with any of the above, you acknowledge and undertake to bear absolute responsibility. ",
+            "accountsAndRegistration6": "If there is any content that has been published and uploaded to the {{appName}} website from third party accounts, you are raising your complaint against this user and not the {{appName}} site.",
+            "responsibility": "Responsibility:",
+            "responsibility1": "{{appName}} is committed to conduct its business through this electronic platform in a regular manner and in accordance with the regulations in force in the Kingdom of Saudi Arabia, and in accordance with the provisions of this agreement.",
+            "responsibility2": "The site does not bear any claims arising from errors or negligence, whether caused directly, indirectly, or accidentally, by the user or by a third party.",
+            "responsibility3": "{{appName}}, its employees and their representatives are committed to ensuring that the services provided are sound, legitimate and authorized in accordance with the laws and regulations of the Kingdom of Saudi Arabia.",
+            "servicesProvided": "Services provided :",
+            "servicesProvided1": "{{appName}} website displays the insurance products available to it that are related to insurance companies authorized by the Central Bank of Saudi Arabia.",
+            "servicesProvided2": "The site provides competitive options among insurance companies at competitive prices that allow the user the freedom to choose according to the price and insurance coverage.",
+            "servicesProvided3": "The site is accessible and available for use 24 hours a day.",
+            "orderServices": "How to request the service:",
+            "orderServices1": "Log in to the {{appName}} website after the registration process with your username and password.",
+            "orderServices2": "The user enters the basic information required to start the pricing process.",
+            "orderServices3": "After the table of pricing, benefits and coverage appears, and the selection process has been made.",
+            "orderServices4": "The user enters the payment information.",
+            "orderServices5": "Choose the payment process.",
+            "orderServices6": "Receiving the document via mobile and e-mail and printing it directly.",
+            "paymentMethods": "Payment methods: ",
+            "paymentMethods1": "Credit Card (Visa / MasterCard).",
+            "paymentMethods2": "Sadad Service",
+            "paymentMethods3": "Mada.",
+            "paymentMethods4": "American Express.",
+            "paymentMethods5": "Apple Bay.",
+            "compensation": "Compensation:",
+            "compensation1": "All prices displayed on the services or products of the Rukeez website may be modified from time to time as you acknowledge and are fully aware that we are just an electronic brokerage company and a display platform for the insurance companies listed on the site and we are not responsible for compensation for any claims or compensation resulting from the default of the third party (insurance companies) .",
+            "compensation2": "In the event that you violate these terms and conditions, or cause you harm when using the Rukeez website, you agree and legally agree to compensate everyone related to our website, whether people, cadres or related entities, and bear the resulting legal fees.",
+            "restrictingAndTermination": "Restricting access and termination:",
+            "restrictingAndTerminationText": "If {{appName}} website finds that you have violated what is stated in this agreement, or performed illogical and acceptable behavior, then the site has the right to stop and terminate your account on the site, without harming the rights of the other site and its legitimate means to recover their rights and protect the rest of the users.",
+            "applicableLaw": "The applicable law or regulation:",
+            "applicableLaw1": "This User Agreement is governed and formulated according to the laws and regulations in force and in force in the Kingdom of Saudi Arabia, and is completely and completely subject to the laws and regulations of the Saudi Central Bank.",
+            "applicableLaw2": "In the event that one of the terms of this agreement is found to be invalid by a legislature or illogical, it does not prevent this clause from being canceled while maintaining the remaining provisions in force.",
+            "applicableLaw3": "In the event of disputes, they will be resolved by the courts or committees to settle insurance disputes and violations, according to their jurisdiction.",
+            "companyInformation": "Company information and contact:",
+            "companyInformation1": "In the event of an inquiry or question about a center’s website, or an opinion or comment, please do not hesitate to contact us.",
+            "companyInformation2": "{{appName}} Electronic Insurance Brokerage Company, Commercial Registration No. 010782181, headquartered in Riyadh - Imam Abdullah bin Saud bin Abdulaziz Street - Building No. 3349 - P.O. Box 8234 - Zip Code 13225",
+            "companyInformation3": "Note/ All terms and conditions do not conflict with the rules and regulations of the Central Bank of Saudi Arabia."
+        }
+    }
+}
