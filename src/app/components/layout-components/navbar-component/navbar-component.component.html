@@ -11,7 +11,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 @for(item of navLinks; track item.lang; let first = $first){
                     <li class="nav-item">
-                        <a class="nav-link font_semi__bold text-dark" aria-current="page" [routerLink]="[item.link]" routerLinkActive="active" > {{'layout.navbar.'+item.lang | translate}}</a>
+                        <a class="nav-link font_semi__bold text-dark font_size__13" aria-current="page" [routerLink]="[item.link]" routerLinkActive="active" > {{'layout.navbar.'+item.lang | translate}}</a>
                     </li>
                 }
             </ul>
