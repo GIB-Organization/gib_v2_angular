@@ -13,9 +13,10 @@ $fontBlack: 'FTBlack';
 $fontExtraLight: 'FTExtraLight';
 $fontThin: 'FTThin';
 $fontSemiBold: 'FTSemiBold';
-$transition: all 1s ease-in-out;
-$primaryColorFilter: invert(40%) sepia(86%) saturate(1460%) hue-rotate(190deg) brightness(99%) contrast(93%);
+$transition: all 0.3s ease-in-out;
+$primaryColorFilter: brightness(0) saturate(100%) invert(80%) sepia(72%) saturate(876%) hue-rotate(321deg) brightness(101%) contrast(102%);
 $whiteColorFilter: brightness(0) invert(1);
+$greyColorFilter: brightness(0) saturate(100%) invert(47%) sepia(7%) saturate(522%) hue-rotate(166deg) brightness(94%) contrast(93%);
 
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;

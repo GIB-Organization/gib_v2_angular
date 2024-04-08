@@ -1,0 +1,10 @@
+<div class="mb-2">
+    <label for="emailInput" class="form-label">{{'public.email' | translate}}</label>
+    <input type="email" class="form-control" id="emailInput">
+</div>
+<div class="mb-4">
+    <label for="passwordInput" class="form-label">{{'public.password' | translate}}</label>
+    <input type="password" class="form-control" id="passwordInput">
+</div>
+
+<app-base-button-component [disabled]="true" classes="btn-primary rounded-pill col-12 font_size__13 shadow"> {{'views.auth.login' | translate | uppercase}} </app-base-button-component>

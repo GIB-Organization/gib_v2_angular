@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, PLATFORM_ID, ViewChild } from '@angular/core';
 import { BaseImageComponentComponent } from '../base-image-component/base-image-component.component';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -8,7 +8,8 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [BaseImageComponentComponent, TranslateModule],
   templateUrl: './base-captcha-component.component.html',
-  styleUrl: './base-captcha-component.component.scss'
+  styleUrl: './base-captcha-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BaseCaptchaComponentComponent {
   @Input({ required: true }) id: string = '';

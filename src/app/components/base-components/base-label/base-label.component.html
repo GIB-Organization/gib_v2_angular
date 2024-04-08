@@ -1,0 +1,7 @@
+<label [class]="classes" [for]="for">
+    <ng-content></ng-content>
+    @if(required){
+        <span class="text-danger font_size__16"> * </span>
+    }
+    <ng-content select="popover"></ng-content>
+</label>

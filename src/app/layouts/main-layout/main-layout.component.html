@@ -1,7 +1,9 @@
 <div class="main_layout">
     <app-navbar-component></app-navbar-component>
     <app-breadcrumb-component></app-breadcrumb-component>
-    <router-outlet></router-outlet>
+    <div [@slideInOutAnimation]>  
+        <router-outlet></router-outlet>
+    </div>
     <app-footer-contact-component></app-footer-contact-component>
     <app-footer-component></app-footer-component>
 </div>

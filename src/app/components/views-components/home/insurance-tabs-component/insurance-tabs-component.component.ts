@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -7,7 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgClass],
   templateUrl: './insurance-tabs-component.component.html',
-  styleUrl: './insurance-tabs-component.component.scss'
+  styleUrl: './insurance-tabs-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InsuranceTabsComponentComponent {
   tabs:any[]=[

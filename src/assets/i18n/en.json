@@ -5,7 +5,13 @@
         "email": "Email",
         "phone": "Phone",
         "subject": "Subject",
-        "message": "Message"
+        "message": "Message",
+        "emptyData": " No Data To View Currently! ",
+        "nationalId":"National ID",
+        "save": "Save",
+        "password":"Password",
+        "confirmPassword":"Confirm Password",
+        "send": "Send"
     },
     "layout": {
         "navbar": {
@@ -182,6 +188,44 @@
             "companyInformation1": "In the event of an inquiry or question about a center’s website, or an opinion or comment, please do not hesitate to contact us.",
             "companyInformation2": "{{appName}} Electronic Insurance Brokerage Company, Commercial Registration No. 010782181, headquartered in Riyadh - Imam Abdullah bin Saud bin Abdulaziz Street - Building No. 3349 - P.O. Box 8234 - Zip Code 13225",
             "companyInformation3": "Note/ All terms and conditions do not conflict with the rules and regulations of the Central Bank of Saudi Arabia."
+        },
+        "profile":{
+            "title":"Profile",
+            "signout":"Sign Out",
+            "cards":{
+                "title": "Cards"
+            },
+            "cars":{
+                "title": "Cars"
+            },
+            "uncompletedOrders":{
+                "title": "Uncompleted Orders"
+            },
+            "epayments":{
+                "title": "E-payments"
+            },
+            "supportTicket":{
+                "title": "Support tickets"
+            },
+            "personalInfo":{
+                "title": "Personal Info",
+                "oldPassword":"Old Password",
+                "newPassword":"New Password",
+                "confirmPassword":"Confirm Password"
+            }
+        },
+        "auth":{
+            "welcome":"Welcome!",
+            "welcomeBack":"Welcome back!",
+            "enterPersonalInfo":"Enter your personal account information or if you do not have an account, register now",
+            "newAccount":"New Account",
+            "registerAccount": "Register your information to get a new account, or if you have an account, log in",
+            "login":"Log In",
+            "noProblem":"No problem!",
+            "ifForgot":"If you remember your password, you can go back to logging in and using it",
+            "forgotPassword": "Forgot Password?",
+            "reset":"Reset Password",
+            "register":"Register"
         }
     }
 }

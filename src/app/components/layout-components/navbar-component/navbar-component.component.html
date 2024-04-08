@@ -1,3 +1,5 @@
+<app-auth-dialog-component [(visible)]="loginDialog"></app-auth-dialog-component>
+
 <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -16,7 +18,7 @@
                 }
             </ul>
             <button class="btn btn-transparent text-dark font_size__15"> {{'layout.navbar.lang' | translate}} </button>
-            <button class="btn btn-primary rounded-pill ms-3 font_size__15 px-4 shadow text-light"> {{'layout.navbar.login' | translate}} </button>
+            <button (click)="loginDialog = true" class="btn btn-primary rounded-pill ms-3 font_size__15 px-4 shadow text-light"> {{'layout.navbar.login' | translate}} </button>
         </div>
     </div>
 </nav>

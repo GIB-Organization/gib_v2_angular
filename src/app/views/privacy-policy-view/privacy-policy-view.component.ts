@@ -1,5 +1,5 @@
 import { UnderlineTitleComponentComponent } from './../../components/layout-components/underline-title-component/underline-title-component.component';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -7,7 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, UnderlineTitleComponentComponent],
   templateUrl: './privacy-policy-view.component.html',
-  styleUrl: './privacy-policy-view.component.scss'
+  styleUrl: './privacy-policy-view.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PrivacyPolicyViewComponent {
 

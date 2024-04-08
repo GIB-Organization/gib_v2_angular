@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -6,7 +6,8 @@ import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule],
   templateUrl: './about-banner-component.component.html',
-  styleUrl: './about-banner-component.component.scss'
+  styleUrl: './about-banner-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutBannerComponentComponent {
 

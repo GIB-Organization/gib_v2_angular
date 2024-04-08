@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseImageComponentComponent } from '../../../base-components/base-image-component/base-image-component.component';
 
@@ -7,7 +7,8 @@ import { BaseImageComponentComponent } from '../../../base-components/base-image
   standalone: true,
   imports: [TranslateModule, BaseImageComponentComponent],
   templateUrl: './partners-logos-component.component.html',
-  styleUrl: './partners-logos-component.component.scss'
+  styleUrl: './partners-logos-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PartnersLogosComponentComponent {
   logos:string[]=[

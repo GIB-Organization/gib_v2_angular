@@ -28,9 +28,11 @@ ul{
 
 button,
 input,
+label,
 select,
 textarea {
     font-family: var(--fontRegular) !important;
+    @extend %transition;
 }
 
 .white_color {
@@ -135,6 +137,6 @@ textarea {
     padding: 10px;
 }
 .form-label{
-    @extend .white_color, .font_size__12;
+    @extend .font_size__12;
 }
 /*------------------------- end global -----------------------*/

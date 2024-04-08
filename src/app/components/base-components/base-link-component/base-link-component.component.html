@@ -4,7 +4,7 @@
     </a>
 }
 @else {
-    <a [routerLink]="[path]" class="btn" [class]="classes">
+    <a [routerLink]="[path]" [routerLinkActive]="activeClasses" class="btn" [class]="classes">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </a>
 }
