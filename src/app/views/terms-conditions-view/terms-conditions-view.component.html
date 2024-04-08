@@ -67,7 +67,7 @@
             <div class="mb-5">
                 <app-underline-title-component> {{'views.termsAndConditions.compensation' | translate}} </app-underline-title-component>
                 <ol class="ps-3">
-                    @for(item of [1,2,3]; track item){
+                    @for(item of [1,2]; track item){
                         <li class="mb-3"> {{'views.termsAndConditions.compensation' + item | translate : { appName: ( 'appName' | translate ) } }} </li>
                     }
                 </ol>

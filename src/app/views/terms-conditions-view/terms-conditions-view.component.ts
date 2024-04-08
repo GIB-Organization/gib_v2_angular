@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { UnderlineTitleComponentComponent } from '../../components/layout-components/underline-title-component/underline-title-component.component';
 
@@ -7,7 +7,8 @@ import { UnderlineTitleComponentComponent } from '../../components/layout-compon
   standalone: true,
   imports: [TranslateModule, UnderlineTitleComponentComponent],
   templateUrl: './terms-conditions-view.component.html',
-  styleUrl: './terms-conditions-view.component.scss'
+  styleUrl: './terms-conditions-view.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TermsConditionsViewComponent {
 

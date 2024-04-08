@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseImageComponentComponent } from '../../base-components/base-image-component/base-image-component.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseLinkComponentComponent } from '../../base-components/base-link-component/base-link-component.component';
-import { SidedIconComponentComponent } from '../../shared-component/sided-icon-component/sided-icon-component.component';
+import { SidedIconComponentComponent } from '../../shared-components/sided-icon-component/sided-icon-component.component';
 import { SettingsQuery } from '../../../store/settings/settings.query';
 import { ERoutes } from '../../../core/enums/routes.enum';
 
@@ -17,7 +17,8 @@ import { ERoutes } from '../../../core/enums/routes.enum';
     TranslateModule
   ],
   templateUrl: './footer-component.component.html',
-  styleUrl: './footer-component.component.scss'
+  styleUrl: './footer-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponentComponent {
   get ERoutes(){

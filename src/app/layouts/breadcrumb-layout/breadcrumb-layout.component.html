@@ -3,7 +3,7 @@
     <div class="mt-5 pt-5">
         <app-breadcrumb-component></app-breadcrumb-component>
     </div>
-    <div [@routeFadeAnimation]>
+    <div [@routeAnimations]="getRouteAnimationData()">
         <router-outlet></router-outlet>
     </div>
     <app-footer-contact-component></app-footer-contact-component>

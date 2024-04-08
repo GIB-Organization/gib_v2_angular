@@ -6,4 +6,16 @@ export enum ERoutes{
     blogPage = 'blog-details',
     privacyPolicy = 'privacy-policy',
     termsConditions = 'terms-conditions',
+    profile = 'profile',
+    cards = 'cards',
+    cars = 'cars',
+    uncompletedOrders = 'uncompleted-orders',
+    epayments = 'epayments',
+    supportTicket = 'support-tickets',
+    personalInfo = 'personal-info',
+}
+
+export enum ERouteData{
+    animation = 'animation',
+    title = 'title'
 }

@@ -1,0 +1,15 @@
+.profile_sidebar{
+    ::ng-deep{
+        .btn{
+            color: var(--bs-gray-600);
+            img{
+                filter: var(--greyColorFilter)
+            }
+            &.active_link{
+                img{
+                    filter: var(--primaryColorFilter);
+                }
+            }
+        }
+    }
+}

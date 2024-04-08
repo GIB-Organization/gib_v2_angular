@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { InsuranceTabsComponentComponent } from '../insurance-tabs-component/insurance-tabs-component.component';
 import { CarInsuranceFormComponentComponent } from '../car-insurance-form-component/car-insurance-form-component.component';
 
@@ -7,7 +7,8 @@ import { CarInsuranceFormComponentComponent } from '../car-insurance-form-compon
   standalone: true,
   imports: [InsuranceTabsComponentComponent, CarInsuranceFormComponentComponent],
   templateUrl: './insurances-section-component.component.html',
-  styleUrl: './insurances-section-component.component.scss'
+  styleUrl: './insurances-section-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InsurancesSectionComponentComponent {
 

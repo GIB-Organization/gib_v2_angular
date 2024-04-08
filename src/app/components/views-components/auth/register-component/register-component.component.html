@@ -1,0 +1,33 @@
+<div class="register_form">
+    <div class="mb-2">
+        <app-base-label for="nameInput" classes="form-label" [required]="true"> {{'public.name' | translate}} </app-base-label>
+        <input type="text" class="form-control" id="nameInput">
+    </div>
+    <div class="mb-2">
+        <label for="idInput" class="form-label">{{'views.home.insuranceForm.id' | translate}}</label>
+        <input type="text" class="form-control" id="idInput">
+    </div>
+    <div class="mb-2">
+        <label for="numberInput" class="form-label">{{'public.phone' | translate}}</label>
+        <input type="text" class="form-control" id="numberInput">
+    </div>
+    <div class="mb-2">
+        <label for="emailInput" class="form-label">{{'public.email' | translate}}</label>
+        <input type="email" class="form-control" id="emailInput">
+    </div>
+    <div class="mb-2">
+        <label for="passwordInput" class="form-label">{{'public.password' | translate}}</label>
+        <input type="password" class="form-control" id="passwordInput">
+    </div>
+    <div class="mb-3">
+        <label for="confirmPasswordInput" class="form-label">{{'public.confirmPassword' | translate}}</label>
+        <input type="password" class="form-control" id="confirmPasswordInput">
+    </div>
+    <div class="form-check mb-4">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <label class="form-check-label font_light grey_color font_size__12" for="flexCheckChecked">
+            {{'views.home.insuranceForm.termsConditionsAgree' | translate}}
+        </label>
+    </div>
+    <app-base-button-component classes="btn-primary rounded-pill col-12 font_size__13 shadow"> {{'views.auth.register' | translate | uppercase}} </app-base-button-component>
+</div>

@@ -1,6 +1,6 @@
 import { BaseButtonComponentComponent } from './../../../base-components/base-button-component/base-button-component.component';
 import { BaseCaptchaComponentComponent } from './../../../base-components/base-captcha-component/base-captcha-component.component';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgbDatepicker, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -26,7 +26,8 @@ interface IFormStructure{
   standalone: true,
   imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent],
   templateUrl: './car-insurance-form-component.component.html',
-  styleUrl: './car-insurance-form-component.component.scss'
+  styleUrl: './car-insurance-form-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CarInsuranceFormComponentComponent {

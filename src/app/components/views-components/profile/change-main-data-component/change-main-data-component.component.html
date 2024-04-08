@@ -1,0 +1,21 @@
+<div class="mb-4">
+    <app-shadow-box-component classes="profile_cards p-4 font_size__15 mb-3">
+        <p class="mb-4"> {{ 'public.nationalId' | translate }}: <span class="grey_color"> 123456789 </span> </p>
+        <form action="">
+            <div class="mb-3">
+                <label for="username" class="form-label"> {{ "public.name" | translate }} </label>
+                <input type="text" class="form-control" id="username">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">{{ "public.phone" | translate }}</label>
+                <input type="phone" class="form-control" id="phone">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">{{ "public.email" | translate }}</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+        </form>
+    </app-shadow-box-component>
+    <app-base-button-component classes="px-5 btn-primary rounded-pill white_color font_size__14 shadow-sm"> {{
+        'public.save' | translate }} </app-base-button-component>
+</div>

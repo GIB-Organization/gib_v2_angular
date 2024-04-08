@@ -1,13 +1,14 @@
-import { ICard } from '../../../../models/layout-models/card';
+import { ICard } from '../../../../models/layout-models/card.interface';
 import { CardComponentComponent } from './../../../layout-components/card-component/card-component.component';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-vision-message-component',
   standalone: true,
   imports: [CardComponentComponent],
   templateUrl: './vision-message-component.component.html',
-  styleUrl: './vision-message-component.component.scss'
+  styleUrl: './vision-message-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VisionMessageComponentComponent {
   data: ICard[] = [

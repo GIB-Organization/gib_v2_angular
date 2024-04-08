@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-base-image-component',
   standalone: true,
   imports: [],
   templateUrl: './base-image-component.component.html',
-  styleUrl: './base-image-component.component.scss'
+  styleUrl: './base-image-component.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BaseImageComponentComponent {
  @Input({required: true}) path!: string;
