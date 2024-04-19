@@ -24,6 +24,7 @@ a {
 
 ul{
     padding-inline-start: 0;
+    margin-bottom: 0;
 }
 
 button,
@@ -116,6 +117,7 @@ textarea {
     }
 }
 
+// bootstrap
 .form-check-input{
     --bs-form-check-bg: transparent;
     --bs-border-width: 2px;
@@ -138,5 +140,22 @@ textarea {
 }
 .form-label{
     @extend .font_size__12;
+}
+
+// primeng
+.p-inputwrapper, .p-inputnumber{
+    width: 100%;
+}
+
+.p-dropdown{
+    .p-placeholder{
+        @extend .font_size__10, .font_regular;
+    }
+    &:hover, &:focus, &:not(.p-disabled).p-focus{
+        border-color: var(--primaryColor) !important;
+    }
+    &:not(.p-disabled).p-focus{
+        box-shadow: 0 0 0 0.25rem rgba($primaryColor, 0.2);
+    }
 }
 /*------------------------- end global -----------------------*/

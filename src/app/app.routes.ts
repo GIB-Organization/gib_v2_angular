@@ -2,6 +2,16 @@ import { Routes } from '@angular/router';
 import { ERoutes } from './core/enums/routes.enum';
 import { IRoutingData } from './models/routing.model';
 
+const insuranceShowRoutes: Routes = [
+    {
+        path: '',
+        loadComponent: ()=> import ('./views/insurance-show-pages/additional-data-view/additional-data-view.component').then(m=> m.AdditionalDataViewComponent),
+        data:{
+            animation: 'additionalData',
+        } as IRoutingData
+    }
+]
+
 const mainLayoutRoutes: Routes = [
     {
         path: '',
@@ -9,15 +19,31 @@ const mainLayoutRoutes: Routes = [
         children: [
             {
                 path: '',
-                loadComponent: () => import('./views/home-view/home-view.component').then(m => m.HomeViewComponent)
+                loadComponent: () => import('./views/home-view/home-view.component').then(m => m.HomeViewComponent),
+                data:{
+                    animation: 'home',
+                } as IRoutingData
             },
             {
                 path: ERoutes.about,
-                loadComponent: () => import('./views/about-view/about-view.component').then(m => m.AboutViewComponent)
+                loadComponent: () => import('./views/about-view/about-view.component').then(m => m.AboutViewComponent),
+                data:{
+                    animation: 'about',
+                } as IRoutingData
             },
             {
                 path: `${ERoutes.blogPage}/:id`,
-                loadComponent: () => import('./views/blog-single-view/blog-single-view.component').then(m => m.BlogSingleViewComponent)
+                loadComponent: () => import('./views/blog-single-view/blog-single-view.component').then(m => m.BlogSingleViewComponent),
+                data:{
+                    animation: 'blogPage',
+                } as IRoutingData
+            },
+            {
+                path: ERoutes.insuranceShow,
+                loadComponent: () => import('./layouts/insurance-steps-layout/insurance-steps-layout.component').then(m => m.InsuranceStepsLayoutComponent),
+                children:[
+                    ...insuranceShowRoutes
+                ]
             },
         ]
     }

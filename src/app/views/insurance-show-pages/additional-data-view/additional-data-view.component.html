@@ -1,0 +1,66 @@
+<div class="additional_data">
+    <h5 class="mb-4"> {{'views.insuranceShow.additionalData' | translate}} </h5>
+    <app-base-alert-component type="primary" icon="exclamation-circle"> {{'views.insuranceShow.expiresOn' | translate}} </app-base-alert-component>
+    <div class="shadow border rounded p-3">
+        <div class="row">
+            <aside class="col-md-6">
+                <div class="mb-4">
+                    <app-base-label classes="form-label d-block" for="currency-us">{{'views.insuranceShow.estimatedVehicleValue' | translate}}</app-base-label>
+                    <p-inputNumber inputStyleClass="form-control" inputId="currency-us" mode="currency" currency="SAR"> </p-inputNumber>
+                </div>
+            </aside> 
+            <aside class="col-md-6">
+                <div class="mb-4">
+                    <app-base-label classes="form-label d-block" for="usePurpose">{{'views.insuranceShow.usePurpose' | translate}}</app-base-label>
+                    <p-dropdown inputId="usePurpose" [options]="[]" optionLabel="name" placeholder="Select a City"></p-dropdown>
+                </div>
+            </aside>
+            <aside class="col-md-12 mb-3">
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" checked>
+                    <label class="form-check-label font_light grey_color font_size__12" for="flexCheckChecked">
+                        {{'views.insuranceShow.discountBelong' | translate}}
+                    </label>
+                </div>
+
+                <p class="font_size__12 grey_color mb-4"> {{'views.insuranceShow.verifyAffiliate' | translate}} </p>
+
+                <ng-container >
+                    <div class="mb-4">
+                        @for(item of affiliationRadios; track item.id; let index =
+                        $index){
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="affiliation" [id]="item.id + index"
+                                [value]="item.value">
+                            <label class="form-check-label font_size__13"
+                                [for]="item.id + index">{{item.label |
+                                translate | titlecase}}</label>
+                        </div>
+                        }
+                    </div>
+                </ng-container>
+
+                <div class="row align-items-center">
+                    <aside class="col-md-6 mb-3">
+                        <ng-container >
+                            <input type="email" class="form-control" placeholder="{{'views.insuranceShow.enterEmail' | translate}}"/>
+                        </ng-container>
+                    </aside>
+                    <aside class="col-md-6 d-flex mb-3">
+                        <app-base-button-component class="col mx-1" classes="btn-primary rounded-pill text-white font_size__12 w-100 shadow"> {{'public.verify' | translate | uppercase}} </app-base-button-component>
+                        <app-base-button-component class="col mx-1" classes="btn-secondary rounded-pill text-white font_size__12 w-100 shadow"> {{'public.cancel' | translate | uppercase}} </app-base-button-component>
+                    </aside>
+                </div>
+                <p-divider></p-divider>
+                <div class="drivers_section">
+                    <app-base-button-component icon="car" classes="btn-outline-secondary p-3 font_size__13 mb-4"> {{'views.insuranceShow.addDriver' | translate | uppercase}} </app-base-button-component>
+                    <app-base-alert-component class="font_size__10" type="secondary"> {{'views.insuranceShow.noAdditionalDrivers' | translate}} </app-base-alert-component>
+                </div>
+                <p-divider></p-divider>
+                <div class="additional_data__section">
+                    <app-base-button-component icon="file" classes="btn-outline-secondary p-3 font_size__13 mb-4"> {{'views.insuranceShow.additionalDataButton' | translate | uppercase}} </app-base-button-component>
+                </div>
+            </aside> 
+        </div>
+    </div>
+</div>

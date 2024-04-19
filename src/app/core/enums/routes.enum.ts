@@ -13,6 +13,7 @@ export enum ERoutes{
     epayments = 'epayments',
     supportTicket = 'support-tickets',
     personalInfo = 'personal-info',
+    insuranceShow = 'insurance-show',
 }
 
 export enum ERouteData{

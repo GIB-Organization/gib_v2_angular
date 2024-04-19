@@ -16,31 +16,31 @@
                 <div class="row">
                     <aside class="col-md-6">
                         <div class="mb-4">
-                            <label for="nameInput" class="form-label">{{'public.name' | translate}}</label>
+                            <app-base-label classes="form-label" [required]="true" for="nameInput"> {{ 'public.name' | translate }} </app-base-label>
                             <input type="text" class="form-control" id="nameInput" placeholder="{{'public.name' | translate}}">
                         </div>
                     </aside>
                     <aside class="col-md-6">
                         <div class="mb-4">
-                            <label for="emailInput" class="form-label">{{'public.email' | translate}}</label>
+                            <app-base-label classes="form-label" [required]="true" for="emailInput"> {{ 'public.email' | translate }} </app-base-label>
                             <input type="email" class="form-control" id="emailInput" placeholder="{{'public.email' | translate}}">
                         </div>
                     </aside>
                     <aside class="col-md-6">
                         <div class="mb-4">
-                            <label for="phoneInput" class="form-label">{{'public.phone' | translate}}</label>
+                            <app-base-label classes="form-label" [required]="true" for="phoneInput"> {{ 'public.phone' | translate }} </app-base-label>
                             <input type="number" class="form-control" id="phoneInput" placeholder="{{'public.phone' | translate}}">
                         </div>
                     </aside>
                     <aside class="col-md-6">
                         <div class="mb-4">
-                            <label for="subjectInput" class="form-label">{{'public.subject' | translate}}</label>
+                            <app-base-label classes="form-label" [required]="true" for="subjectInput"> {{ 'public.subject' | translate }} </app-base-label>
                             <input type="text" class="form-control" id="subjectInput" placeholder="{{'public.subject' | translate}}">
                         </div>
                     </aside>
                     <aside class="col-md-12">
                         <div class="mb-4">
-                            <label for="messageInput" class="form-label">{{'public.message' | translate}}</label>
+                            <app-base-label classes="form-label" [required]="true" for="messageInput"> {{ 'public.message' | translate }} </app-base-label>
                             <textarea cols="20" rows="6" class="form-control" id="messageInput" placeholder="{{'public.message' | translate}}"></textarea>
                         </div>
                     </aside>

@@ -4,23 +4,23 @@
         <input type="text" class="form-control" id="nameInput">
     </div>
     <div class="mb-2">
-        <label for="idInput" class="form-label">{{'views.home.insuranceForm.id' | translate}}</label>
+        <app-base-label for="idInput" classes="form-label" [required]="true"> {{'views.home.insuranceForm.id' | translate}} </app-base-label>
         <input type="text" class="form-control" id="idInput">
     </div>
     <div class="mb-2">
-        <label for="numberInput" class="form-label">{{'public.phone' | translate}}</label>
+        <app-base-label for="numberInput" classes="form-label" [required]="true"> {{'public.phone' | translate}} </app-base-label>
         <input type="text" class="form-control" id="numberInput">
     </div>
     <div class="mb-2">
-        <label for="emailInput" class="form-label">{{'public.email' | translate}}</label>
+        <app-base-label for="emailInput" classes="form-label" [required]="true"> {{'public.email' | translate}} </app-base-label>
         <input type="email" class="form-control" id="emailInput">
     </div>
     <div class="mb-2">
-        <label for="passwordInput" class="form-label">{{'public.password' | translate}}</label>
+        <app-base-label for="passwordInput" classes="form-label" [required]="true"> {{'public.password' | translate}} </app-base-label>
         <input type="password" class="form-control" id="passwordInput">
     </div>
     <div class="mb-3">
-        <label for="confirmPasswordInput" class="form-label">{{'public.confirmPassword' | translate}}</label>
+        <app-base-label for="confirmPasswordInput" classes="form-label" [required]="true"> {{'public.confirmPassword' | translate}} </app-base-label>
         <input type="password" class="form-control" id="confirmPasswordInput">
     </div>
     <div class="form-check mb-4">

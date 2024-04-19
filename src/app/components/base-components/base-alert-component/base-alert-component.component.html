@@ -1,0 +1,6 @@
+<ngb-alert [animation]="animation" [dismissible]="dismissible" [type]="type">
+    <span class="font_size__12 d-flex align-items-center">
+        @if(icon){<i class="pi pi-{{icon}} me-2"></i>}
+        <ng-content></ng-content>
+    </span>
+</ngb-alert>

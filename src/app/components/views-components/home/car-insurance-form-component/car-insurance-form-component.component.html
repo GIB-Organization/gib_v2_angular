@@ -3,8 +3,7 @@
         <div class="row">
             <aside class="col-md-4 d-flex flex-column justify-content-between">
                 <div class="mb-4">
-                    <label class="form-label"> {{insuranceFormStructure.insurancePurpose.label |
-                        translate}} </label>
+                    <app-base-label classes="form-label" [required]="true"> {{insuranceFormStructure.insurancePurpose.label | translate}} </app-base-label>
                     <div>
                         @for(item of insuranceFormStructure.insurancePurpose.radioButtons; track item.id; let index =
                         $index){
@@ -19,14 +18,14 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <label for="idInput" class="form-label">{{'views.home.insuranceForm.id' | translate}}</label>
+                    <app-base-label classes="form-label" [required]="true" for="idInput">{{'views.home.insuranceForm.id' | translate}}</app-base-label>
                     <input type="number" class="form-control" id="idInput" placeholder="">
                 </div>
             </aside>
             <aside class="col-md-4 d-flex flex-column justify-content-between">
                 <div class="mb-4">
-                    <label class="form-label"> {{insuranceFormStructure.registrationType.label| translate}}
-                    </label>
+                    <app-base-label classes="form-label" [required]="true">{{insuranceFormStructure.registrationType.label| translate}}</app-base-label>
+                    
                     <div>
                         @for(item of insuranceFormStructure.registrationType.radioButtons; track item.id; let index =
                         $index){
@@ -41,21 +40,22 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <label for="serialInput" class="form-label">{{'views.home.insuranceForm.serialNumber' |
-                        translate}}</label>
+                    <app-base-label classes="form-label" [required]="true" for="serialInput">{{'views.home.insuranceForm.serialNumber' |
+                        translate}}</app-base-label>
+
                     <input type="number" class="form-control" id="serialInput" placeholder="">
                 </div>
             </aside>
             <aside class="col-md-4 d-flex flex-column justify-content-between">
                 <div class="mb-4">
-                    <label class="form-label"> {{'views.home.insuranceForm.insuranceDate' | translate}}
-                    </label>
+                    <app-base-label classes="form-label" [required]="true">{{'views.home.insuranceForm.insuranceDate' |
+                        translate}}</app-base-label>
                     <input class="date_picker__input form-control" (click)="d.toggle()" type="text" ngbDatepicker
                         #d="ngbDatepicker" />
                 </div>
                 <div class="mb-4">
-                    <label class="form-label"> {{'views.home.insuranceForm.confirmCode' | translate}}
-                    </label>
+                    <app-base-label classes="form-label" [required]="true">{{'views.home.insuranceForm.confirmCode' |
+                        translate}}</app-base-label>
                     <app-base-captcha-component id="baseCaptcha1"></app-base-captcha-component>
                 </div>
 

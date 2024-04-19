@@ -5,6 +5,7 @@ import { FooterContactComponentComponent } from '../../components/layout-compone
 import { FooterComponentComponent } from '../../components/layout-components/footer-component/footer-component.component';
 import { BreadcrumbComponentComponent } from '../../components/layout-components/breadcrumb-component/breadcrumb-component.component';
 import { slideInOutAnimation } from '../../core/animations/animations.animation';
+import { AnimationsContext } from '../../core/animations/animations.class';
 
 @Component({
   selector: 'app-main-layout',
@@ -21,6 +22,8 @@ import { slideInOutAnimation } from '../../core/animations/animations.animation'
   styleUrl: './main-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainLayoutComponent {
-
+export class MainLayoutComponent extends AnimationsContext{
+  constructor(){
+    super()
+  }
 }
