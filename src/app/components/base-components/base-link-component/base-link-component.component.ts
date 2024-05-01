@@ -12,7 +12,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class BaseLinkComponentComponent {
   @Input() classes!: string;
-  @Input({required: true}) path!: string;
+  @Input() icon!: string;
+  @Input({required: true}) path: string='';
   @Input() external: boolean = false;
   @Input() activeClasses: string = '';
 }

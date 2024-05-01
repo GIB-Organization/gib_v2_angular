@@ -1,11 +1,14 @@
 @if(external){
-    <a [href]="path" class="btn" [class]="classes">
+    <a [href]="path" class="btn" [class]="classes + ( icon ? ' d-flex align-items-center' : '')">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </a>
 }
 @else {
-    <a [routerLink]="[path]" [routerLinkActive]="activeClasses" class="btn" [class]="classes">
+    <a [routerLink]="[path]" [routerLinkActive]="activeClasses" class="btn" [class]="classes + ( icon ? ' d-flex align-items-center' : '')">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </a>
 }
-<ng-template #content><ng-content></ng-content></ng-template>
+<ng-template #content>
+    @if(icon){<i class="pi pi-{{icon}} me-3"></i>}
+    <ng-content></ng-content>
+</ng-template>

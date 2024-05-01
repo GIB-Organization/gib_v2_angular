@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class BaseButtonComponentComponent {
   @Input() classes!: string;
+  @Input() icon!: string;
   @Input() disabled: boolean = false;
   @Output() clicked = new EventEmitter();
 

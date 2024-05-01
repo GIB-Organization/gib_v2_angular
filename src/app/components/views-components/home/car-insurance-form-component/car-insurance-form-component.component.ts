@@ -1,14 +1,12 @@
+import { BaseLabelComponentComponent } from './../../../base-components/base-label-component/base-label-component.component';
 import { BaseButtonComponentComponent } from './../../../base-components/base-button-component/base-button-component.component';
 import { BaseCaptchaComponentComponent } from './../../../base-components/base-captcha-component/base-captcha-component.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgbDatepicker, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+import { IRadioInput } from '../../../../models/layout-models/radio.interface';
 
-interface IRadioInput{
-  label:string,
-  id:string,
-  value:string | boolean | number,
-}
+
 
 interface IFormStructure{
   insurancePurpose:{
@@ -24,7 +22,7 @@ interface IFormStructure{
 @Component({
   selector: 'app-car-insurance-form-component',
   standalone: true,
-  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent],
+  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent, BaseLabelComponentComponent],
   templateUrl: './car-insurance-form-component.component.html',
   styleUrl: './car-insurance-form-component.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

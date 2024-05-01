@@ -1,5 +1,5 @@
 import { ProfileSidebarComponentComponent } from './../../components/views-components/profile/profile-sidebar-component/profile-sidebar-component.component';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Event, NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ShadowBoxComponentComponent } from '../../components/views-components/profile/shadow-box-component/shadow-box-component.component';
@@ -19,18 +19,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class ProfileLayoutComponent extends AnimationsContext {
 
+  private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
+  private activatedRoute = inject(ActivatedRoute);
   private _title!: string;
   private routeEvent$: Observable<Event> = this.router.events;
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    super();
-
-    this.title = this.activatedRoute.snapshot.children[0].data['title'];
-    this.routeEvent$.pipe(takeUntilDestroyed(), filter(event => event instanceof NavigationEnd))
-      .subscribe((res) => {
-        this.title = this.activatedRoute.snapshot.children[0].data['title'];
-      });
-  }
 
   get title() {
     return this._title;
@@ -38,4 +31,13 @@ export class ProfileLayoutComponent extends AnimationsContext {
   set title(value: string) {
     this._title = value;
   }
+
+  ngOnInit() {
+    this.title = this.activatedRoute.snapshot.children[0].data['title'];
+    this.routeEvent$.pipe(takeUntilDestroyed(this.destroyRef), filter(event => event instanceof NavigationEnd))
+      .subscribe((res) => {
+        this.title = this.activatedRoute.snapshot.children[0].data['title'];
+      });
+  }
+  
 }

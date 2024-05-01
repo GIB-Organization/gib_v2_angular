@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 
 export const initialSettings : ISettingsState = {
     phone: '+96612717222',
-    email: 'info@gib-sa.com'
+    email: 'info@gib-sa.com',
+    currency: 'SAR ',
 }
 
 @Injectable({ providedIn: 'root' })
