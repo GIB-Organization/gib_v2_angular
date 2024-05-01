@@ -23,7 +23,5 @@ import { AnimationsContext } from '../../core/animations/animations.class';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainLayoutComponent extends AnimationsContext{
-  constructor(){
-    super()
-  }
+  
 }

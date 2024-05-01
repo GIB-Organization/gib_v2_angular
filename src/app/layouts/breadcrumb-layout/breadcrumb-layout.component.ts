@@ -25,7 +25,5 @@ import { AnimationsContext } from '../../core/animations/animations.class';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbLayoutComponent extends AnimationsContext {
-  constructor() {
-    super()
-  }
+  
 }

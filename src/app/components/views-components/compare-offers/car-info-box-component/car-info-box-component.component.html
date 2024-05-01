@@ -1,0 +1,27 @@
+<div class="shadow border rounded p-4">
+    <div class="row align-items-center">
+        <aside class="col-md-5 mb-3 mb-md-0">
+            <div class="d-flex align-items-center">
+                <div class="flex-shrink-0 col-2">
+                    <app-base-image-component path="logo/BMW.svg" alt="car logo"></app-base-image-component>
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <app-base-label-component classes="font_size__14"> {{'views.insuranceShow.vehicleDesc' | translate}} </app-base-label-component>
+                    <p class="grey_color font_size__14 font_light mb-0"> Mercedi's </p>
+                </div>
+            </div>
+        </aside>
+        <aside class="col-md-4 col-7">
+            <div>
+                <app-base-label-component classes="font_size__14" [isPopover]="true"> 
+                    {{'views.insuranceShow.discountEntitle' | translate}} 
+                    <app-base-image-component ngProjectAs="popover" path="svg/Car Plate.svg" alt="popover"></app-base-image-component>
+                </app-base-label-component>
+                <p class="grey_color font_size__14 font_light mb-0"> لا يوجد انقطاع تأمين </p>
+            </div>
+        </aside>
+        <aside class="col-md-3 col-5">
+            <app-base-image-component path="svg/Car Plate.svg" alt="plate"></app-base-image-component>
+        </aside>
+    </div>
+</div>

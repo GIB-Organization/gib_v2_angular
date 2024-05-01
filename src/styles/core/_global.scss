@@ -135,6 +135,7 @@ textarea {
 
 .form-control{
     @extend .font_size__13;
+    background-color: var(--bs-gray-200);
     color: var(--bs-gray);
     padding: 10px;
 }
@@ -143,13 +144,21 @@ textarea {
 }
 
 // primeng
+body{
+    &.p-overflow-hidden{
+        --scrollbar-width: 0 !important;
+    }
+}
 .p-inputwrapper, .p-inputnumber{
     width: 100%;
 }
 
 .p-dropdown{
+    .p-dropdown-label{
+        line-height: 1;
+    }
     .p-placeholder{
-        @extend .font_size__10, .font_regular;
+        @extend .font_size__13, .font_regular;
     }
     &:hover, &:focus, &:not(.p-disabled).p-focus{
         border-color: var(--primaryColor) !important;
@@ -157,5 +166,9 @@ textarea {
     &:not(.p-disabled).p-focus{
         box-shadow: 0 0 0 0.25rem rgba($primaryColor, 0.2);
     }
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider{
+    background: var(--primaryColor);
 }
 /*------------------------- end global -----------------------*/

@@ -1,3 +1,4 @@
+import { authGuard } from './core/guards/auth/auth.guard';
 import { Routes } from '@angular/router';
 import { ERoutes } from './core/enums/routes.enum';
 import { IRoutingData } from './models/routing.model';
@@ -5,11 +6,33 @@ import { IRoutingData } from './models/routing.model';
 const insuranceShowRoutes: Routes = [
     {
         path: '',
+        redirectTo: ERoutes.additionalData,
+        pathMatch: 'full',
+        data:{
+            animation: 'additionalData',
+        } as IRoutingData
+    },
+    {
+        path: ERoutes.additionalData,
         loadComponent: ()=> import ('./views/insurance-show-pages/additional-data-view/additional-data-view.component').then(m=> m.AdditionalDataViewComponent),
         data:{
             animation: 'additionalData',
         } as IRoutingData
-    }
+    },
+    {
+        path: ERoutes.orderSummary,
+        loadComponent: ()=> import ('./views/insurance-show-pages/order-summary/order-summary.component').then(m=> m.OrderSummaryComponent),
+        data:{
+            animation: ERoutes.orderSummary,
+        } as IRoutingData
+    },
+    {
+        path: ERoutes.compareOffers,
+        loadComponent: ()=> import ('./views/insurance-show-pages/compare-offers/compare-offers.component').then(m=> m.CompareOffersComponent),
+        data:{
+            animation: ERoutes.compareOffers,
+        } as IRoutingData
+    },
 ]
 
 const mainLayoutRoutes: Routes = [
@@ -149,6 +172,7 @@ const breadcrumbLayoutRoutes: Routes = [
             {
                 path: ERoutes.profile,
                 loadComponent: () => import('./layouts/profile-layout/profile-layout.component').then(m => m.ProfileLayoutComponent),
+                canActivate: [authGuard],
                 children:[
                     ...profileLayoutRoutes
                 ],

@@ -14,6 +14,9 @@ export enum ERoutes{
     supportTicket = 'support-tickets',
     personalInfo = 'personal-info',
     insuranceShow = 'insurance-show',
+    orderSummary = 'order-summary',
+    compareOffers = 'compare-offers',
+    additionalData= 'additional-data'
 }
 
 export enum ERouteData{

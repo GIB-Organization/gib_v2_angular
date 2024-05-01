@@ -3,15 +3,15 @@
         <p class="mb-4"> {{ 'public.nationalId' | translate }}: <span class="grey_color"> 123456789 </span> </p>
         <form action="">
             <div class="mb-3">
-                <app-base-label for="username" classes="form-label" [required]="true"> {{'public.name' | translate}} </app-base-label>
+                <app-base-label-component for="username" classes="form-label" [required]="true"> {{'public.name' | translate}} </app-base-label-component>
                 <input type="text" class="form-control" id="username">
             </div>
             <div class="mb-3">
-                <app-base-label for="phone" classes="form-label" [required]="true"> {{'public.phone' | translate}} </app-base-label>
+                <app-base-label-component for="phone" classes="form-label" [required]="true"> {{'public.phone' | translate}} </app-base-label-component>
                 <input type="phone" class="form-control" id="phone">
             </div>
             <div class="mb-3">
-                <app-base-label for="email" classes="form-label" [required]="true"> {{'public.email' | translate}} </app-base-label>
+                <app-base-label-component for="email" classes="form-label" [required]="true"> {{'public.email' | translate}} </app-base-label-component>
                 <input type="email" class="form-control" id="email">
             </div>
         </form>

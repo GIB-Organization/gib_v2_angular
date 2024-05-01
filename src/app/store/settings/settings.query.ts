@@ -16,4 +16,7 @@ export class SettingsQuery extends Query<ISettingsState> {
     get email() {
         return this.getValue().email;
     }
+    get currency() {
+        return this.getValue().currency;
+    }
 }
