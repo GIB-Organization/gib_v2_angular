@@ -1,8 +1,6 @@
-<div class="main_layout">
+<div class="main_layout pt-5">
     <app-navbar-component></app-navbar-component>
-    <app-breadcrumb-component></app-breadcrumb-component>
-
-    <div [@slideInOutAnimation]="getRouteAnimationData()">  
+    <div class="pt-5" [@slideInOutAnimation]="getRouteAnimationData()">  
         <router-outlet></router-outlet>
     </div>
     
