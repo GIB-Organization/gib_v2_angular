@@ -46,7 +46,8 @@ export class CarInsuranceFormComponentComponent {
         {
           label:'views.home.insuranceForm.newInsurance',
           id:'insurancePurposeRadio',
-          value:0
+          value:0,
+          checked: true
         },
         {
           label:'views.home.insuranceForm.ownershipTransfer',
@@ -61,7 +62,8 @@ export class CarInsuranceFormComponentComponent {
         {
           label:'views.home.insuranceForm.form',
           id:'registerTypeRadio',
-          value:0
+          value:0,
+          checked: true
         },
         {
           label:'views.home.insuranceForm.customCard',
