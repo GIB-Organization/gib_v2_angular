@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, model, signal } from '@angular/core';
 import { BaseButtonComponentComponent } from '../../../base-components/base-button-component/base-button-component.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { CurrencyPipe } from '@angular/common';
@@ -17,7 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 })
 export class QuotationsFilterComponent {
   settingsQuery = inject(SettingsQuery);
-  activeTab = signal<EQuotationsTabs>(EQuotationsTabs.thirdParty);
+  activeTab = model<EQuotationsTabs>(EQuotationsTabs.thirdParty);
 
   get EQuotationsTabs(){
     return EQuotationsTabs

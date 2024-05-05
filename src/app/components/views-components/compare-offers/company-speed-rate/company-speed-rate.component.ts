@@ -4,11 +4,12 @@ import { BaseImageComponentComponent } from '../../../base-components/base-image
 import { TooltipModule } from 'primeng/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormControl, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { BaseTooltipComponentComponent } from '../../../base-components/base-tooltip-component/base-tooltip-component.component';
 
 @Component({
   selector: 'app-company-speed-rate',
   standalone: true,
-  imports: [RatingModule, BaseImageComponentComponent, TooltipModule, TranslateModule, ReactiveFormsModule],
+  imports: [RatingModule, BaseTooltipComponentComponent, BaseImageComponentComponent, TooltipModule, TranslateModule, ReactiveFormsModule],
   templateUrl: './company-speed-rate.component.html',
   styleUrl: './company-speed-rate.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

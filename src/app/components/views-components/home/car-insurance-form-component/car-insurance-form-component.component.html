@@ -1,9 +1,10 @@
 <div class="car_insurance__form">
-    <div class="form_box secondary_bg text-light rounded-pill p-5 mt-5">
+    <div class="form_box secondary_bg text-light border_radius__100 p-md-5 p-4 mt-5">
         <div class="row p-3">
             <aside class="col-md-4 d-flex flex-column justify-content-between">
                 <div class="mb-4">
-                    <app-base-label-component classes="form-label" [required]="true"> {{insuranceFormStructure.insurancePurpose.label | translate}} </app-base-label-component>
+                    <app-base-label-component classes="form-label" [required]="true">
+                        {{insuranceFormStructure.insurancePurpose.label | translate}} </app-base-label-component>
                     <div>
                         @for(item of insuranceFormStructure.insurancePurpose.radioButtons; track item.id; let index =
                         $index){
@@ -18,14 +19,18 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <app-base-label-component classes="form-label" [required]="true" for="idInput">{{'views.home.insuranceForm.id' | translate}}</app-base-label-component>
-                    <input type="number" class="form-control" id="idInput" placeholder="">
+                    <app-base-label-component classes="form-label" [required]="true"
+                        for="idInput">{{'views.home.insuranceForm.id' | translate}}</app-base-label-component>
+                    <p-inputNumber inputStyleClass="form-control" inputId="idInput" [useGrouping]="false">
+                    </p-inputNumber>
                 </div>
             </aside>
             <aside class="col-md-4 d-flex flex-column justify-content-between">
                 <div class="mb-4">
-                    <app-base-label-component classes="form-label" [required]="true">{{insuranceFormStructure.registrationType.label| translate}}</app-base-label-component>
-                    
+                    <app-base-label-component classes="form-label"
+                        [required]="true">{{insuranceFormStructure.registrationType.label|
+                        translate}}</app-base-label-component>
+
                     <div>
                         @for(item of insuranceFormStructure.registrationType.radioButtons; track item.id; let index =
                         $index){
@@ -40,21 +45,32 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <app-base-label-component classes="form-label" [required]="true" for="serialInput">{{'views.home.insuranceForm.serialNumber' |
+                    <app-base-label-component [isPopover]="true" [popoverType]="EPopover.img"
+                        popoverContent="carIdExample.png" classes="form-label" [required]="true"
+                        for="serialInput">{{'views.home.insuranceForm.serialNumber' |
                         translate}}</app-base-label-component>
-
-                    <input type="number" class="form-control" id="serialInput" placeholder="">
+                    <p-autoComplete inputStyleClass="form-control" [(ngModel)]="selectedItem"
+                        [suggestions]="suggestions" (completeMethod)="search($event)" inputId="serialInput"
+                        field="name">
+                        <ng-template let-car pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                {{ car }} <span class="primary_color"> BMW </span>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
                 </div>
             </aside>
             <aside class="col-md-4 d-flex flex-column justify-content-between">
                 <div class="mb-4">
-                    <app-base-label-component classes="form-label" [required]="true">{{'views.home.insuranceForm.insuranceDate' |
+                    <app-base-label-component classes="form-label"
+                        [required]="true">{{'views.home.insuranceForm.insuranceDate' |
                         translate}}</app-base-label-component>
                     <input class="date_picker__input form-control" (click)="d.toggle()" type="text" ngbDatepicker
-                        #d="ngbDatepicker" />
+                        #d="ngbDatepicker" [minDate]="minDate" />
                 </div>
                 <div class="mb-4">
-                    <app-base-label-component classes="form-label" [required]="true">{{'views.home.insuranceForm.confirmCode' |
+                    <app-base-label-component classes="form-label"
+                        [required]="true">{{'views.home.insuranceForm.confirmCode' |
                         translate}}</app-base-label-component>
                     <app-base-captcha-component id="baseCaptcha1"></app-base-captcha-component>
                 </div>
@@ -66,13 +82,15 @@
         <aside class="col-md-4 ms-auto">
             <div class="form-check mb-4">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                <label class="form-check-label font_light grey_color font_size__15" for="flexCheckChecked">
-                    {{'views.home.insuranceForm.termsConditionsAgree' | translate}}
-                </label>
+                <app-base-label-component classes="form-check-label font_light grey_color font_size__15"
+                    [isPopover]="true"
+                    popoverContent="{{'views.home.insuranceForm.termsConditionsTooltip' | translate}}"
+                    for="flexCheckChecked"> {{'views.home.insuranceForm.termsConditionsAgree' | translate}}
+                </app-base-label-component>
             </div>
             <app-base-button-component classes="btn-primary rounded-pill text-white shadow font_size__15 col-12 py-3">
                 {{'views.home.insuranceForm.showOffers' | translate}}
-            </app-base-button-component> 
+            </app-base-button-component>
         </aside>
     </div>
 </div>

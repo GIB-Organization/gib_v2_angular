@@ -66,7 +66,8 @@
                 "insuranceDate": "Insurance start date",
                 "confirmCode": "Confirmation code",
                 "termsConditionsAgree": "I agree with terms and conditions",
-                "showOffers": "Show Offers"
+                "showOffers": "Show Offers",
+                "termsConditionsTooltip":" I agree to grant your insurance company the right to inquire from Najm Insurance Services / or the National Information Center or any other relevant official bodies about my data and vehicle data or any other related data. "
             },
             "partnersLogos": {
                 "platform": "{{appName}} Platform ,,,,",
@@ -309,7 +310,9 @@
             "workshop":"Workshop",
             "companySpeed":"connection speed with NAGM is {{speed}}",
             "replaceWithComprehensive": "Replace with comprehensive insurance at a price {{price}}",
-            "chooseComprehensive":"Choose Comprehensive"
+            "chooseComprehensive":"Choose Comprehensive",
+            "endurance":"Endurance value",
+            "enduranceTooltip":"Deductable is the amount of money you agreed to pay for car repairs or replacement after accident"
         }
     }
 }

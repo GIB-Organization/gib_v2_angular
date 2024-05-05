@@ -29,7 +29,6 @@ ul{
 
 button,
 input,
-label,
 select,
 textarea {
     font-family: var(--fontRegular) !important;
@@ -141,6 +140,10 @@ textarea {
 }
 .form-label{
     @extend .font_size__12;
+}
+
+.ngb-dp-day.ngb-dp-today{
+    color: var(--primaryColor);
 }
 
 // primeng

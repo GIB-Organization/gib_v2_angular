@@ -7,21 +7,20 @@
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <app-base-label-component classes="font_size__14"> {{'views.insuranceShow.vehicleDesc' | translate}} </app-base-label-component>
-                    <p class="grey_color font_size__14 font_light mb-0"> Mercedi's </p>
+                    <p class="grey_color font_size__14 font_light mb-0"> BMW </p>
                 </div>
             </div>
         </aside>
-        <aside class="col-md-4 col-7">
+        <aside class="col-md col-12 mb-3 mb-md-0">
             <div>
-                <app-base-label-component classes="font_size__14" [isPopover]="true"> 
+                <app-base-label-component classes="font_size__14" [isPopover]="true" popoverContent="svg/Car Plate.svg" [popoverType]="EPopover.img"> 
                     {{'views.insuranceShow.discountEntitle' | translate}} 
-                    <app-base-image-component ngProjectAs="popover" path="svg/Car Plate.svg" alt="popover"></app-base-image-component>
                 </app-base-label-component>
-                <p class="grey_color font_size__14 font_light mb-0"> لا يوجد انقطاع تأمين </p>
+                <p class="grey_color font_size__14 font_light mb-0"> No Insurance Cut</p>
             </div>
         </aside>
-        <aside class="col-md-3 col-5">
-            <app-base-image-component path="svg/Car Plate.svg" alt="plate"></app-base-image-component>
+        <aside class="col-md col-12">
+            <app-car-pallet-component></app-car-pallet-component>
         </aside>
     </div>
 </div>
