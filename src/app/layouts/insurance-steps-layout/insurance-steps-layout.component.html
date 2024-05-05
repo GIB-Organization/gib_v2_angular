@@ -1,7 +1,7 @@
 <div class="insurance_steps">
     <div class="container my-5">
         <div class="row">
-            <aside class="col-md-2 d-lg-block d-none">
+            <aside class="col-lg-2 d-lg-block d-none">
                 <div class="steps shadow p-2 rounded">
                     <ul class="list-unstyled  m-0">
                         @for(item of steps; track item.text; let index = $index){
@@ -16,7 +16,7 @@
                     <a class="stretched-link"></a>
                 </div>
             </aside>
-            <aside class="col-md-10">
+            <aside class="col-lg-10">
                 <div [@routeAnimations]="getRouteAnimationData()">
                     <router-outlet></router-outlet>
                 </div>

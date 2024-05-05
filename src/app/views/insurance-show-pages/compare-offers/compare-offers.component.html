@@ -1,8 +1,17 @@
 <div class="additional_data">
-    <app-title-box-component title="views.insuranceShow.compareOffers" subtitle="{{'views.insuranceShow.offersValid' | translate:{h:1,m:2,s:22} }}" step=""></app-title-box-component>
+    <app-title-box-component 
+        title="views.insuranceShow.compareOffers"
+        subtitle="{{'views.insuranceShow.offersValid' | translate:{h:1,m:2,s:22} }}" step="">
+    </app-title-box-component>
     <div class="mb-4"><app-car-info-box-component></app-car-info-box-component></div>
-    <div class="mb-4"><app-quotations-filter></app-quotations-filter></div>
+    <div class="mb-4">
+        <app-quotations-filter (activeTabChange)="comprehensiveOrThird.set($event)"></app-quotations-filter>
+    </div>
     @for(item of [1,2,3,4,5]; track item){
-        <div class="mb-4"><app-quotation-box></app-quotation-box></div>
+        <div class="mb-4">
+            <app-defer-block-component>
+                <app-quotation-box [comprehensiveOrThird]="comprehensiveOrThird()"></app-quotation-box>
+            </app-defer-block-component>
+        </div>
     }
 </div>

@@ -4,9 +4,6 @@
     <span class="text-danger font_size__16"> * </span>
     }
     @if(isPopover){
-    <span [pTooltip]="tooltipContent" tooltipPosition="bottom" class="pi pi-question-circle primary_color"></span>
-    }
-    <ng-template #tooltipContent>
-        <ng-content select="popover"></ng-content>
-    </ng-template>
+        <app-base-tooltip-component [popoverContent]="popoverContent" [popoverType]="popoverType"></app-base-tooltip-component>
+    } 
 </label>

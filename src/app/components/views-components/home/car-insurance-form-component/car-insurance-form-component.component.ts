@@ -5,7 +5,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgbDatepicker, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { IRadioInput } from '../../../../models/layout-models/radio.interface';
-
+import { EPopover } from '../../../../core/enums/popover.enum';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FormsModule } from '@angular/forms';
 
 
 interface IFormStructure{
@@ -22,13 +25,20 @@ interface IFormStructure{
 @Component({
   selector: 'app-car-insurance-form-component',
   standalone: true,
-  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent, BaseLabelComponentComponent],
+  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent, BaseLabelComponentComponent, InputNumberModule, AutoCompleteModule, FormsModule],
   templateUrl: './car-insurance-form-component.component.html',
   styleUrl: './car-insurance-form-component.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CarInsuranceFormComponentComponent {
+  todayDate = new Date();
+  minDate = {
+    year: this.todayDate.getFullYear(),
+    month: this.todayDate.getMonth() + 1,
+    day: this.todayDate.getDate()
+  }
+
   insuranceFormStructure: IFormStructure={
     insurancePurpose:{
       label: 'views.home.insuranceForm.insurancePurpose',
@@ -61,4 +71,20 @@ export class CarInsuranceFormComponentComponent {
       ]
     }
   }
+
+  get EPopover(){
+    return EPopover
+  }
+
+
+
+  items: any[] | undefined;
+
+    selectedItem: any;
+
+    suggestions!: any[];
+
+    search(event: any) {
+        this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
+    }
 }
