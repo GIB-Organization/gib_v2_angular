@@ -1,22 +1,23 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, PLATFORM_ID, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, Output, PLATFORM_ID, ViewChild, model } from '@angular/core';
 import { BaseImageComponentComponent } from '../base-image-component/base-image-component.component';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-base-captcha-component',
   standalone: true,
-  imports: [BaseImageComponentComponent, TranslateModule],
+  imports: [BaseImageComponentComponent, TranslateModule, FormsModule],
   templateUrl: './base-captcha-component.component.html',
   styleUrl: './base-captcha-component.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BaseCaptchaComponentComponent {
   @Input({ required: true }) id: string = '';
-  @Output() changeCaptchaCode = new EventEmitter<string>();
   @ViewChild('canvasElement') canvasElement!: ElementRef;
-
+  codeIsCorrect = model<boolean>(false)
   captchaCode = ''
+  randomCode = ''
   captchaTimeout: any = null;
   isBrowser = false;
 
@@ -105,8 +106,13 @@ export class BaseCaptchaComponentComponent {
 
   refreshCaptcha() {
     const code = this.generateRandomNumber()
-    this.changeCaptchaCode.emit(code);
-    this.captchaCode = code
+    this.randomCode = code
+    this.captchaCode = '';
+    this.captchaCodeChanged()
     this.generateCaptcha(code)
+  }
+
+  captchaCodeChanged(){
+    this.codeIsCorrect.set(this.captchaCode === this.randomCode ? true:false)
   }
 }

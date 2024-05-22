@@ -1,7 +1,7 @@
 import { authGuard } from './core/guards/auth/auth.guard';
 import { Routes } from '@angular/router';
 import { ERoutes } from './core/enums/routes.enum';
-import { IRoutingData } from './models/routing.model';
+import { IRoutingData } from './models/routing.interface';
 
 const insuranceShowRoutes: Routes = [
     {

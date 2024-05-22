@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, input } from '@angular/core';
 
 @Component({
   selector: 'app-base-button-component',
@@ -12,9 +12,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BaseButtonComponentComponent {
-  @Input() classes!: string;
-  @Input() icon!: string;
-  @Input() disabled: boolean = false;
+  classes = input<string>();
+  icon = input<string>();
+  disabled = input<boolean>();
+  loading = input<boolean>();
+  
   @Output() clicked = new EventEmitter();
 
   buttonClicked(){
