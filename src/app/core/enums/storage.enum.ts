@@ -1,4 +1,4 @@
-export enum StorageEnum {
+export enum EStorageEnum {
     token = 'TOKEN',
     user = 'USER'
 }

@@ -11,7 +11,7 @@ export const initialSettings : ISettingsState = {
 }
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'settings' })
+@StoreConfig({ name: 'settings', resettable: true })
 export class SettingsStore extends Store<ISettingsState> {
   constructor() {
     super(initialSettings);

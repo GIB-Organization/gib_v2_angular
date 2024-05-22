@@ -1,6 +1,6 @@
 import { Injectable, PLATFORM_ID, inject } from '@angular/core';
-import { IStorageModel } from '../../../models/storage.model';
-import { StorageEnum } from '../../../core/enums/storage.enum';
+import { IStorageModel } from '../../../models/storage.interface';
+import { EStorageEnum } from '../../../core/enums/storage.enum';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
@@ -9,11 +9,11 @@ import { isPlatformBrowser } from '@angular/common';
 export class LocalStorageService implements IStorageModel{
   #platformId = inject(PLATFORM_ID);
   
-  getStorageElement(name: StorageEnum) {
+  getStorageElement(name: EStorageEnum) {
     if(isPlatformBrowser(this.#platformId)) return localStorage.getItem(name);
     return null
   }
-  setStorageElement(name: StorageEnum, value: any) {
+  setStorageElement(name: EStorageEnum, value: any) {
     if(isPlatformBrowser(this.#platformId)) localStorage.setItem(name, value);
   }
 }

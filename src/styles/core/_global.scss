@@ -145,6 +145,12 @@ textarea {
 .ngb-dp-day.ngb-dp-today{
     color: var(--primaryColor);
 }
+.ngb-dp-weekday{
+    color:var(--primaryColor) !important;
+}
+.ngb-dp-day.disabled, .ngb-dp-day.hidden{
+    opacity: 0.5;
+}
 
 // primeng
 body{

@@ -2,5 +2,5 @@
     <canvas #canvasElement  dir="ltr" [id]="id" width="100" height="40"></canvas>
     <span class="mx-2"> <app-base-image-component role="button" (clicked)="refreshCaptcha()" alt="refresh icon" path="refresh.png">
     </app-base-image-component> </span>
-    <input class="form-control" label="" placeholder="{{'views.home.insuranceForm.confirmCode' | translate}}"/>
+    <input [(ngModel)]="captchaCode" (ngModelChange)="captchaCodeChanged()" class="form-control" label="" placeholder="{{'views.home.insuranceForm.confirmCode' | translate}}"/>
 </div>
