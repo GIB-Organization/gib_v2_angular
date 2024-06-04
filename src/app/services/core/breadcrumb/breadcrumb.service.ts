@@ -1,6 +1,6 @@
 import { DestroyRef, Injectable, WritableSignal, signal } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, distinctUntilChanged, filter } from 'rxjs';
+import { distinctUntilChanged, filter } from 'rxjs';
 import { BreadcrumbItem } from '../../../models/layout-models/breadcrumb.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -57,7 +57,6 @@ export class BreadcrumbService {
       )
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadcrumbs(this.activatedRoute);
-        console.log(this.breadcrumbs)
       });
   }
 }

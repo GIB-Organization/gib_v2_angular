@@ -12,7 +12,7 @@
         "password":"Password",
         "confirmPassword":"Confirm Password",
         "send": "Send",
-        "id":"identification Number",
+        "id":"Identification Number",
         "verify":"Verify",
         "cancel":"Cancel",
         "buy":"Buy"
@@ -270,7 +270,7 @@
             "licenseHoldYears":"Number of years holding the license",
             "docOwner":"Additional information for the document owner",
             "trafficViolations":"Does the owner of the document have traffic violations?",
-            "nationalAddressSameCity":"Is the city of work the same as the city of the national address?",
+            "nationalAddressSameCity":"Is the city of work not the same as the city of the national address?",
             "licenseInAnotherCountry":"Do you have a valid license in another country?",
             "vehicleModify":"Do you have modifications to the vehicle?",
             "nightParking":"Parking place at night",
@@ -284,6 +284,7 @@
             "promoCode":"Promo Code",
             "enterEmail":"Enter Your Email",
             "workCity":"Work City",
+            "residenceCity":"Residence City",
             "whatAreModifications":"What are the modifications?",
             "orderSummary":"Order Summary",
             "offersValid":"These offers are valid for {{h}} hours {{m}} minutes {{s}} seconds",
@@ -355,5 +356,9 @@
             "11":"Dhū al-Qaʿdah",
             "12":"Dhū al-Ḥijjah"
         }
+    },
+    "partyTypeEnum":{
+        "1":"{{companyName}}",
+        "2":"Email"
     }
 }

@@ -5,7 +5,7 @@ export enum ELookupCategory{
     relationships = 4,
     drivingPercentages = 5,
     transmissionTypes = 6,
-    parkingLocations = 6,
+    parkingLocations = 7,
     mileages = 8,
     violations = 9,
 }

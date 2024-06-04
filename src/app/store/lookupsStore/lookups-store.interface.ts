@@ -1,6 +1,6 @@
-import { ELookupCategory } from "../../core/enums/lookups.enum";
-import { ILookup } from "../../models/lookup";
+import { IDefaultLookupsCategories, ILookupCategories } from "../../models/lookup.interface";
 
-export type ILookupStore = {
-  [key in ELookupCategory]: ILookup[];
+export interface ILookupStore{
+  lookups: ILookupCategories,
+  defaultLookups: IDefaultLookupsCategories
 };

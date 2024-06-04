@@ -1,40 +1,53 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AddressStoreService } from './../../../store/addressStore/address-store.service';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseAlertComponentComponent } from '../../../components/base-components/base-alert-component/base-alert-component.component';
-import { BaseLabelComponentComponent } from '../../../components/base-components/base-label-component/base-label-component.component';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { DropdownModule } from 'primeng/dropdown';
-import { IRadioInput } from '../../../models/layout-models/radio.interface';
-import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { BaseButtonComponentComponent } from '../../../components/base-components/base-button-component/base-button-component.component';
 import { DividerModule } from 'primeng/divider';
-import { InputSwitchModule } from 'primeng/inputswitch';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { LookupsStoreService } from '../../../store/lookupsStore/lookups-store.service';
+import { ELookupCategory } from '../../../core/enums/lookups.enum';
+import { DiscountFormComponentComponent } from '../../../components/views-components/additionalData/discount-form-component/discount-form-component.component';
+import { DriverFormComponentComponent } from '../../../components/views-components/additionalData/driver-form-component/driver-form-component.component';
+import { OwnerFormComponentComponent } from '../../../components/views-components/additionalData/owner-form-component/owner-form-component.component';
+import { UpperCasePipe } from '@angular/common';
+import { InsuranceInquireStoreService } from '../../../store/insuranceInquireStore/insurance-inquire-store.service';
+import { AdditionalDataFormService } from '../../../services/additionalDataForm/additional-data-form.service';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { InsuranceInquireStoreQueryService } from '../../../store/insuranceInquireStore/insurance-inquire-store.query';
 
 @Component({
   selector: 'app-additional-data-view',
   standalone: true,
-  imports: [TranslateModule, BaseAlertComponentComponent, BaseLabelComponentComponent, InputNumberModule, DropdownModule, TitleCasePipe, UpperCasePipe, BaseButtonComponentComponent, DividerModule, InputSwitchModule, InputTextareaModule ],
+  imports: [TranslateModule, BaseAlertComponentComponent, BaseButtonComponentComponent, DividerModule, DiscountFormComponentComponent, DriverFormComponentComponent, OwnerFormComponentComponent, UpperCasePipe ],
   templateUrl: './additional-data-view.component.html',
   styleUrl: './additional-data-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdditionalDataViewComponent {
-  affiliationRadios:IRadioInput[]=[
-    {
-      id: '0',
-      label:'views.insuranceShow.workMail',
-      value:'workMail',
-    },
-    {
-      id:' 1',
-      label:'public.id',
-      value:'id',
-    },
-    {
-      id: '2',
-      label:'views.insuranceShow.promoCode',
-      value:'promoCode',
-    },
+export class AdditionalDataViewComponent implements OnInit {
+  private destroyRef = inject(DestroyRef);
+  private lookupsStoreService = inject(LookupsStoreService);
+  private addressStoreService = inject(AddressStoreService);
+  public insuranceInquireStoreService = inject(InsuranceInquireStoreService)
+  public insuranceInquireStoreQueryService = inject(InsuranceInquireStoreQueryService)
+  public additionalDataFormService = inject(AdditionalDataFormService)
+  public isLoading = toSignal(this.insuranceInquireStoreQueryService.selectLoading());
+  requiredLookups:ELookupCategory[] = [
+    ELookupCategory.drivingPercentages,
+    ELookupCategory.educations,
+    ELookupCategory.medicalConditions,
+    ELookupCategory.mileages,
+    ELookupCategory.parkingLocations,
+    ELookupCategory.relationships,
+    ELookupCategory.transmissionTypes,
+    ELookupCategory.vehicleUses,
+    ELookupCategory.violations,
   ]
+ 
+
+  ngOnInit(): void {
+    this.lookupsStoreService.getLookupsByCategoriesIds(this.requiredLookups);
+    this.addressStoreService.getCountries();
+    this.addressStoreService.getCities();
+    this.additionalDataFormService.watchForm(this.destroyRef);
+  }
 }

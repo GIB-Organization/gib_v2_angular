@@ -2,8 +2,9 @@ import { Injectable, inject } from '@angular/core';
 import { BASE_URL_TOKEN } from '../../../core/injection-tokens/base-url.token';
 import { HttpClient } from '@angular/common/http';
 import { ELookupCategory } from '../../../core/enums/lookups.enum';
-import { ILookup } from '../../../models/lookup';
+import { ILookup, ILookupCategories } from '../../../models/lookup.interface';
 import { Observable } from 'rxjs';
+import { ICity, ICountry, IRegion } from '../../../models/address.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class LookupsApiService {
   /**
    * @param  {ELookupCategory[]} ids
    */
-  getLookupsByCategoriesIds(ids:ELookupCategory[]): Observable<{[key in ELookupCategory] : ILookup}> {
-    return this.http.post<{[key in ELookupCategory] : ILookup}>(`${this.baseUrl}/${this.path}/getLoockupsByCategoriesIds`, ids);
+  getLookupsByCategoriesIds(ids:ELookupCategory[]): Observable<ILookupCategories> {
+    return this.http.post<ILookupCategories>(`${this.baseUrl}/${this.path}/getLoockupsByCategoriesIds`, ids);
   }
   /**
    * @param  {ELookupCategory} id
@@ -24,4 +25,5 @@ export class LookupsApiService {
   getLookupById(id:ELookupCategory):Observable<ILookup>{
     return this.http.get<ILookup>(`${this.baseUrl}/${this.path}?id=${id}`);
   }
+  
 }

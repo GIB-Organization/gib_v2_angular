@@ -158,6 +158,11 @@ body{
         --scrollbar-width: 0 !important;
     }
 }
+.p-component,
+.p-inputtext{
+    font-family: var(--fontRegular);
+    @extend .font_size__13;
+}
 .p-inputwrapper, .p-inputnumber{
     width: 100%;
 }

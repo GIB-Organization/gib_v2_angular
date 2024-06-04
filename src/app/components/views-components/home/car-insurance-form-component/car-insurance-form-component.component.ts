@@ -81,7 +81,7 @@ export class CarInsuranceFormComponentComponent implements OnInit {
     idNumber: this.fb.nonNullable.control(null, INSURNACE_INQUIRE_VALIDATORS['idNumber']),
     purpose: this.fb.nonNullable.control(EInsurancePurpose.newInsurance),
     serialNumber: this.fb.nonNullable.control(0, INSURNACE_INQUIRE_VALIDATORS['serialNumber']),
-    startDate: this.fb.nonNullable.control(this.dateAdapter.toModel(this.minDate), INSURNACE_INQUIRE_VALIDATORS['startDate']),
+    startDate: this.fb.nonNullable.control(this.dateAdapter.toModel(this.minDate), INSURNACE_INQUIRE_VALIDATORS['required']),
     vehicleRegisterType: this.fb.nonNullable.control(EVehicleRegisterType.form),
     vehicleYear: this.fb.control(null),
     customsNumber: this.fb.control(null),
@@ -107,7 +107,7 @@ export class CarInsuranceFormComponentComponent implements OnInit {
   vehicleYearValidator() {
     const VEHICLE_TYPE = this.getControl('vehicleRegisterType');
     const vehicleYear = this.getControl('vehicleYear');
-    const VALIDATIONS = (VEHICLE_TYPE?.value === EVehicleRegisterType.customcards) ? INSURNACE_INQUIRE_VALIDATORS['vehicleYear'] : null;
+    const VALIDATIONS = (VEHICLE_TYPE?.value === EVehicleRegisterType.customcards) ? INSURNACE_INQUIRE_VALIDATORS['required'] : null;
     vehicleYear?.setValidators(VALIDATIONS);
     vehicleYear?.updateValueAndValidity()
   }
@@ -129,7 +129,7 @@ export class CarInsuranceFormComponentComponent implements OnInit {
     const BIRTH_YEAR = this.getControl('birthYear');
     const BIRTH_MONTH = this.getControl('birthMonth');
     const PURPOSE = this.getControl('purpose');
-    const VALIDATIONS = (PURPOSE?.value === EInsurancePurpose.ownershipTransfer ? INSURNACE_INQUIRE_VALIDATORS['birthDate'] : null)
+    const VALIDATIONS = (PURPOSE?.value === EInsurancePurpose.ownershipTransfer ? INSURNACE_INQUIRE_VALIDATORS['required'] : null)
     BIRTH_YEAR?.setValidators(VALIDATIONS);
     BIRTH_MONTH?.setValidators(VALIDATIONS);
     BIRTH_YEAR?.updateValueAndValidity()
@@ -173,8 +173,7 @@ export class CarInsuranceFormComponentComponent implements OnInit {
   getControl(controlName: string) {
     return this.insuranceForm?.get(controlName);
   }
-
   submit() {
-    this.insuranceInquireStoreService.inquireInsurance(this.insuranceForm.value, this.#destroyRef);
+    this.insuranceInquireStoreService.inquireInsurance(this.insuranceForm.value);
   }
 }
