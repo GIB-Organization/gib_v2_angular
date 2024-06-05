@@ -15,7 +15,9 @@
         "id":"Identification Number",
         "verify":"Verify",
         "cancel":"Cancel",
-        "buy":"Buy"
+        "buy":"Buy",
+        "yes":"Yes",
+        "no": "No"
     },
     "layout": {
         "navbar": {
