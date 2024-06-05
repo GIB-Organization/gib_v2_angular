@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BaseImageComponentComponent } from '../../base-components/base-image-component/base-image-component.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ERoutes } from '../../../core/enums/routes.enum';
@@ -15,7 +15,8 @@ import { AuthDialogComponentComponent } from '../../views-components/auth/auth-d
 })
 export class NavbarComponentComponent {
   isMenuCollapsed:boolean = true;
-  loginDialog: boolean = false
+  loginDialog: boolean = false;
+  translate = inject(TranslateService)
   navLinks:{lang:string, link:string}[]=[
     {
       lang: 'whoWeAre',
@@ -31,4 +32,8 @@ export class NavbarComponentComponent {
     },
   ]
 
+
+  setLanguage(){
+     this.translate.setDefaultLang(this.translate.defaultLang === 'en' ? 'ar':'en')
+  }
 }

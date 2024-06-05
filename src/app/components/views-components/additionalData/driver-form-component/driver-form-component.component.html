@@ -1,0 +1,232 @@
+<div class="drivers_section">
+    <div class="d-flex">
+        <app-base-button-component (clicked)="isDriverSection.setValue(true)" icon="car"
+            classes="btn-outline-secondary p-3 font_size__13 mb-4 me-2"> {{'views.insuranceShow.addDriver' | translate |
+            uppercase}} </app-base-button-component>
+        @if(isDriverSection.value){
+        <app-base-button-component (clicked)="cancelDriver()" icon="car"
+            classes="btn-outline-secondary p-3 font_size__13 mb-4">
+            {{'views.insuranceShow.cancelAddDriver' | translate | uppercase}} </app-base-button-component>
+        }
+    </div>
+    <app-base-alert-component class="font_size__10" type="secondary"> {{'views.insuranceShow.noAdditionalDrivers' |
+        translate}} </app-base-alert-component>
+    @if(isDriverSection.value){
+    <ng-container>
+        <div class="row mt-5">
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component [required]="true" classes="form-label d-block"
+                        for="driverId">{{'views.insuranceShow.driverId' | translate}}</app-base-label-component>
+                    <p-inputNumber [maxlength]="10" [minlength]="10" [formControl]="idNumber" inputStyleClass="form-control" [useGrouping]="false"
+                        inputId="driverId">
+                    </p-inputNumber>
+                    @if(idNumber.touched && idNumber.invalid){
+                    <app-input-validation-alert-component> {{'errors.idNumber' | translate}}
+                    </app-input-validation-alert-component>
+                    }
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component [required]="true" classes="form-label d-block"
+                        for="birthYear">{{'views.insuranceShow.birthYear' | translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="birthYear" inputId="birthYear"
+                        [options]="dateFactoryService.createDateLists(idNumber.value??1).years"></p-dropdown>
+                    @if(birthYear.touched && birthYear.invalid){
+                    <app-input-validation-alert-component> {{'errors.required' | translate}}
+                    </app-input-validation-alert-component>
+                    }
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component [required]="true" classes="form-label d-block"
+                        for="birthMonth">{{'views.insuranceShow.birthMonth' | translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="birthMonth" inputId="birthMonth"
+                        [options]="dateFactoryService.createDateLists(idNumber.value??1).months"
+                        optionLabel="name" optionValue="id"></p-dropdown>
+                    @if(birthMonth.touched && birthMonth.invalid){
+                    <app-input-validation-alert-component> {{'errors.required' | translate}}
+                    </app-input-validation-alert-component>
+                    }
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="eduLevel">{{'views.insuranceShow.eduLevel' | translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="educationLevel" inputId="eduLevel"
+                        [options]="lookupsStoreQuery.lookups[ELookupCategory.educations]"
+                        [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="childsUnder16">{{'views.insuranceShow.childsUnder16' |
+                        translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="childrenUnder16" inputId="childsUnder16"
+                        [options]="CHILDREN_UNDER_16"></p-dropdown>
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="drivePercent">{{'views.insuranceShow.drivePercent' | translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="drivingPercent" inputId="drivePercent"
+                        [options]="lookupsStoreQuery.lookups[ELookupCategory.drivingPercentages]"
+                        [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="driveRestrictions">{{'views.insuranceShow.driveRestrictions' |
+                        translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="driverLicenseRestrict" inputId="driveRestrictions"
+                        [options]="lookupsStoreQuery.lookups[ELookupCategory.medicalConditions]"
+                        [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="5yearsAccidents">{{'views.insuranceShow.5yearsAccidents' |
+                        translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="accidents5Years" inputId="5yearsAccidents"
+                        [options]="FIVE_YEARS_ACCIDENTS"></p-dropdown>
+                </div>
+            </aside>
+            <aside class="col-md-4"></aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="relation">{{'views.insuranceShow.relation' | translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="relativeRelation" inputId="relation"
+                        [options]="lookupsStoreQuery.lookups[ELookupCategory.relationships]"
+                        [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="anyViolations">{{'views.insuranceShow.anyViolations' |
+                        translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="otherViolations" inputId="anyViolations" [options]="YES_NO"
+                        optionLabel="name" optionValue="id"></p-dropdown>
+                </div>
+            </aside>
+            <!-- hidden -->
+            <ng-container>
+                <aside class="col-md-4">
+                    @if(otherViolations.value){
+                    <div class="mb-4">
+                        <app-base-label-component [required]="true" classes="form-label d-block"
+                            for="violationType">{{'views.insuranceShow.violationType' |
+                            translate}}</app-base-label-component>
+                        <p-multiSelect [formControl]="violationsTypes" inputId="violationType"
+                            [options]="lookupsStoreQuery.lookups[ELookupCategory.violations]"
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId" />
+                        @if(violationsTypes.touched && violationsTypes.invalid){
+                        <app-input-validation-alert-component> {{'errors.required' | translate}}
+                        </app-input-validation-alert-component>
+                        }
+                    </div>
+                    }
+                </aside>
+            </ng-container>
+            <!-- hidden -->
+
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="isOwnerAddress">{{'views.insuranceShow.isOwnerAddress' |
+                        translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="sameAddress" inputId="isOwnerAddress" [options]="YES_NO"
+                        optionLabel="name" optionValue="id"></p-dropdown>
+                </div>
+            </aside>
+            <!-- hidden -->
+            <ng-container>
+                <aside class="col-md-4">
+                    @if(!sameAddress.value){
+                    <div class="mb-4">
+                        <app-base-label-component [required]="true" classes="form-label d-block"
+                            for="residenceCity">{{'views.insuranceShow.residenceCity' |
+                            translate}}</app-base-label-component>
+                        <p-dropdown [virtualScroll]="true" [virtualScrollItemSize]="40" [formControl]="residenceCityId"
+                            inputId="residenceCity" [options]="addressStoreQuery.cities"
+                            [optionLabel]="addressStoreQuery.keyName"></p-dropdown>
+                        @if(residenceCityId.touched && residenceCityId.invalid){
+                        <app-input-validation-alert-component> {{'errors.required' | translate}}
+                        </app-input-validation-alert-component>
+                        }
+                    </div>
+                    }
+                </aside>
+                <aside class="col-md-4">
+                    @if(!sameAddress.value){
+                    <div class="mb-4">
+                        <app-base-label-component [required]="true" classes="form-label d-block"
+                            for="workCity">{{'views.insuranceShow.workCity' | translate}}</app-base-label-component>
+                        <p-dropdown [virtualScroll]="true" [virtualScrollItemSize]="40" [formControl]="workCityId"
+                            inputId="workCity" [options]="addressStoreQuery.cities"
+                            [optionLabel]="addressStoreQuery.keyName"></p-dropdown>
+                        @if(workCityId.touched && workCityId.invalid){
+                        <app-input-validation-alert-component> {{'errors.required' | translate}}
+                        </app-input-validation-alert-component>
+                        }
+                    </div>
+                    }
+                </aside>
+            </ng-container>
+            <!-- hidden -->
+
+            <aside class="col-md-4">
+                <div class="mb-4">
+                    <app-base-label-component classes="form-label d-block"
+                        for="anotherCountryLicense">{{'views.insuranceShow.anotherCountryLicense' |
+                        translate}}</app-base-label-component>
+                    <p-dropdown [formControl]="anotherCountryLicense" inputId="anotherCountryLicense" [options]="YES_NO"
+                        optionLabel="name" optionValue="id"></p-dropdown>
+                </div>
+            </aside>
+            <!-- hidden -->
+            <ng-container>
+                <aside class="col-md-4">
+                    @if(anotherCountryLicense.value){
+                    <div class="mb-4">
+                        <app-base-label-component [required]="true" classes="form-label d-block"
+                            for="country">{{'views.insuranceShow.country' | translate}}</app-base-label-component>
+                        <p-dropdown [virtualScroll]="true" [virtualScrollItemSize]="40" [formControl]="licenseCountryId"
+                            inputId="country" [options]="addressStoreQuery.countries"
+                            [optionLabel]="addressStoreQuery.keyName"></p-dropdown>
+                        @if(licenseCountryId.touched && licenseCountryId.invalid){
+                        <app-input-validation-alert-component> {{'errors.required' | translate}}
+                        </app-input-validation-alert-component>
+                        }
+                    </div>
+                    }
+                </aside>
+                <aside class="col-md-4">
+                    @if(anotherCountryLicense.value){
+                    <div class="mb-4">
+                        <app-base-label-component [required]="true" classes="form-label d-block"
+                            for="licenseHoldYears">{{'views.insuranceShow.licenseHoldYears' |
+                            translate}}</app-base-label-component>
+                        <p-dropdown [formControl]="yearsHoldingLicense" inputId="licenseHoldYears"
+                            [options]="YEARS_HOLDING_LICENSE"></p-dropdown>
+                        @if(yearsHoldingLicense.touched && yearsHoldingLicense.invalid){
+                        <app-input-validation-alert-component> {{'errors.required' | translate}}
+                        </app-input-validation-alert-component>
+                        }
+                    </div>
+                    }
+                </aside>
+            </ng-container>
+            <!-- hidden -->
+        </div>
+    </ng-container>
+    }
+</div>

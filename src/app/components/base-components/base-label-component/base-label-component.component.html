@@ -1,7 +1,7 @@
-<label [class]="classes">
+<label class="base_label" [class]="classes">
     <ng-content></ng-content>
     @if(required){
-    <span class="text-danger font_size__16"> * </span>
+    <span class="required_input text-danger font_size__16"> * </span>
     }
     @if(isPopover){
         <app-base-tooltip-component [popoverContent]="popoverContent" [popoverType]="popoverType"></app-base-tooltip-component>

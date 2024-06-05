@@ -4,6 +4,7 @@ import { EQuotationsTabs } from './quotations.enum';
 import { EPopover } from './popover.enum';
 import { EInsurancePurpose, EVehicleRegisterType } from './insurance-inquire';
 import { EFormType } from './auth.enum';
+import { EEstimatedDistanceEnum, EMotionVectorEnum, EPartyTypeEnum, EPromoTypeEnum } from './additionalData.enum';
 export {
     EFormType,
     EInsurancePurpose,
@@ -12,5 +13,9 @@ export {
     EQuotationsTabs,
     ERouteData,
     ERoutes,
-    EStorageEnum
+    EStorageEnum,
+    EPromoTypeEnum,
+    EPartyTypeEnum,
+    EEstimatedDistanceEnum,
+    EMotionVectorEnum,
 }

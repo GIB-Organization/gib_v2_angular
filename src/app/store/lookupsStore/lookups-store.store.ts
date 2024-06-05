@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 import { ILookupStore } from './lookups-store.interface';
 
-const initValue = ()=>{
-  return {}
+const initValue = ():ILookupStore =>{
+  return {
+    lookups:{},
+    defaultLookups:{}
+  }
 }
 
 @Injectable({

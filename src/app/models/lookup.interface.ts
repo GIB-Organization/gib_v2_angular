@@ -9,4 +9,11 @@ export interface ILookup {
   mappingCode: string;
   categoryId: number;
   lookupCategory: ELookupCategory;
+  isDefult?: boolean;
+}
+export type ILookupCategories = {
+  [key in ELookupCategory | number] : ILookup[]
+}
+export type IDefaultLookupsCategories = {
+  [key in ELookupCategory | number] : ILookup
 }
