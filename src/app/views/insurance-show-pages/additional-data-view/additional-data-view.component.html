@@ -17,8 +17,8 @@
     <div class="d-flex flex-row-reverse mt-5">
         <app-base-button-component [disabled]="additionalDataFormService.form.invalid" [loading]="isLoading()" (clicked)="insuranceInquireStoreService.additionalDataPost(additionalDataFormService.form.value)" class="mx-1" classes="btn-primary rounded-pill font_size__13 py-3 px-4">
             {{'views.insuranceShow.showOffers' | translate | uppercase}} </app-base-button-component>
-        <app-base-button-component class="mx-1" icon="arrow-left"
+        <app-base-link-component path="/" class="mx-1" icon="arrow-left"
             classes="btn-outline-primary rounded-pill font_size__13 py-3 px-4"> {{'views.insuranceShow.previousStep' |
-            translate | uppercase}} </app-base-button-component>
+            translate | uppercase}} </app-base-link-component>
     </div>
 </div>

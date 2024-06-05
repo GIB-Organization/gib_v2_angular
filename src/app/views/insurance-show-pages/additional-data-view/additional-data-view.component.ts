@@ -14,11 +14,12 @@ import { InsuranceInquireStoreService } from '../../../store/insuranceInquireSto
 import { AdditionalDataFormService } from '../../../services/additionalDataForm/additional-data-form.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { InsuranceInquireStoreQueryService } from '../../../store/insuranceInquireStore/insurance-inquire-store.query';
+import { BaseLinkComponentComponent } from '../../../components/base-components/base-link-component/base-link-component.component';
 
 @Component({
   selector: 'app-additional-data-view',
   standalone: true,
-  imports: [TranslateModule, BaseAlertComponentComponent, BaseButtonComponentComponent, DividerModule, DiscountFormComponentComponent, DriverFormComponentComponent, OwnerFormComponentComponent, UpperCasePipe ],
+  imports: [TranslateModule, BaseAlertComponentComponent, BaseButtonComponentComponent, BaseLinkComponentComponent, DividerModule, DiscountFormComponentComponent, DriverFormComponentComponent, OwnerFormComponentComponent, UpperCasePipe ],
   templateUrl: './additional-data-view.component.html',
   styleUrl: './additional-data-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
