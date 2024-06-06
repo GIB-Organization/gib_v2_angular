@@ -9,11 +9,11 @@ import { UpperCasePipe } from '@angular/common';
 import { LookupsStoreQuery } from '../../../../store/lookupsStore/lookups-store.query';
 import { ELookupCategory } from '../../../../core/enums/lookups.enum';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { CHILDREN_UNDER_16, FIVE_YEARS_ACCIDENTS, YEARS_HOLDING_LICENSE } from '../../../../core/constants';
 import { AddressStoreQuery } from '../../../../store/addressStore/address-store.query';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { InputValidationAlertComponentComponent } from '../../../shared-components/input-validation-alert-component/input-validation-alert-component.component';
+import { ConstantsService } from '../../../../services/core/constants/constants.service';
 
 @Component({
   selector: 'app-owner-form-component',
@@ -24,6 +24,7 @@ import { InputValidationAlertComponentComponent } from '../../../shared-componen
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OwnerFormComponentComponent {
+  constants = inject(ConstantsService);
   lookupsStoreQuery = inject(LookupsStoreQuery);
   addressStoreQuery = inject(AddressStoreQuery);
   additionalDataFormService = inject(AdditionalDataFormService);
@@ -34,13 +35,13 @@ export class OwnerFormComponentComponent {
     return ELookupCategory
   }
   get FIVE_YEARS_ACCIDENTS(){
-    return FIVE_YEARS_ACCIDENTS
+    return this.constants.fiveYearsAccidentsList
   }
   get CHILDREN_UNDER_16(){
-    return CHILDREN_UNDER_16
+    return this.constants.chidrenUnder16List
   }
   get YEARS_HOLDING_LICENSE(){
-    return YEARS_HOLDING_LICENSE
+    return this.constants.yearsHoldingLicenseList
   }
   get additionalDetails() {
     return this.form.controls.additionalDetails

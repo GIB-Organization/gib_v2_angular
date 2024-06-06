@@ -1,4 +1,3 @@
-import { CHILDREN_UNDER_16, YEARS_HOLDING_LICENSE, YES_NO } from './../../../../core/constants';
 import { ChangeDetectionStrategy, Component, OnInit, inject, DestroyRef } from '@angular/core';
 import { BaseLabelComponentComponent } from '../../../base-components/base-label-component/base-label-component.component';
 import { BaseAlertComponentComponent } from '../../../base-components/base-alert-component/base-alert-component.component';
@@ -10,7 +9,6 @@ import { UpperCasePipe } from '@angular/common';
 import { ELookupCategory } from '../../../../core/enums/lookups.enum';
 import { LookupsStoreQuery } from '../../../../store/lookupsStore/lookups-store.query';
 import { DateFactoryService } from '../../../../services/dateFactory/date-factory.service';
-import { FIVE_YEARS_ACCIDENTS } from '../../../../core/constants';
 import { AddressStoreQuery } from '../../../../store/addressStore/address-store.query';
 import { AdditionalDataFormService } from '../../../../services/additionalDataForm/additional-data-form.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { IDriverDetails } from '../../../../models/additionalData.interface';
 import { InputValidationAlertComponentComponent } from '../../../shared-components/input-validation-alert-component/input-validation-alert-component.component';
+import { ConstantsService } from '../../../../services/core/constants/constants.service';
 
 @Component({
   selector: 'app-driver-form-component',
@@ -28,6 +27,7 @@ import { InputValidationAlertComponentComponent } from '../../../shared-componen
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverFormComponentComponent implements OnInit {
+  constants = inject(ConstantsService)
   destroyRef = inject(DestroyRef)
   lookupsStoreQuery = inject(LookupsStoreQuery)
   dateFactoryService = inject(DateFactoryService)
@@ -39,16 +39,16 @@ export class DriverFormComponentComponent implements OnInit {
     return ELookupCategory
   }
   get FIVE_YEARS_ACCIDENTS() {
-    return FIVE_YEARS_ACCIDENTS
+    return this.constants.fiveYearsAccidentsList
   }
   get CHILDREN_UNDER_16() {
-    return CHILDREN_UNDER_16
+    return this.constants.chidrenUnder16List
   }
   get YEARS_HOLDING_LICENSE() {
-    return YEARS_HOLDING_LICENSE
+    return this.constants.yearsHoldingLicenseList
   }
   get YES_NO() {
-    return YES_NO
+    return this.constants.yesNoList
   }
   get driverDetails() {
     return this.form.controls.driverDetails
