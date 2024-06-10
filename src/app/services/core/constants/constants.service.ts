@@ -8,7 +8,6 @@ function createArray(n: number) {
 })
 export class ConstantsService {
   translate = inject(TranslateService);
-
   chidrenUnder16List: number[] = createArray(16)
   fiveYearsAccidentsList: number[] = createArray(20)
   yearsHoldingLicenseList: number[] = createArray(50)

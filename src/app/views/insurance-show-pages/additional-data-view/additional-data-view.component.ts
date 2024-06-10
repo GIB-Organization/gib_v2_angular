@@ -49,6 +49,6 @@ export class AdditionalDataViewComponent implements OnInit {
     this.lookupsStoreService.getLookupsByCategoriesIds(this.requiredLookups);
     this.addressStoreService.getCountries();
     this.addressStoreService.getCities();
-    this.additionalDataFormService.watchForm(this.destroyRef);
+    // this.additionalDataFormService.watchForm(this.destroyRef);
   }
 }

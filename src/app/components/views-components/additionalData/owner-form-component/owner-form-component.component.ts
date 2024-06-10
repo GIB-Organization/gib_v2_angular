@@ -43,63 +43,6 @@ export class OwnerFormComponentComponent {
   get YEARS_HOLDING_LICENSE(){
     return this.constants.yearsHoldingLicenseList
   }
-  get additionalDetails() {
-    return this.form.controls.additionalDetails
-  }
-  get educationLevel() {
-    return this.additionalDetails.controls.educationLevel
-  }
-  get childrenUnder16() {
-    return this.additionalDetails.controls.childrenUnder16
-  }
-  get ownerBirthDate() {
-    return this.additionalDetails.controls.ownerBirthDate
-  }
-  get drivingRestriction() {
-    return this.additionalDetails.controls.drivingRestriction
-  }
-  get parkingPlace() {
-    return this.additionalDetails.controls.parkingPlace
-  }
-  get accidents5Years() {
-    return this.additionalDetails.controls.accidents5Years
-  }
-  get annualDistance() {
-    return this.additionalDetails.controls.annualDistance
-  }
-  get motionVector() {
-    return this.additionalDetails.controls.motionVector
-  }
-  get otherViolations() {
-    return this.additionalDetails.controls.otherViolations
-  }
-  get violationTypes() {
-    return this.additionalDetails.controls.violationTypes
-  }
-  get sameWorkCity() {
-    return this.additionalDetails.controls.sameWorkCity
-  }
-  get workCityId() {
-    return this.additionalDetails.controls.workCityId
-  }
-  get anotherCountryLicense() {
-    return this.additionalDetails.controls.anotherCountryLicense
-  }
-  get licenseCountryId() {
-    return this.additionalDetails.controls.licenseCountryId
-  }
-  get yearsHoldingLicense() {
-    return this.additionalDetails.controls.yearsHoldingLicense
-  }
-  get carModified() {
-    return this.additionalDetails.controls.carModified
-  }
-  get modifications() {
-    return this.additionalDetails.controls.modifications
-  }
-  get isAdditionalData() {
-    return this.form.controls.isAdditionalData
-  }
 
   ngOnInit(): void {
     this.lookupsStoreQuery.defaultLookups$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
@@ -112,13 +55,13 @@ export class OwnerFormComponentComponent {
           annualDistance: res[ELookupCategory.mileages]?.lookupId,
           motionVector: res[ELookupCategory.transmissionTypes]?.lookupId,
         }
-        this.additionalDetails.patchValue(this.additionalDataFormService.defaultFormValue.additionalDetails)
+        this.additionalDataFormService.additionalDetails.patchValue(this.additionalDataFormService.defaultFormValue.additionalDetails)
       }
     })
   }
 
   openCloseSection(){
-    this.isAdditionalData.setValue(!this.isAdditionalData.value);
-    this.additionalDetails.reset(this.additionalDataFormService.defaultFormValue.additionalDetails)
+    this.additionalDataFormService.isAdditionalData.setValue(!this.additionalDataFormService.isAdditionalData.value);
+    this.additionalDataFormService.additionalDetails.reset(this.additionalDataFormService.defaultFormValue.additionalDetails)
   }
 }

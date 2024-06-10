@@ -27,7 +27,6 @@ export class DiscountFormComponentComponent implements OnInit {
   lookupsStoreQuery = inject(LookupsStoreQuery);
   additionalDataFormService = inject(AdditionalDataFormService);
   destroyRef = inject(DestroyRef)
-  form = this.additionalDataFormService.form;
   affiliationRadios: IRadioInput[] = [
     {
       id: '0',
@@ -61,35 +60,11 @@ export class DiscountFormComponentComponent implements OnInit {
   get ELookupCategory() {
     return ELookupCategory
   }
-  get estimatedValue() {
-    return this.form.controls.estimatedValue
-  }
-  get usePurpose() {
-    return this.form.controls.usePurpose
-  }
-  get getDiscount() {
-    return this.form.controls.getDiscount
-  }
-  get promoType() {
-    return this.form.controls.promoType
-  }
-  get workMail() {
-    return this.form.controls.workMail
-  }
-  get partyType() {
-    return this.form.controls.partyType
-  }
-  get promoCode() {
-    return this.form.controls.promoCode
-  }
-  get partyId() {
-    return this.form.controls.partyId
-  }
 
   ngOnInit(): void {
     this.lookupsStoreQuery.defaultLookups$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        this.usePurpose.setValue(res[ELookupCategory.vehicleUses]?.lookupId)
+        this.additionalDataFormService.usePurpose.setValue(res[ELookupCategory.vehicleUses]?.lookupId)
       }
     })
   }

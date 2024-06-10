@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from "@angular/forms"
+import { FormArray, FormControl, FormGroup } from "@angular/forms"
 import { EEstimatedDistanceEnum, EMotionVectorEnum, EPartyTypeEnum, EPromoTypeEnum } from "../core/enums"
 
 //request body IAdditionalData
@@ -11,9 +11,8 @@ export interface IAdditionalData{
     partyType?: EPartyTypeEnum | null,
     partyId?: number | null,
     promoCode?: string | null,
-    driverDetails?: IDriverDetails,
+    drivers?: IDriverDetails[] | null,
     additionalDetails?: IAdditionalDetails,
-    isDriverSection?: boolean | null,
     isAdditionalData?: boolean | null,
 }
 
@@ -33,8 +32,7 @@ export interface IDriverDetails{
     residenceCityId?: number | null,
     workCityId?: number | null,
     anotherCountryLicense?: boolean | null,
-    licenseCountryId?: number | null,
-    yearsHoldingLicense?: number | null,
+    licenses?: ICountryLicencse[]
 }
 
 export interface IAdditionalDetails{
@@ -51,11 +49,16 @@ export interface IAdditionalDetails{
     sameWorkCity?: boolean | null,
     workCityId?: number | null,
     anotherCountryLicense?: boolean | null,
-    licenseCountryId?: number | null,
-    yearsHoldingLicense?: number | null,
+    licenses?: ICountryLicencse[],
     carModified?: boolean | null,
     modifications?: string | null,
 }
+
+export interface ICountryLicencse{
+    licenseCountryId?: number | null// CountriesLookup
+    yearsHoldingLicense?: number | null
+}
+
 
 export interface IAdditionalDataFormGroup{
     estimatedValue: FormControl<number | null>,
@@ -66,9 +69,8 @@ export interface IAdditionalDataFormGroup{
     partyType:  FormControl<EPartyTypeEnum | null>,
     partyId:  FormControl<number | null>,
     promoCode:  FormControl<string | null>,
-    driverDetails: FormGroup<IDriverDetailsFormGroup>,
+    drivers: FormArray<FormGroup<IDriverDetailsFormGroup>>,
     additionalDetails: FormGroup<IAdditionalDetailsFormGroup>,
-    isDriverSection:FormControl<boolean | null>,
     isAdditionalData:FormControl<boolean | null>,
 }
 
@@ -88,8 +90,7 @@ export interface IDriverDetailsFormGroup{
     residenceCityId:  FormControl<number | null>, //CitiesLookup
     workCityId:  FormControl<number | null>,
     anotherCountryLicense:  FormControl<boolean | null>,
-    licenseCountryId: FormControl<number | null>,// CountriesLookup
-    yearsHoldingLicense:  FormControl<number | null>,
+    licenses: FormArray<FormGroup<ICountryLicenseFormGroup>>
 }
 
 export interface IAdditionalDetailsFormGroup{
@@ -106,8 +107,12 @@ export interface IAdditionalDetailsFormGroup{
     sameWorkCity: FormControl<boolean | null>, 
     workCityId: FormControl<number | null>, //CitiesLookup
     anotherCountryLicense: FormControl<boolean | null>,
-    licenseCountryId: FormControl<number | null>,// CountriesLookup
-    yearsHoldingLicense: FormControl<number | null>,
+    licenses: FormArray<FormGroup<ICountryLicenseFormGroup>>
     carModified: FormControl<boolean | null>,
     modifications: FormControl<string | null>,
+}
+
+export interface ICountryLicenseFormGroup{
+    licenseCountryId:FormControl<number | null>
+    yearsHoldingLicense: FormControl<number | null>
 }

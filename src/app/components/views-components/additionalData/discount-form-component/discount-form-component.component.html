@@ -1,13 +1,13 @@
-<div class="discount_form" [formGroup]="form">
+<div class="discount_form" [formGroup]="additionalDataFormService.form">
     <div class="row">
         <aside class="col-md-6">
             <div class="mb-4">
                 <app-base-label-component [required]="true" classes="form-label d-block"
                     for="currency-us">{{'views.insuranceShow.estimatedVehicleValue' |
                     translate}}</app-base-label-component>
-                <p-inputNumber [formControl]="estimatedValue" inputStyleClass="form-control" inputId="currency-us"
+                <p-inputNumber [formControl]="additionalDataFormService.estimatedValue" inputStyleClass="form-control" inputId="currency-us"
                     mode="currency" currency="SAR"> </p-inputNumber>
-                    @if(estimatedValue.touched && estimatedValue.invalid){
+                    @if(additionalDataFormService.estimatedValue.touched && additionalDataFormService.estimatedValue.invalid){
                         <app-input-validation-alert-component> {{'errors.required' | translate}} </app-input-validation-alert-component>
                     }
             </div>
@@ -16,7 +16,7 @@
             <div class="mb-4">
                 <app-base-label-component classes="form-label d-block"
                     for="usePurpose">{{'views.insuranceShow.usePurpose' | translate}}</app-base-label-component>
-                <p-dropdown [formControl]="usePurpose" inputId="usePurpose"
+                <p-dropdown [formControl]="additionalDataFormService.usePurpose" inputId="usePurpose"
                     [options]="lookupsStoreQuery.lookups[ELookupCategory.vehicleUses]"
                     [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
             </div>
@@ -31,7 +31,7 @@
             </div>
         </aside>
         <aside class="col-12">
-            @if(getDiscount.value){
+            @if(additionalDataFormService.getDiscount.value){
             <ng-container>
                 <p class="font_size__12 grey_color mb-4"> {{'views.insuranceShow.verifyAffiliate' | translate}} </p>
                 <div class="mb-4">
@@ -49,12 +49,12 @@
 
             <div class="row align-items-center">
                 <aside class="col-md-6 mb-3">
-                    @switch (promoType.value) {
+                    @switch (additionalDataFormService.promoType.value) {
                         @case (EPromoTypeEnum.email) {
                             <ng-container>
                                 <input formControlName="workMail" type="email" class="form-control"
                                     placeholder="{{'views.insuranceShow.enterEmail' | translate}}" />
-                                @if(workMail.invalid && workMail.touched){
+                                @if(additionalDataFormService.workMail.invalid && additionalDataFormService.workMail.touched){
                                     <app-input-validation-alert-component> {{'errors.required' | translate}} </app-input-validation-alert-component>
                                 }
                             </ng-container>
@@ -84,7 +84,7 @@
                     <app-base-button-component class="col mx-1"
                         classes="btn-primary rounded-pill text-white font_size__12 w-100 shadow"> {{'public.verify' |
                         translate | uppercase}} </app-base-button-component>
-                    <app-base-button-component (clicked)="promoType.setValue(EPromoTypeEnum.email)" class="col mx-1"
+                    <app-base-button-component (clicked)="additionalDataFormService.promoType.setValue(EPromoTypeEnum.email)" class="col mx-1"
                         classes="btn-secondary rounded-pill text-white font_size__12 w-100 shadow"> {{'public.cancel' |
                         translate | uppercase}} </app-base-button-component>
                 </aside>

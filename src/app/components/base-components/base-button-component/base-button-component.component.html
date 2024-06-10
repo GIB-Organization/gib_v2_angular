@@ -1,5 +1,5 @@
 <button (click)="buttonClicked()" class="btn" [class]="classes() + ( icon() ? ' d-flex' : '')"  [disabled]="disabled() || loading()">
-    @if(icon()){<i class="pi pi-{{icon()}} me-2"></i>}
+    @if(icon()){<i class="pi pi-{{icon()}} mx-1"></i>}
     @if(loading()){<i class="pi pi-spin pi-spinner"></i>}
     @else{<ng-content></ng-content>}
 </button>

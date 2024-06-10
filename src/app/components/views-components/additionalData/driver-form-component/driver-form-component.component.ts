@@ -14,7 +14,6 @@ import { AdditionalDataFormService } from '../../../../services/additionalDataFo
 import { ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { IDriverDetails } from '../../../../models/additionalData.interface';
 import { InputValidationAlertComponentComponent } from '../../../shared-components/input-validation-alert-component/input-validation-alert-component.component';
 import { ConstantsService } from '../../../../services/core/constants/constants.service';
 
@@ -34,7 +33,6 @@ export class DriverFormComponentComponent implements OnInit {
   addressStoreQuery = inject(AddressStoreQuery)
   additionalDataFormService = inject(AdditionalDataFormService);
   form = this.additionalDataFormService.form;
-  defaultFormValue!: Partial<IDriverDetails>;
   get ELookupCategory() {
     return ELookupCategory
   }
@@ -50,80 +48,21 @@ export class DriverFormComponentComponent implements OnInit {
   get YES_NO() {
     return this.constants.yesNoList
   }
-  get driverDetails() {
-    return this.form.controls.driverDetails
-  }
-  get idNumber() {
-    return this.driverDetails.controls.idNumber
-  }
-  get accidents5Years() {
-    return this.driverDetails.controls.accidents5Years
-  }
-  get anotherCountryLicense() {
-    return this.driverDetails.controls.anotherCountryLicense
-  }
-  get yearsHoldingLicense() {
-    return this.driverDetails.controls.yearsHoldingLicense
-  }
-  get workCityId() {
-    return this.driverDetails.controls.workCityId
-  }
-  get violationsTypes() {
-    return this.driverDetails.controls.violationsTypes
-  }
-  get sameAddress() {
-    return this.driverDetails.controls.sameAddress
-  }
-  get residenceCityId() {
-    return this.driverDetails.controls.residenceCityId
-  }
-  get relativeRelation() {
-    return this.driverDetails.controls.relativeRelation
-  }
-  get otherViolations() {
-    return this.driverDetails.controls.otherViolations
-  }
-  get licenseCountryId() {
-    return this.driverDetails.controls.licenseCountryId
-  }
-  get birthMonth() {
-    return this.driverDetails.controls.birthMonth
-  }
-  get birthYear() {
-    return this.driverDetails.controls.birthYear
-  }
-  get childrenUnder16() {
-    return this.driverDetails.controls.childrenUnder16
-  }
-  get driverLicenseRestrict() {
-    return this.driverDetails.controls.driverLicenseRestrict
-  }
-  get drivingPercent() {
-    return this.driverDetails.controls.drivingPercent
-  }
-  get educationLevel() {
-    return this.driverDetails.controls.educationLevel
-  }
-  get isDriverSection() {
-    return this.form.controls.isDriverSection
-  }
+  
 
   ngOnInit(): void {
     this.lookupsStoreQuery.defaultLookups$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        this.additionalDataFormService.defaultFormValue.driverDetails = {
-          ...this.additionalDataFormService.defaultFormValue.driverDetails,
+        this.additionalDataFormService.driverDefaultValue = {
+          ...this.additionalDataFormService.driverDefaultValue,
           educationLevel: res[ELookupCategory.educations]?.lookupId,
           driverLicenseRestrict: res[ELookupCategory.medicalConditions]?.lookupId,
           drivingPercent: res[ELookupCategory.drivingPercentages]?.lookupId,
           relativeRelation: res[ELookupCategory.relationships]?.lookupId,
         }
-        this.driverDetails.patchValue(this.additionalDataFormService.defaultFormValue.driverDetails);
       }
     })
   }
-  cancelDriver(){
-    this.isDriverSection.setValue(false);
-    this.driverDetails.reset(this.additionalDataFormService.defaultFormValue.driverDetails);
-  }
+
+  
 }
