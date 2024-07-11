@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { QuotationStoreQuery } from './../../../../store/quotationStore/quotation-store.query';
+import { ChangeDetectionStrategy, Component, inject, input, model, OnInit, signal } from '@angular/core';
 import { BaseImageComponentComponent } from '../../../base-components/base-image-component/base-image-component.component';
 import { CompanySpeedRateComponent } from '../company-speed-rate/company-speed-rate.component';
 import { SettingsQuery } from '../../../../store/settings/settings.query';
@@ -8,7 +9,9 @@ import { BaseButtonComponentComponent } from '../../../base-components/base-butt
 import { EQuotationsTabs } from '../../../../core/enums/quotations.enum';
 import { BaseLabelComponentComponent } from '../../../base-components/base-label-component/base-label-component.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { EPopover } from '../../../../core/enums/popover.enum';
+import { ICompanyQuotations, IQuotation, IQuotationProduct } from '../../../../models/quotation.interface';
+import { CompaniesStoreQuery } from '../../../../store/companiesStore/companies-store.query';
+import { ICompany } from '../../../../models/companies.interface';
 
 @Component({
   selector: 'app-quotation-box',
@@ -18,11 +21,21 @@ import { EPopover } from '../../../../core/enums/popover.enum';
   styleUrl: './quotation-box.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuotationBoxComponent {
+export class QuotationBoxComponent implements OnInit{
   settingsQuery = inject(SettingsQuery);
-  comprehensiveOrThird = input<EQuotationsTabs>();
+  comprehensiveOrThird = model<EQuotationsTabs>(EQuotationsTabs.thirdParty);
+  comprehensivePrice = input<number>();
+  companiesStoreQuery = inject(CompaniesStoreQuery)
+  quotationStoreQuery = inject(QuotationStoreQuery)
+  quotation = input<IQuotation | any>()
+  company = input<ICompany | any>()
+  choosedProduct = signal<Partial<IQuotationProduct> | any>({});
 
   get EQuotationsTabs(){
     return EQuotationsTabs;
+  }
+
+  ngOnInit(): void {
+    this.choosedProduct.set(this.quotation()?.products[0]);
   }
 }

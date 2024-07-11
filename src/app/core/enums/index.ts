@@ -5,6 +5,7 @@ import { EPopover } from './popover.enum';
 import { EInsurancePurpose, EVehicleRegisterType } from './insurance-inquire';
 import { EFormType } from './auth.enum';
 import { EEstimatedDistanceEnum, EMotionVectorEnum, EPartyTypeEnum, EPromoTypeEnum } from './additionalData.enum';
+import { ESortingEnum } from './sorting.enum';
 export {
     EFormType,
     EInsurancePurpose,
@@ -18,4 +19,5 @@ export {
     EPartyTypeEnum,
     EEstimatedDistanceEnum,
     EMotionVectorEnum,
+    ESortingEnum
 }

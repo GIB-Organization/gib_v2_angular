@@ -8,9 +8,9 @@
             <div class="d-flex justify-content-between">
                 <app-base-label-component classes="form-label"> {{ 'views.insuranceShow.docOwner' | translate }}
                 </app-base-label-component>
-                <p-inputSwitch [formControl]="isOwnerDoc"></p-inputSwitch>
+                <p-inputSwitch [formControl]="additionalDataFormService.isOwnerDoc"></p-inputSwitch>
             </div>
-            @if(isOwnerDoc.value){
+            @if(additionalDataFormService.isOwnerDoc.value){
             <div class="row mt-4">
                 <aside class="col-md-4">
                     <div class="mb-4">
@@ -18,7 +18,7 @@
                             for="eduLevel-1">{{'views.insuranceShow.eduLevel' | translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.ownerEducationLevel" inputId="eduLevel-1"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.educations]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -38,7 +38,7 @@
                         <p-dropdown [formControl]="additionalDataFormService.drivingRestriction"
                             inputId="driveRestrictions-1"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.medicalConditions]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -48,7 +48,7 @@
                             translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.parkingPlace" inputId="nightParking-1"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.parkingLocations]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -67,7 +67,7 @@
                             translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.annualDistance" inputId="annualDistance-1"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.mileages]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -77,7 +77,7 @@
                             translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.motionVector" inputId="motionVector-1"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.transmissionTypes]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
             </div>
@@ -98,7 +98,7 @@
                             translate}}</app-base-label-component>
                         <p-multiSelect [formControl]="additionalDataFormService.ownerViolationTypes"
                             inputId="violationType-2" [options]="lookupsStoreQuery.lookups[ELookupCategory.violations]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId" />
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode" />
                         @if(additionalDataFormService.ownerViolationTypes.touched &&
                         additionalDataFormService.ownerViolationTypes.invalid){
                         <app-input-validation-alert-component> {{'errors.required' | translate}}
@@ -115,14 +115,14 @@
                     translate }} </app-base-label-component>
                 <p-inputSwitch [formControl]="additionalDataFormService.sameWorkCity"></p-inputSwitch>
             </div>
-            @if(additionalDataFormService.sameWorkCity.value){
+            @if(!additionalDataFormService.sameWorkCity.value){
             <div class="row mt-4">
                 <aside class="col-md-4">
                     <div class="mb-4">
                         <app-base-label-component [required]="true" classes="form-label d-block"
                             for="workCity-2">{{'views.insuranceShow.workCity' | translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.ownerWorkCityId" inputId="workCity-2"
-                            [options]="addressStoreQuery.cities" [optionLabel]="addressStoreQuery.keyName"></p-dropdown>
+                            [options]="addressStoreQuery.cities" [optionLabel]="addressStoreQuery.keyName" optionValue="mappingCode"></p-dropdown>
                         @if(additionalDataFormService.ownerWorkCityId.touched &&
                         additionalDataFormService.ownerWorkCityId.invalid){
                         <app-input-validation-alert-component> {{'errors.required' | translate}}
@@ -139,6 +139,7 @@
                     translate }} </app-base-label-component>
                 <p-inputSwitch (onChange)="additionalDataFormService.ownerHasLicense($event.checked)" [formControl]="additionalDataFormService.ownerAnotherCountryLicense"></p-inputSwitch>
             </div>
+            @if(additionalDataFormService.ownerAnotherCountryLicense.value){
             <div class="row">
                 @for(license of additionalDataFormService.ownerLicenses.controls; track license; let index
                 = $index){
@@ -158,7 +159,6 @@
                     <div class="row">
                         <ng-container>
                             <aside class="col-md-6">
-                                @if(additionalDataFormService.ownerAnotherCountryLicense.value){
                                 <div class="mb-4">
                                     <app-base-label-component [required]="true" classes="form-label d-block"
                                         for="country">{{'views.insuranceShow.country' |
@@ -173,10 +173,8 @@
                                     </app-input-validation-alert-component>
                                     }
                                 </div>
-                                }
                             </aside>
                             <aside class="col-md-6">
-                                @if(additionalDataFormService.ownerAnotherCountryLicense.value){
                                 <div class="mb-4">
                                     <app-base-label-component [required]="true" classes="form-label d-block"
                                         for="licenseHoldYears">{{'views.insuranceShow.licenseHoldYears' |
@@ -190,7 +188,6 @@
                                     </app-input-validation-alert-component>
                                     }
                                 </div>
-                                }
                             </aside>
                         </ng-container>
                     </div>
@@ -199,6 +196,7 @@
                 </aside>
                 }
             </div>
+              }
         </div>
         <div>
             <div class="d-flex justify-content-between">

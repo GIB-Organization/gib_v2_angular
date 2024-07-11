@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { IAdditionalData, IAdditionalDataFormGroup, IAdditionalDetailsFormGroup, ICountryLicenseFormGroup, IDriverDetails, IDriverDetailsFormGroup } from '../../models/additionalData.interface';
-import { EPromoTypeEnum } from '../../core/enums';
+import { EPartyTypeEnum, EPromoTypeEnum } from '../../core/enums';
 import { INSURNACE_INQUIRE_VALIDATORS } from '../../core/validations';
 
 @Injectable({ providedIn: 'root' })
@@ -13,8 +13,8 @@ export class AdditionalDataFormService {
       sameWorkCity: false,
       anotherCountryLicense: false,
       carModified: false,
-      childrenUnder16: 0,
-      accidents5Years: 0,
+      childrenUnder16: null,
+      accidents5Years: null,
       licenses:[],
       modifications: null,
     },
@@ -24,8 +24,8 @@ export class AdditionalDataFormService {
   driverDefaultValue: Partial<IDriverDetails> = {
     sameAddress: true,
     anotherCountryLicense: false,
-    childrenUnder16: 0,
-    accidents5Years: 0,
+    childrenUnder16: null,
+    accidents5Years: null,
     otherViolations: false,
   }
 
@@ -33,25 +33,26 @@ export class AdditionalDataFormService {
     isAdditionalData: new FormControl(false),
     estimatedValue: new FormControl(null, [Validators.required]),
     usePurpose: new FormControl(null),
-    getDiscount: new FormControl(null),
-    promoType: new FormControl(EPromoTypeEnum.email),
+    getDiscount: new FormControl(false),
+    promoType: new FormControl(null),
     workMail: new FormControl(null),
     partyType: new FormControl(null),
     partyId: new FormControl(null),
     promoCode: new FormControl(null),
     drivers: this.fb.array<FormGroup<IDriverDetailsFormGroup>>([]),
     additionalDetails: this.fb.group<IAdditionalDetailsFormGroup>({
+      isOwnerDoc: new FormControl(false),
       educationLevel: new FormControl(null),
-      childrenUnder16: new FormControl(0),
+      childrenUnder16: new FormControl(null),
       ownerBirthDate: new FormControl(null),
       drivingRestriction: new FormControl(null),
       parkingPlace: new FormControl(null),
-      accidents5Years: new FormControl(0),
+      accidents5Years: new FormControl(null),
       annualDistance: new FormControl(null),
       motionVector: new FormControl(null),
       otherViolations: new FormControl(false),
       violationTypes: new FormControl(null),
-      sameWorkCity: new FormControl(false),
+      sameWorkCity: new FormControl(true),
       workCityId: new FormControl(null),
       anotherCountryLicense: new FormControl(false),
       licenses: this.fb.array<FormGroup<ICountryLicenseFormGroup>>([]),
@@ -151,6 +152,9 @@ export class AdditionalDataFormService {
 
   get additionalDetails() {
     return this.form.controls.additionalDetails
+  }
+  get isOwnerDoc() {
+    return this.additionalDetails.controls.isOwnerDoc
   }
   get ownerEducationLevel() {
     return this.additionalDetails.controls.educationLevel
@@ -259,13 +263,13 @@ export class AdditionalDataFormService {
     return (control: AbstractControl): ValidationErrors | null => {
       const GROUP = control as FormGroup<IDriverDetailsFormGroup>;
       // violation type validate
-      if(GROUP.value.otherViolations){
+      if(GROUP.value.otherViolations && !GROUP.value.violationsTypes){
         GROUP.controls.violationsTypes.setErrors({'required':true});
       }else{
         GROUP.controls.violationsTypes.setErrors(null);
       }
       // same address validate
-      if(!GROUP.value.sameAddress){
+      if(!GROUP.value.sameAddress && (!GROUP.value.workCityId || !GROUP.value.residenceCityId)){
         GROUP.controls.workCityId.setErrors({'required':true});
         GROUP.controls.residenceCityId.setErrors({'required':true});
       }else{
@@ -287,19 +291,19 @@ export class AdditionalDataFormService {
     return (control: AbstractControl): ValidationErrors | null => {
       const GROUP = control as FormGroup<IAdditionalDetailsFormGroup>;
       // violation type validate
-      if(GROUP.value.otherViolations){
+      if(GROUP.value.otherViolations && !GROUP.value.violationTypes){
         GROUP.controls.violationTypes.setErrors({'required':true});
       }else{
         GROUP.controls.violationTypes.setErrors(null);
       }
       // same work city validate
-      if(GROUP.value.sameWorkCity){
+      if(!GROUP.value.sameWorkCity && !GROUP.value.workCityId){
         GROUP.controls.workCityId.setErrors({'required':true});
       }else{
         GROUP.controls.workCityId.setErrors(null);
       }
       // modifications validate
-      if(GROUP.value.carModified){
+      if(GROUP.value.carModified && !GROUP.value.modifications){
         GROUP.controls.modifications.setErrors({'required':true});
       }else{
         GROUP.controls.modifications.setErrors(null);

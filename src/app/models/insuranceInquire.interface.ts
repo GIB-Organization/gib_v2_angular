@@ -32,6 +32,7 @@ export interface ITermsConditionsAgree{
 }
 
 export interface IInsuranceInquireResponse {
+  refId?:string,
   firstName?: string;
   fatherName?: string;
   familyName?: string;

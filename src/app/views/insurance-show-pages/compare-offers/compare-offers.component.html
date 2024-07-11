@@ -1,17 +1,19 @@
 <div class="additional_data">
-    <app-title-box-component 
-        title="views.insuranceShow.compareOffers"
+    <app-title-box-component title="views.insuranceShow.compareOffers"
         subtitle="{{'views.insuranceShow.offersValid' | translate:{h:1,m:2,s:22} }}" step="">
     </app-title-box-component>
     <div class="mb-4"><app-car-info-box-component></app-car-info-box-component></div>
     <div class="mb-4">
-        <app-quotations-filter (activeTabChange)="comprehensiveOrThird.set($event)"></app-quotations-filter>
+        <app-quotations-filter [activeTab]="filter().type" (isAgencyModelChange)="filter().isAgency = $event"
+            (companyModelChange)="filter().company = $event" (sortingModelChange)="filter().sorting = $event"
+            (activeTabChange)="filter().type = $event"></app-quotations-filter>
     </div>
-    @for(item of [1,2,3,4,5]; track item){
-        <div class="mb-4">
-            <app-defer-block-component>
-                <app-quotation-box [comprehensiveOrThird]="comprehensiveOrThird()"></app-quotation-box>
-            </app-defer-block-component>
-        </div>
+    <!--  | quotationsFilter: filter().company:filter().sorting -->
+    @for(item of quotations() | quotationsFilter: filter().company:filter().sorting; track item){
+    <div class="mb-4">
+        <app-defer-block-component>
+            <app-quotation-box (comprehensiveOrThirdChange)="filter().type = $event" [comprehensivePrice]="item.mappedQuotations?.[EQuotationsTabs.thirdParty]?.products?.[0]?.productPrice" [quotation]="item.mappedQuotations?.[comprehensiveOrThird()]" [company]="item.company" [comprehensiveOrThird]="filter().type"></app-quotation-box>
+        </app-defer-block-component>
+    </div>
     }
 </div>

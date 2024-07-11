@@ -3,10 +3,10 @@
 
 @import 'styles/core/variables';
 // override bootstrap colors
-$primary: $primaryColor;
-$secondary: $secondaryColor;
+// $primary: $primaryColor;
+// $secondary: $secondaryColor;
 
-@import 'bootstrap/scss/bootstrap';
+// @import 'bootstrap/scss/bootstrap';
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
@@ -16,6 +16,7 @@ $secondary: $secondaryColor;
 
 
 :root{
+    --primary: #{$primaryColor};
     --bs-blue: #{$primaryColor};
     --primaryColor: #{$primaryColor};
     --secondaryColor: #{$secondaryColor};
