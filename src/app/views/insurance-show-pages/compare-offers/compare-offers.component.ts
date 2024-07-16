@@ -9,10 +9,9 @@ import { EQuotationsTabs } from '../../../core/enums/quotations.enum';
 import { DeferBlockComponentComponent } from '../../../components/shared-components/defer-block-component/defer-block-component.component';
 import { QuotationStoreService } from '../../../store/quotationStore/quotation-store.service';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ICompany } from '../../../models/companies.interface';
-import { ESortingEnum } from '../../../core/enums';
 import { QuotationsFilterPipe } from '../../../core/pipes/quotationsFilter/quotations-filter.pipe';
 import { IQuotationsFilter } from '../../../models/quotation.interface';
+import { QuotationStartegyClass } from '../../../core/classes/QuotationStartegy';
 
 @Component({
   selector: 'app-compare-offers',
@@ -24,10 +23,10 @@ import { IQuotationsFilter } from '../../../models/quotation.interface';
 })
 export class CompareOffersComponent implements OnInit, OnDestroy{
   
-  comprehensiveOrThird = signal<EQuotationsTabs>(EQuotationsTabs.thirdParty)
   quotationStoreService = inject(QuotationStoreService);
   QuotationStoreQuery = inject(QuotationStoreQuery);
   quotations = toSignal(this.QuotationStoreQuery.quotations$);
+  quotationStartegy = new QuotationStartegyClass();
   filter = signal<IQuotationsFilter>({
     company:null,
     sorting:null,

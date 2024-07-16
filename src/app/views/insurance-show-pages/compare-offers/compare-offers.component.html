@@ -10,10 +10,12 @@
     </div>
     <!--  | quotationsFilter: filter().company:filter().sorting -->
     @for(item of quotations() | quotationsFilter: filter().company:filter().sorting; track item){
-    <div class="mb-4">
-        <app-defer-block-component>
-            <app-quotation-box (comprehensiveOrThirdChange)="filter().type = $event" [comprehensivePrice]="item.mappedQuotations?.[EQuotationsTabs.thirdParty]?.products?.[0]?.productPrice" [quotation]="item.mappedQuotations?.[comprehensiveOrThird()]" [company]="item.company" [comprehensiveOrThird]="filter().type"></app-quotation-box>
-        </app-defer-block-component>
-    </div>
+    @if(item.mappedQuotations?.[quotationStartegy.chooseQuotationType(filter().type, filter().isAgency)]){
+        <div class="mb-4">
+            <app-defer-block-component>
+                <app-quotation-box (comprehensiveOrThirdChange)="filter().type = $event" [comprehensivePrice]="item.mappedQuotations?.[EQuotationsTabs.thirdParty]?.products?.[0]?.productPrice" [quotation]="item.mappedQuotations?.[quotationStartegy.chooseQuotationType(filter().type, filter().isAgency)]" [company]="item.company" [comprehensiveOrThird]="filter().type"></app-quotation-box>
+            </app-defer-block-component>
+        </div>
+    }
     }
 </div>

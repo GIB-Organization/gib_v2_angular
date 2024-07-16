@@ -1,10 +1,12 @@
 import { EQuotationsTabs, ESortingEnum } from "../core/enums";
+import { EQuotationType } from "../core/enums/quotations.enum";
 import { ICompany } from "./companies.interface";
 
 export interface IQuotation{
   referenceId: string;
   quotationNo: string;
   productTypeCode: number;
+  vehicleAgencyRepair:boolean;
   quotationDate: string;
   quotationExpiryDate: string;
   products: IQuotationProduct[];
@@ -19,12 +21,12 @@ export interface IQuotationProduct {
   productPrice: number;
   deductibleValue: number;
   vehicleLimitValue: number;
-  priceDetails: PriceDetail[];
-  benefits: Benefit[];
-  proposalForms: ProposalForm[];
+  priceDetails: IPriceDetail[];
+  benefits: IBenefit[];
+  proposalForms: IProposalForm[];
 }
 
-interface ProposalForm {
+interface IProposalForm {
   proposalFormDataTypeCode: number;
   proposalFormId: string;
   proposalFormNameAr: string;
@@ -32,7 +34,7 @@ interface ProposalForm {
   proposalFormMandatory: boolean;
 }
 
-interface Benefit {
+export interface IBenefit {
   benefitCode: number;
   benefitId: string;
   benefitNameAr: string;
@@ -42,14 +44,14 @@ interface Benefit {
   benefitPrice: number;
 }
 
-interface PriceDetail {
+interface IPriceDetail {
   priceTypeCode: number;
   priceValue: number;
   percentageValue: number;
 }
 
 export type IMappedQuotations = {
-  [key in EQuotationsTabs | number] : IQuotation
+  [key in EQuotationType | number] : IQuotation
 }
 
 export interface ICompanyQuotations{
@@ -61,7 +63,7 @@ export interface ICompanyQuotations{
 
 export interface IQuotationsFilter{
   company: ICompany|null,
-  isAgency: boolean|null,
+  isAgency: boolean,
   sorting:ESortingEnum|null,
   type:EQuotationsTabs,
 }

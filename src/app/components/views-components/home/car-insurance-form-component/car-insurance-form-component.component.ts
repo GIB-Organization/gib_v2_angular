@@ -19,11 +19,11 @@ import { INSURNACE_INQUIRE_VALIDATORS } from '../../../../core/validations';
 import { InsuranceInquireStoreQueryService } from '../../../../store/insuranceInquireStore/insurance-inquire-store.query';
 import { CustomDateAdapterService } from '../../../../services/customDateAdapter/custom-date-adapter.service';
 import { DateFactoryService } from '../../../../services/dateFactory/date-factory.service';
-
+import { FloatLabelModule } from 'primeng/floatlabel';
 @Component({
   selector: 'app-car-insurance-form-component',
   standalone: true,
-  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent, BaseLabelComponentComponent, InputNumberModule, AutoCompleteModule, ReactiveFormsModule, InputValidationAlertComponentComponent, DropdownModule],
+  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent, BaseLabelComponentComponent, InputNumberModule, AutoCompleteModule, ReactiveFormsModule, InputValidationAlertComponentComponent, DropdownModule, FloatLabelModule],
   templateUrl: './car-insurance-form-component.component.html',
   styleUrl: './car-insurance-form-component.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,7 +40,8 @@ export class CarInsuranceFormComponentComponent implements OnInit {
   fb = inject(FormBuilder);
   cdr = inject(ChangeDetectorRef)
   captchaCodeIsCorrect: WritableSignal<boolean> = signal(false);
-  minDate = this.datePicker.getNext(this.datePicker.getToday())
+  minDate = this.datePicker.getNext(this.datePicker.getToday());
+  maxDate = this.datePicker.getNext(this.minDate,undefined, 30);
   isLoading = toSignal(this.insuranceInquireStoreQuery.selectLoading());
   insuranceFormStructure: IFormStructure = {
     insurancePurpose: {

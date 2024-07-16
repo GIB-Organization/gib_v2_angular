@@ -117,6 +117,9 @@ textarea {
 }
 
 // bootstrap
+.container{
+    max-width: 95%;
+}
 .form-check-input{
     --bs-form-check-bg: transparent;
     --bs-border-width: 2px;
@@ -139,7 +142,7 @@ textarea {
     padding: 10px;
 }
 .form-label{
-    @extend .font_size__12;
+    @extend .font_size__10;
 }
 
 .ngb-dp-day.ngb-dp-today{

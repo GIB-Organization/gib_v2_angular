@@ -9,14 +9,15 @@ import { BaseButtonComponentComponent } from '../../../base-components/base-butt
 import { EQuotationsTabs } from '../../../../core/enums/quotations.enum';
 import { BaseLabelComponentComponent } from '../../../base-components/base-label-component/base-label-component.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { ICompanyQuotations, IQuotation, IQuotationProduct } from '../../../../models/quotation.interface';
+import { IBenefit, ICompanyQuotations, IQuotation, IQuotationProduct } from '../../../../models/quotation.interface';
 import { CompaniesStoreQuery } from '../../../../store/companiesStore/companies-store.query';
 import { ICompany } from '../../../../models/companies.interface';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-quotation-box',
   standalone: true,
-  imports: [BaseImageComponentComponent, CompanySpeedRateComponent, TranslateModule, CurrencyPipe, BaseButtonComponentComponent, BaseLabelComponentComponent, DropdownModule],
+  imports: [BaseImageComponentComponent, CompanySpeedRateComponent, TranslateModule, CurrencyPipe, BaseButtonComponentComponent, BaseLabelComponentComponent, DropdownModule, ReactiveFormsModule],
   templateUrl: './quotation-box.component.html',
   styleUrl: './quotation-box.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -30,6 +31,7 @@ export class QuotationBoxComponent implements OnInit{
   quotation = input<IQuotation | any>()
   company = input<ICompany | any>()
   choosedProduct = signal<Partial<IQuotationProduct> | any>({});
+  choosedBenefits:IBenefit[] = []
 
   get EQuotationsTabs(){
     return EQuotationsTabs;
@@ -37,5 +39,23 @@ export class QuotationBoxComponent implements OnInit{
 
   ngOnInit(): void {
     this.choosedProduct.set(this.quotation()?.products[0]);
+  }
+
+  toggleBenefit(benefit:IBenefit, $event:any){
+    let ckecked = $event.target.checked;
+    let product = this.choosedProduct();
+    if(ckecked){
+      this.choosedBenefits.push(benefit);
+      this.choosedProduct.set({...product, productPrice:product.productPrice + benefit.benefitPrice});
+    }else{
+      let index = this.choosedBenefits.findIndex(item=>{item.benefitId === benefit.benefitId});
+      this.choosedBenefits.splice(index, 1);
+      this.choosedProduct.set({...product, productPrice:product.productPrice - benefit.benefitPrice});
+    }
+  }
+
+  changeProduct(product:IQuotationProduct){
+    this.choosedProduct.set(product);
+    this.choosedBenefits = [];
   }
 }

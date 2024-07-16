@@ -327,7 +327,8 @@
     "errors":{
         "idNumber":"ID Should start with 1 or 2 and be 10 numbers",
         "serialNumber":"Serial Number Must be 10 Numbers",
-        "required":"Field is Required"
+        "required":"Field is Required",
+        "password":"Password must contains lowercase & uppercase characters with at least one number and one special character"
     },
     "months":{
         "gregorian":{

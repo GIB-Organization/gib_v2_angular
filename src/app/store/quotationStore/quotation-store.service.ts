@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { InsuranceInquireStoreQueryService } from '../insuranceInquireStore/insurance-inquire-store.query';
 import { CompaniesStoreQuery } from '../companiesStore/companies-store.query';
 import { ICompany } from '../../models/companies.interface';
+import { QuotationStartegyClass } from '../../core/classes/QuotationStartegy';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,9 @@ export class QuotationStoreService {
     this.api.getQuote(company.insuranceCompanyID??0,this.insuranceInquireStoreQuery.inquireResponse.refId??'').pipe(take(1)).subscribe({
       next: (res) => {
         let mappedQuotations={};
+        const QuotationStartegy = new QuotationStartegyClass();
         res.forEach(item=>{
-          mappedQuotations = {...mappedQuotations, [item.productTypeCode]:item}
+          mappedQuotations = {...mappedQuotations, [QuotationStartegy.chooseQuotationType(item.productTypeCode, item.vehicleAgencyRepair)]:item}
         }) 
         this.store.update(state=>({
           quotations: [...state.quotations, {

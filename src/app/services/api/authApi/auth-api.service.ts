@@ -32,4 +32,8 @@ export class AuthApiService {
   refreshToken(data:IRefreshTokenDTO): Observable<IRefreshTokenDTO>{
     return this.http.post<IRefreshTokenDTO>(`${this.baseUrl}/${this.path}/refreshToken`, data)
   }
+
+  sendOtp(data:Partial<IRegisterDTO>): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/${this.path}/sendOtp`, data)
+  }
 }
