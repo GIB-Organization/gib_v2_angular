@@ -18,7 +18,7 @@ export interface IInsuranceInquireFormBuilder extends ITermsConditionsAgree {
   purpose: FormControl<EInsurancePurpose>;
   vehicleRegisterType: FormControl<EVehicleRegisterType>;
   idNumber: FormControl<number | null>;
-  serialNumber: FormControl<number>;
+  serialNumber: FormControl<number | null>;
   startDate: FormControl<string | null>;
   vehicleYear: FormControl<number | null>;
   sellerId: FormControl<number | null>;

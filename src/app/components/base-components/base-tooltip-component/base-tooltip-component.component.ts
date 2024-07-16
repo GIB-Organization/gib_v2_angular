@@ -13,6 +13,7 @@ import { NgTemplateOutlet } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BaseTooltipComponentComponent {
+  @Input() classes!:string;
   @Input() popoverContent!:string;
   @Input() popoverType:EPopover = EPopover.text;
   @Input() isQuestionHead:boolean = true;

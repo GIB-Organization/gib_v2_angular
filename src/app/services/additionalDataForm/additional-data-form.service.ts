@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { IAdditionalData, IAdditionalDataFormGroup, IAdditionalDetailsFormGroup, ICountryLicenseFormGroup, IDriverDetails, IDriverDetailsFormGroup } from '../../models/additionalData.interface';
-import { EPartyTypeEnum, EPromoTypeEnum } from '../../core/enums';
 import { INSURNACE_INQUIRE_VALIDATORS } from '../../core/validations';
 
 @Injectable({ providedIn: 'root' })

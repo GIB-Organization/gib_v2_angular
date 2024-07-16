@@ -1,6 +1,5 @@
 <div class="d-flex align-items-center py-0 custom_captcha">
     <canvas #canvasElement  dir="ltr" [id]="id" width="100" height="40"></canvas>
-    <span class="mx-2"> <app-base-image-component role="button" (clicked)="refreshCaptcha()" alt="refresh icon" path="refresh.png">
-    </app-base-image-component> </span>
+    <i class="pi pi-refresh primary_color mx-2" role="button" (click)="refreshCaptcha()"></i>
     <input [(ngModel)]="captchaCode" (ngModelChange)="captchaCodeChanged()" class="form-control" label="" placeholder="{{'views.home.insuranceForm.confirmCode' | translate}}"/>
 </div>
