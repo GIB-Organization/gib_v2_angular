@@ -67,7 +67,7 @@
                             for="eduLevel">{{'views.insuranceShow.eduLevel' | translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.educationLevel(index)" inputId="eduLevel"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.educations]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -87,7 +87,7 @@
                         <p-dropdown [formControl]="additionalDataFormService.drivingPercent(index)"
                             inputId="drivePercent"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.drivingPercentages]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -98,7 +98,7 @@
                         <p-dropdown [formControl]="additionalDataFormService.driverLicenseRestrict(index)"
                             inputId="driveRestrictions"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.medicalConditions]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -117,7 +117,7 @@
                             for="relation">{{'views.insuranceShow.relation' | translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.relativeRelation(index)" inputId="relation"
                             [options]="lookupsStoreQuery.lookups[ELookupCategory.relationships]"
-                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId"></p-dropdown>
+                            [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode"></p-dropdown>
                     </div>
                 </aside>
                 <aside class="col-md-4">
@@ -140,7 +140,7 @@
                             <p-multiSelect [formControl]="additionalDataFormService.violationsTypes(index)"
                                 inputId="violationType"
                                 [options]="lookupsStoreQuery.lookups[ELookupCategory.violations]"
-                                [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="lookupId" />
+                                [optionLabel]="lookupsStoreQuery.lookupNameKey" optionValue="mappingCode" />
                             @if(additionalDataFormService.violationsTypes(index).touched &&
                             additionalDataFormService.violationsTypes(index).invalid ){
                             <app-input-validation-alert-component> {{'errors.required' | translate}}
@@ -173,7 +173,8 @@
                             <p-dropdown [virtualScroll]="true" [virtualScrollItemSize]="40"
                                 [formControl]="additionalDataFormService.residenceCityId(index)" inputId="residenceCity"
                                 [options]="addressStoreQuery.cities"
-                                [optionLabel]="addressStoreQuery.keyName"></p-dropdown>
+                                [optionLabel]="addressStoreQuery.keyName"
+                                optionValue="mappingCode"></p-dropdown>
                             @if(additionalDataFormService.residenceCityId(index).touched &&
                             additionalDataFormService.residenceCityId(index).invalid){
                             <app-input-validation-alert-component> {{'errors.required' | translate}}
@@ -191,7 +192,8 @@
                             <p-dropdown [virtualScroll]="true" [virtualScrollItemSize]="40"
                                 [formControl]="additionalDataFormService.workCityId(index)" inputId="workCity"
                                 [options]="addressStoreQuery.cities"
-                                [optionLabel]="addressStoreQuery.keyName"></p-dropdown>
+                                [optionLabel]="addressStoreQuery.keyName"
+                                optionValue="mappingCode"></p-dropdown>
                             @if(additionalDataFormService.workCityId(index).touched &&
                             additionalDataFormService.workCityId(index).invalid){
                             <app-input-validation-alert-component> {{'errors.required' | translate}}
@@ -241,7 +243,7 @@
                                     <p-dropdown [virtualScroll]="true" [virtualScrollItemSize]="40"
                                         [formControl]="additionalDataFormService.licenseCountryId(index, licenseIndex)"
                                         inputId="country" [options]="addressStoreQuery.countries"
-                                        [optionLabel]="addressStoreQuery.keyName"></p-dropdown>
+                                        [optionLabel]="addressStoreQuery.keyName" optionValue="mappingCode"></p-dropdown>
                                     @if(additionalDataFormService.licenseCountryId(index, licenseIndex).touched &&
                                     additionalDataFormService.licenseCountryId(index, licenseIndex).invalid){
                                     <app-input-validation-alert-component> {{'errors.required' | translate}}

@@ -49,11 +49,12 @@ export class OwnerFormComponentComponent {
       next: (res) => {
         this.additionalDataFormService.defaultFormValue.additionalDetails = {
           ...this.additionalDataFormService.defaultFormValue.additionalDetails,
-          educationLevel: res[ELookupCategory.educations]?.lookupId,
-          drivingRestriction: res[ELookupCategory.medicalConditions]?.lookupId,
-          parkingPlace: res[ELookupCategory.parkingLocations]?.lookupId,
-          annualDistance: res[ELookupCategory.mileages]?.lookupId,
-          motionVector: res[ELookupCategory.transmissionTypes]?.lookupId,
+          educationLevel: res[ELookupCategory.educations]?.mappingCode,
+          drivingRestriction: res[ELookupCategory.medicalConditions]?.mappingCode,
+          parkingPlace: res[ELookupCategory.parkingLocations]?.mappingCode,
+          annualDistance: res[ELookupCategory.mileages]?.mappingCode,
+          motionVector: res[ELookupCategory.transmissionTypes]?.mappingCode,
+          ...this.additionalDataFormService.form.value.additionalDetails
         }
         this.additionalDataFormService.additionalDetails.patchValue(this.additionalDataFormService.defaultFormValue.additionalDetails)
       }

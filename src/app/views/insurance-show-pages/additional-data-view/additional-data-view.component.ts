@@ -1,5 +1,5 @@
 import { AddressStoreService } from './../../../store/addressStore/address-store.service';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseAlertComponentComponent } from '../../../components/base-components/base-alert-component/base-alert-component.component';
 import { BaseButtonComponentComponent } from '../../../components/base-components/base-button-component/base-button-component.component';
@@ -25,7 +25,6 @@ import { BaseLinkComponentComponent } from '../../../components/base-components/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdditionalDataViewComponent implements OnInit {
-  private destroyRef = inject(DestroyRef);
   private lookupsStoreService = inject(LookupsStoreService);
   private addressStoreService = inject(AddressStoreService);
   public insuranceInquireStoreService = inject(InsuranceInquireStoreService)
@@ -49,6 +48,5 @@ export class AdditionalDataViewComponent implements OnInit {
     this.lookupsStoreService.getLookupsByCategoriesIds(this.requiredLookups);
     this.addressStoreService.getCountries();
     this.addressStoreService.getCities();
-    // this.additionalDataFormService.watchForm(this.destroyRef);
   }
 }

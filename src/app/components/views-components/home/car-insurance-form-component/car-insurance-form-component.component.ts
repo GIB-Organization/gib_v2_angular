@@ -19,11 +19,12 @@ import { INSURNACE_INQUIRE_VALIDATORS } from '../../../../core/validations';
 import { InsuranceInquireStoreQueryService } from '../../../../store/insuranceInquireStore/insurance-inquire-store.query';
 import { CustomDateAdapterService } from '../../../../services/customDateAdapter/custom-date-adapter.service';
 import { DateFactoryService } from '../../../../services/dateFactory/date-factory.service';
-
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { BaseTooltipComponentComponent } from '../../../base-components/base-tooltip-component/base-tooltip-component.component';
 @Component({
   selector: 'app-car-insurance-form-component',
   standalone: true,
-  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent, BaseLabelComponentComponent, InputNumberModule, AutoCompleteModule, ReactiveFormsModule, InputValidationAlertComponentComponent, DropdownModule],
+  imports: [BaseButtonComponentComponent, TranslateModule, NgbDatepicker, NgbInputDatepicker, BaseCaptchaComponentComponent, BaseLabelComponentComponent, InputNumberModule, AutoCompleteModule, ReactiveFormsModule, InputValidationAlertComponentComponent, DropdownModule, FloatLabelModule, BaseTooltipComponentComponent],
   templateUrl: './car-insurance-form-component.component.html',
   styleUrl: './car-insurance-form-component.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,7 +41,8 @@ export class CarInsuranceFormComponentComponent implements OnInit {
   fb = inject(FormBuilder);
   cdr = inject(ChangeDetectorRef)
   captchaCodeIsCorrect: WritableSignal<boolean> = signal(false);
-  minDate = this.datePicker.getNext(this.datePicker.getToday())
+  minDate = this.datePicker.getNext(this.datePicker.getToday());
+  maxDate = this.datePicker.getNext(this.minDate,undefined, 30);
   isLoading = toSignal(this.insuranceInquireStoreQuery.selectLoading());
   insuranceFormStructure: IFormStructure = {
     insurancePurpose: {
@@ -80,7 +82,7 @@ export class CarInsuranceFormComponentComponent implements OnInit {
     sellerId: this.fb.control(null),
     idNumber: this.fb.nonNullable.control(null, INSURNACE_INQUIRE_VALIDATORS['idNumber']),
     purpose: this.fb.nonNullable.control(EInsurancePurpose.newInsurance),
-    serialNumber: this.fb.nonNullable.control(0, INSURNACE_INQUIRE_VALIDATORS['serialNumber']),
+    serialNumber: this.fb.nonNullable.control(null, INSURNACE_INQUIRE_VALIDATORS['serialNumber']),
     startDate: this.fb.nonNullable.control(this.dateAdapter.toModel(this.minDate), INSURNACE_INQUIRE_VALIDATORS['required']),
     vehicleRegisterType: this.fb.nonNullable.control(EVehicleRegisterType.form),
     vehicleYear: this.fb.control(null),

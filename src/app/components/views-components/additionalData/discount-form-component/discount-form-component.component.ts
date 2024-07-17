@@ -64,7 +64,7 @@ export class DiscountFormComponentComponent implements OnInit {
   ngOnInit(): void {
     this.lookupsStoreQuery.defaultLookups$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        this.additionalDataFormService.usePurpose.setValue(res[ELookupCategory.vehicleUses]?.lookupId)
+        this.additionalDataFormService.usePurpose.setValue(res[ELookupCategory.vehicleUses]?.mappingCode)
       }
     })
   }

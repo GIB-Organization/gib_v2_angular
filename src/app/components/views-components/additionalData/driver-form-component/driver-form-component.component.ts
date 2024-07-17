@@ -55,14 +55,12 @@ export class DriverFormComponentComponent implements OnInit {
       next: (res) => {
         this.additionalDataFormService.driverDefaultValue = {
           ...this.additionalDataFormService.driverDefaultValue,
-          educationLevel: res[ELookupCategory.educations]?.lookupId,
-          driverLicenseRestrict: res[ELookupCategory.medicalConditions]?.lookupId,
-          drivingPercent: res[ELookupCategory.drivingPercentages]?.lookupId,
-          relativeRelation: res[ELookupCategory.relationships]?.lookupId,
+          educationLevel: res[ELookupCategory.educations]?.mappingCode,
+          driverLicenseRestrict: res[ELookupCategory.medicalConditions]?.mappingCode,
+          drivingPercent: res[ELookupCategory.drivingPercentages]?.mappingCode,
+          relativeRelation: res[ELookupCategory.relationships]?.mappingCode,
         }
       }
     })
-  }
-
-  
+  } 
 }

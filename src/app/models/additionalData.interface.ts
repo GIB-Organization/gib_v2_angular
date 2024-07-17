@@ -3,8 +3,9 @@ import { EEstimatedDistanceEnum, EMotionVectorEnum, EPartyTypeEnum, EPromoTypeEn
 
 //request body IAdditionalData
 export interface IAdditionalData{
+    refId?:string | null,
     estimatedValue?: number | null,
-    usePurpose?: number | null ,
+    usePurpose?: string | null ,
     getDiscount?: boolean | null,
     promoType?: EPromoTypeEnum | null,
     workMail?: string | null,
@@ -20,12 +21,12 @@ export interface IDriverDetails{
     idNumber?: number | null,
     birthYear?: number | null,
     birthMonth?: number | null,
-    educationLevel?: number | null,
+    educationLevel?: string | null,
     childrenUnder16?: number | null,
-    drivingPercent?: number | null,
-    driverLicenseRestrict?: number | null,
+    drivingPercent?: string | null,
+    driverLicenseRestrict?: string | null,
     accidents5Years?: number | null,
-    relativeRelation?: number | null,
+    relativeRelation?: string | null,
     otherViolations?: boolean | null,
     violationsTypes?: number[] | null,
     sameAddress?: boolean | null,
@@ -36,14 +37,14 @@ export interface IDriverDetails{
 }
 
 export interface IAdditionalDetails{
-    educationLevel?: number | null,
+    educationLevel?: string | null,
     childrenUnder16?: number | null,
     ownerBirthDate?: number | null,
-    drivingRestriction?: number | null,
-    parkingPlace?: number | null ,
+    drivingRestriction?: string | null,
+    parkingPlace?: string | null ,
     accidents5Years?: number | null,
-    annualDistance?: EEstimatedDistanceEnum | null,
-    motionVector?: EMotionVectorEnum | null,
+    annualDistance?: string | null,
+    motionVector?: string | null,
     otherViolations?: boolean | null,
     violationTypes?: number[] | null,
     sameWorkCity?: boolean | null,
@@ -62,7 +63,7 @@ export interface ICountryLicencse{
 
 export interface IAdditionalDataFormGroup{
     estimatedValue: FormControl<number | null>,
-    usePurpose: FormControl<number | null>, // UsePurposeLookupEnum
+    usePurpose: FormControl<string | null>, // UsePurposeLookupEnum
     getDiscount:  FormControl<boolean | null>,
     promoType:  FormControl<EPromoTypeEnum | null>,
     workMail:  FormControl<string | null>,
@@ -78,12 +79,12 @@ export interface IDriverDetailsFormGroup{
     idNumber: FormControl<number | null>,
     birthYear: FormControl<number | null>,
     birthMonth: FormControl<number | null>,
-    educationLevel: FormControl<number | null>, //EducationLevelLookupEnum
+    educationLevel: FormControl<string | null>, //EducationLevelLookupEnum
     childrenUnder16: FormControl<number | null>,
-    drivingPercent: FormControl<number | null>, //DrivingPercentageLookupEnum
-    driverLicenseRestrict: FormControl<number | null>, //DrivingRestrictionsLookupEnum
+    drivingPercent: FormControl<string | null>, //DrivingPercentageLookupEnum
+    driverLicenseRestrict: FormControl<string | null>, //DrivingRestrictionsLookupEnum
     accidents5Years: FormControl<number | null>,
-    relativeRelation: FormControl<number | null>, //ReltiveRelationLookupEnum,
+    relativeRelation: FormControl<string | null>, //ReltiveRelationLookupEnum,
     otherViolations:  FormControl<boolean | null>,
     violationsTypes:  FormControl<number[] | null>, //ViolationTypeLookupEnum[]
     sameAddress:  FormControl<boolean | null>,
@@ -94,14 +95,15 @@ export interface IDriverDetailsFormGroup{
 }
 
 export interface IAdditionalDetailsFormGroup{
-    educationLevel: FormControl<number | null>, //EducationLevelLookupEnum
+    isOwnerDoc: FormControl<boolean | null>,
+    educationLevel: FormControl<string | null>, //EducationLevelLookupEnum
     childrenUnder16: FormControl<number | null>,
     ownerBirthDate: FormControl<number | null>, // will check if date format or month and year lists
-    drivingRestriction: FormControl<number | null>, //DrivingRestrictionsLookupEnum
-    parkingPlace: FormControl<number | null>, //ParkingPlaceLookupEnum
+    drivingRestriction: FormControl<string | null>, //DrivingRestrictionsLookupEnum
+    parkingPlace: FormControl<string | null>, //ParkingPlaceLookupEnum
     accidents5Years: FormControl<number | null>,
-    annualDistance: FormControl<EEstimatedDistanceEnum | null>,
-    motionVector: FormControl<EMotionVectorEnum | null>,
+    annualDistance: FormControl<string | null>,
+    motionVector: FormControl<string | null>,
     otherViolations: FormControl<boolean | null>,
     violationTypes: FormControl<number[] | null>, //ViolationTypeLookupEnum[]
     sameWorkCity: FormControl<boolean | null>, 

@@ -7,7 +7,7 @@
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <app-base-label-component classes="font_size__14"> {{'views.insuranceShow.vehicleDesc' | translate}} </app-base-label-component>
-                    <p class="grey_color font_size__14 font_light mb-0"> BMW </p>
+                    <p class="grey_color font_size__14 font_light mb-0"> {{ insuranceInquireStoreQuery.inquireResponse.maker + ' - ' +  insuranceInquireStoreQuery.inquireResponse.model }} </p>
                 </div>
             </div>
         </aside>

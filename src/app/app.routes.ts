@@ -2,6 +2,7 @@ import { authGuard } from './core/guards/auth/auth.guard';
 import { Routes } from '@angular/router';
 import { ERoutes } from './core/enums/routes.enum';
 import { IRoutingData } from './models/routing.interface';
+import { insuranceAdditionalData } from './core/guards/insuranceSteps/insurance-steps.guard';
 
 const insuranceShowRoutes: Routes = [
     {
@@ -10,7 +11,7 @@ const insuranceShowRoutes: Routes = [
         pathMatch: 'full',
         data:{
             animation: 'additionalData',
-        } as IRoutingData
+        } as IRoutingData,
     },
     {
         path: ERoutes.additionalData,
@@ -64,6 +65,7 @@ const mainLayoutRoutes: Routes = [
             {
                 path: ERoutes.insuranceShow,
                 loadComponent: () => import('./layouts/insurance-steps-layout/insurance-steps-layout.component').then(m => m.InsuranceStepsLayoutComponent),
+                canActivate:[insuranceAdditionalData],
                 children:[
                     ...insuranceShowRoutes
                 ]

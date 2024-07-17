@@ -2,7 +2,9 @@ import { Injectable, signal } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 import { IInsuranceInquireStore } from './insurance-inquire-store.interface';
 
-const initialState : IInsuranceInquireStore ={} 
+const initialState : IInsuranceInquireStore ={
+  inquireResponse:{}
+} 
 
 @Injectable({
   providedIn: 'root'
