@@ -53,6 +53,8 @@ export class QuotationStoreService {
   }
 
   resetStore(){
-    this.store.reset()
+    this.store.update({
+      quotations:[]
+    })
   }
 }

@@ -15,4 +15,12 @@ export class InsuranceInquireStoreQueryService extends Query<IInsuranceInquireSt
   get inquireResponse(){
     return this.getValue().inquireResponse;
   }
+
+  get carPlateNumber(){
+    return this.getValue().inquireResponse.plateNumber??0;
+  }
+
+  get carPlateChars(){
+    return `${this.inquireResponse.plateText1} ${this.inquireResponse.plateText2} ${this.inquireResponse.plateText3}`
+  }
 }

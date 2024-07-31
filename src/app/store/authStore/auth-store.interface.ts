@@ -1,5 +1,6 @@
 import { ILoginResponse } from "../../models/auth.interface";
 
 export interface IAuthStore{
-  authData?: ILoginResponse
+  authData?: ILoginResponse,
+  otp?:string,
 }

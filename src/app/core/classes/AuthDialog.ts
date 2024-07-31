@@ -1,5 +1,6 @@
 import { ForgotPasswordComponentComponent } from "../../components/views-components/auth/forgot-password-component/forgot-password-component.component";
 import { LoginComponentComponent } from "../../components/views-components/auth/login-component/login-component.component";
+import { OtpComponentComponent } from "../../components/views-components/auth/otp-component/otp-component.component";
 import { RegisterComponentComponent } from "../../components/views-components/auth/register-component/register-component.component";
 import { IAuthDialog } from "../../models/layout-models/auth.interface";
 import { EFormType } from "../enums/auth.enum";
@@ -17,6 +18,9 @@ export class AuthDialogFactory {
 
             case EFormType.forgotPassword:
                 return new ForgotPasswordDialog()
+
+            case EFormType.otp:
+                return new OtpDialog()
 
             default:
                 return new LoginDialog()
@@ -47,4 +51,12 @@ export class ForgotPasswordDialog implements IAuthDialog {
     buttonText: string = 'views.auth.login';
     component = ForgotPasswordComponentComponent;
     headingText: string = 'views.auth.reset'
+}
+export class OtpDialog implements IAuthDialog {
+    currentComponent: EFormType = EFormType.forgotPassword;
+    title: string = 'views.auth.codeSent';
+    subtitle: string = 'views.auth.enterCodeDesc';
+    buttonText: string = 'views.auth.login';
+    component = OtpComponentComponent;
+    headingText: string = 'views.auth.enterCode'
 }

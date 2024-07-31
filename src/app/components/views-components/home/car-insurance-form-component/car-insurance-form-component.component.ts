@@ -87,8 +87,6 @@ export class CarInsuranceFormComponentComponent implements OnInit {
     vehicleRegisterType: this.fb.nonNullable.control(EVehicleRegisterType.form),
     vehicleYear: this.fb.control(null),
     customsNumber: this.fb.control(null),
-    birthYear: this.fb.control(null),
-    birthMonth: this.fb.control(null),
     agreedTermsConditions: this.fb.nonNullable.control(false, [Validators.requiredTrue])
   })
   get EPopover() {
@@ -127,21 +125,10 @@ export class CarInsuranceFormComponentComponent implements OnInit {
     BUYER_ID?.setValidators(VALIDATIONS);
     BUYER_ID?.updateValueAndValidity()
   }
-  birthDateValidator() {
-    const BIRTH_YEAR = this.getControl('birthYear');
-    const BIRTH_MONTH = this.getControl('birthMonth');
-    const PURPOSE = this.getControl('purpose');
-    const VALIDATIONS = (PURPOSE?.value === EInsurancePurpose.ownershipTransfer ? INSURNACE_INQUIRE_VALIDATORS['required'] : null)
-    BIRTH_YEAR?.setValidators(VALIDATIONS);
-    BIRTH_MONTH?.setValidators(VALIDATIONS);
-    BIRTH_YEAR?.updateValueAndValidity()
-    BIRTH_MONTH?.updateValueAndValidity()
-  }
   updateInputsValidations() {
     this.vehicleYearValidator()
     this.serialNumberValidator()
     this.sellerIdValidator()
-    this.birthDateValidator()
   }
   purposeChange() {
     const purpose = this.insuranceForm.controls['purpose'];

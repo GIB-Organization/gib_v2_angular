@@ -1,5 +1,6 @@
-import { ICompanyQuotations } from "../../models/quotation.interface"
+import { ICompanyQuotations, ISelectedQuotation } from "../../models/quotation.interface"
 
 export interface IQuotationStore{
-  quotations:ICompanyQuotations[]
+  quotations:ICompanyQuotations[],
+  selectedQuotationData?: ISelectedQuotation,
 }

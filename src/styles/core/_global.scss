@@ -220,6 +220,10 @@ a {
     border-color: saturate($color: $primaryColor, $amount: 10);
     box-shadow: 0 0 0 .25rem rgba($primaryColor, .25);
 }
+
+.border-primary{
+    border-color: var(--primaryColor) !important;
+}
 // primeng
 body{
     &.p-overflow-hidden{
@@ -257,4 +261,18 @@ body{
 .p-float-label input:focus ~ label, .p-float-label input.p-filled ~ label, .p-float-label textarea:focus ~ label, .p-float-label textarea.p-filled ~ label, .p-float-label .p-inputwrapper-focus ~ label, .p-float-label .p-inputwrapper-filled ~ label{
     color: var(--white)
  }
+
+ .p-toast .p-toast-message .p-toast-message-content{
+    padding: 0.5rem !important;
+ }
+ .p-toast .p-toast-message .p-toast-message-content .p-icon:not(.p-toast-icon-close-icon) {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.p-toast .p-toast-message.p-toast-message-success{
+    background: lighten($color: $primaryColor, $amount: 25%) !important;
+    border: solid var(--primaryColor) !important;
+    border-width: 0 0 0 3px !important;
+    color: var(--primaryColor) !important;
+}
 /*------------------------- end global -----------------------*/

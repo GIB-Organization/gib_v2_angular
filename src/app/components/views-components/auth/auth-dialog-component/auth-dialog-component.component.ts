@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, WritableSignal, model, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, WritableSignal, inject, model, signal } from '@angular/core';
 import { BaseImageComponentComponent } from '../../../base-components/base-image-component/base-image-component.component';
 import { BaseButtonComponentComponent } from '../../../base-components/base-button-component/base-button-component.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,6 +7,7 @@ import { DialogComponentComponent } from '../../../shared-components/dialog-comp
 import { EFormType } from '../../../../core/enums/auth.enum';
 import { IAuthDialog } from '../../../../models/layout-models/auth.interface';
 import { AuthDialogFactory } from '../../../../core/classes/AuthDialog';
+import { AuthDialogService } from '../../../../services/auth/auth-dialog.service';
 
 
 @Component({
@@ -18,17 +19,11 @@ import { AuthDialogFactory } from '../../../../core/classes/AuthDialog';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthDialogComponentComponent {
-
-  public _AuthDialogFactory = new AuthDialogFactory();
+  public authDialogService = inject(AuthDialogService);
 
   get EFormType(){
     return EFormType
   }
 
-  visible = model<boolean>(false);
-  visibleForm: WritableSignal<IAuthDialog> = signal(this._AuthDialogFactory.createDialogContent(EFormType.login));
-
-  openComponent(type : EFormType){
-    this.visibleForm.set(this._AuthDialogFactory.createDialogContent( type ))
-  }
+  visible = model<boolean>(this.authDialogService.visible());
 }

@@ -17,7 +17,15 @@
         "cancel":"Cancel",
         "buy":"Buy",
         "yes":"Yes",
-        "no": "No"
+        "no": "No",
+        "code":"Code",
+        "successProccess":"Success Proccess",
+        "success":"Success",
+        "errorProccess":"Error please try later",
+        "error":"Error",
+        "download":"Download",
+        "delete":"Delete",
+        "search":"Search"
     },
     "layout": {
         "navbar": {
@@ -64,9 +72,9 @@
                 "form": "Form",
                 "customCard": "Custom Cards",
                 "id": "ID number / residence",
-                "serialNumber": "Serial Number",
+                "serialNumber": "Sequence Number",
                 "insuranceDate": "Insurance start date",
-                "confirmCode": "Confirmation code",
+                "confirmCode": "Captcha Code",
                 "termsConditionsAgree": "I agree with terms and conditions",
                 "showOffers": "Show Offers",
                 "termsConditionsTooltip":" I agree to grant your insurance company the right to inquire from Najm Insurance Services / or the National Information Center or any other relevant official bodies about my data and vehicle data or any other related data. ",
@@ -75,7 +83,8 @@
                 "sellerId":"Seller ID",
                 "birthYear":"Birth Year",
                 "birthMonth":"Birth Month",
-                "newOne":"The New Owner"
+                "newOne":"The New Owner",
+                "policyId":"Policy ID"
             },
             "partnersLogos": {
                 "platform": "{{appName}} Platform ,,,,",
@@ -205,11 +214,27 @@
         "profile":{
             "title":"Profile",
             "signout":"Sign Out",
+            "invoices":{
+                "title":"invoices",
+                "invoiceId":"Invoice ID",
+                "invoiceDetails":"Invoice Details"
+            },
+            "quotations":{
+                "title": "Quotations",
+                "policyId":"Policy ID",
+                "companyName":"Company Name",
+                "status":"Status",
+                "startDate":"Policy Start Date",
+                "endDate":"Policy End Date",
+                "najmStatus":"Najm Policy Status",
+                "leftDays":"Days left for policy end"
+            },
             "cards":{
                 "title": "Cards"
             },
             "cars":{
-                "title": "Cars"
+                "title": "Cars",
+                "carInfo":"Car Info"
             },
             "uncompletedOrders":{
                 "title": "Uncompleted Orders"
@@ -218,7 +243,12 @@
                 "title": "E-payments"
             },
             "supportTicket":{
-                "title": "Support tickets"
+                "title": "Support tickets",
+                "addTicket":"Add Ticket",
+                "howToAddTicket":"How To Add Ticket",
+                "subject":"Subject",
+                "details":"Details",
+                "uploadFile":"Upload File"
             },
             "personalInfo":{
                 "title": "Personal Info",
@@ -238,7 +268,10 @@
             "ifForgot":"If you remember your password, you can go back to logging in and using it",
             "forgotPassword": "Forgot Password?",
             "reset":"Reset Password",
-            "register":"Register"
+            "register":"Register",
+            "codeSent":"Code Sent",
+            "enterCodeDesc":"Please enter code sent on your phone number",
+            "enterCode":"Enter Code"
         },
         "insuranceShow":{
             "enterData":"Enter Data",
@@ -322,13 +355,22 @@
             "chooseComprehensive":"Choose Comprehensive",
             "endurance":"Endurance value",
             "enduranceTooltip":"Deductable is the amount of money you agreed to pay for car repairs or replacement after accident"
+        },
+        "paymentStatus":{
+            "goToPolicies":"Go To Policies!",
+            "success":"Payment confirmed. Enjoy your coverage.",
+            "fail":"We were unable to process your payment. Please try again later"
         }
     },
     "errors":{
         "idNumber":"ID Should start with 1 or 2 and be 10 numbers",
-        "serialNumber":"Serial Number Must be 10 Numbers",
+        "serialNumber":"Serial Number Must be 6-9 Numbers",
         "required":"Field is Required",
-        "password":"Password must contains lowercase & uppercase characters with at least one number and one special character"
+        "password":"Password must contains lowercase & uppercase characters with at least one number and one special character",
+        "confirmPassword":"Confirm Password not matching password",
+        "name":"Name must be 8-16 characters",
+        "email":"Email must be valid",
+        "phone":"Phone must be valid"
     },
     "months":{
         "gregorian":{

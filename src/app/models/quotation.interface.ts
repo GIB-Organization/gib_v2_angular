@@ -67,3 +67,10 @@ export interface IQuotationsFilter{
   sorting:ESortingEnum|null,
   type:EQuotationsTabs,
 }
+
+export interface ISelectedQuotation{
+  quotation: IQuotation,
+  choosedProduct: IQuotationProduct,
+  choosedBenefits: IBenefit[],
+  company: Partial<ICompany>
+}

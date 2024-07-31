@@ -3,15 +3,23 @@ import { FormControl } from "@angular/forms";
 export interface ILoginDTO {
     email?: string;
     password?: string;
+    otpCode?: string | null;
+}
+export interface ILoginDTOFormGroup {
+    email: FormControl<string | null>;
+    password: FormControl<string | null>;
+    otpCode?: FormControl<string | null>;
 }
 
 export interface IRegisterDTO {
-  fullName?: string | FormControl<string | null>;
-  nationalId?: string | FormControl;
-  phoneNumber?: string | FormControl;
-  email?: string | FormControl;
-  password?: string | FormControl;
-  confirmPassword?: string | FormControl;
+  fullName: string | null;
+  nationalId: string | null;
+  phoneNumber: string | null;
+  email: string | null;
+  password: string | null;
+  confirmPassword: string | null;
+  agreeTerms: boolean | null;
+  otpCode?: string | null;
 }
 export interface IRegisterDTOFormGroup {
   fullName: FormControl<string | null>;
@@ -20,6 +28,8 @@ export interface IRegisterDTOFormGroup {
   email: FormControl<string | null>;
   password: FormControl<string | null>;
   confirmPassword: FormControl<string | null>;
+  agreeTerms: FormControl<boolean | null>;
+  otpCode?: FormControl<string | null>;
 }
 
 export interface IRefreshTokenDTO {
@@ -32,3 +42,6 @@ export interface ILoginResponse {
   username?: string;
   token?: IRefreshTokenDTO;
 }
+
+export type IRegisterOtp = Pick<IRegisterDTO, 'nationalId' | 'phoneNumber'>;
+export type ILoginOtp = Pick<IRegisterDTO, 'email' | 'password'>;

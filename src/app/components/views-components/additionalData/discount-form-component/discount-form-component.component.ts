@@ -1,3 +1,4 @@
+import { DateFactoryService } from './../../../../services/dateFactory/date-factory.service';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { IRadioInput } from '../../../../models/layout-models/radio.interface';
 import { BaseLabelComponentComponent } from '../../../base-components/base-label-component/base-label-component.component';
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EPartyTypeEnum, EPromoTypeEnum } from '../../../../core/enums';
 import { InputValidationAlertComponentComponent } from '../../../shared-components/input-validation-alert-component/input-validation-alert-component.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { InsuranceInquireStoreQueryService } from '../../../../store/insuranceInquireStore/insurance-inquire-store.query';
 
 @Component({
   selector: 'app-discount-form-component',
@@ -25,7 +27,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class DiscountFormComponentComponent implements OnInit {
   #translate = inject(TranslateService);
   lookupsStoreQuery = inject(LookupsStoreQuery);
+  dateFactoryService = inject(DateFactoryService)
   additionalDataFormService = inject(AdditionalDataFormService);
+  insuranceInquireStoreQuery = inject(InsuranceInquireStoreQueryService);
   destroyRef = inject(DestroyRef)
   affiliationRadios: IRadioInput[] = [
     {

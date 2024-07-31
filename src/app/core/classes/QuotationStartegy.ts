@@ -1,4 +1,3 @@
-import { IQuotation } from "../../models/quotation.interface";
 import { EQuotationsTabs, EQuotationType } from "../enums/quotations.enum";
 
 interface IQuotationStartegy{
