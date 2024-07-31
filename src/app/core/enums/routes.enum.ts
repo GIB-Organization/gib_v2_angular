@@ -16,7 +16,11 @@ export enum ERoutes{
     insuranceShow = 'insurance-show',
     orderSummary = 'order-summary',
     compareOffers = 'compare-offers',
-    additionalData= 'additional-data'
+    additionalData= 'additional-data',
+    quotations= 'quotations',
+    invoices= 'invoices',
+    chechout= 'chechout',
+    paymentStatus= 'payment-status',
 }
 
 export enum ERouteData{

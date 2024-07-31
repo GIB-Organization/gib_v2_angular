@@ -77,11 +77,23 @@ const mainLayoutRoutes: Routes = [
 const profileLayoutRoutes : Routes = [
     {
         path: '',
-        redirectTo: `${ERoutes.cards}`,
+        redirectTo: `${ERoutes.quotations}`,
         pathMatch: 'full',
+    },
+    {
+        path: ERoutes.quotations,
+        loadComponent: () => import('./views/profile-pages/quotations-view/quotations-view.component').then(m => m.QuotationsViewComponent),
         data:{
-            animation: 'profile',
-            title: 'views.profile.cards.title',
+            animation: 'profileCards',
+            title: 'views.profile.quotations.title',
+        } as IRoutingData
+    },
+    {
+        path: ERoutes.invoices,
+        loadComponent: () => import('./views/profile-pages/invoices-view/invoices-view.component').then(m => m.InvoicesViewComponent),
+        data:{
+            animation: 'profileCards',
+            title: 'views.profile.invoices.title',
         } as IRoutingData
     },
     {
@@ -169,6 +181,22 @@ const breadcrumbLayoutRoutes: Routes = [
                 data:{
                     animation: 'terms and conditions',
                     title: 'terms and conditions'
+                } as IRoutingData
+            },
+            {
+                path: ERoutes.chechout,
+                loadComponent: () => import('./views/payment-view/payment-view.component').then(m => m.PaymentViewComponent),
+                data:{
+                    animation: 'Checkout',
+                    title: 'Checkout'
+                } as IRoutingData
+            },
+            {
+                path: ERoutes.paymentStatus,
+                loadComponent: () => import('./views/payment-status-view/payment-status-view.component').then(m => m.PaymentStatusViewComponent),
+                data:{
+                    animation: 'PayomentStatus',
+                    title: 'Payoment Status'
                 } as IRoutingData
             },
             {

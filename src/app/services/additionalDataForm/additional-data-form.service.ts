@@ -38,6 +38,8 @@ export class AdditionalDataFormService {
     partyType: new FormControl(null),
     partyId: new FormControl(null),
     promoCode: new FormControl(null),
+    birthYear: new FormControl(null, [Validators.required]),
+    birthMonth: new FormControl(null, [Validators.required]),
     drivers: this.fb.array<FormGroup<IDriverDetailsFormGroup>>([]),
     additionalDetails: this.fb.group<IAdditionalDetailsFormGroup>({
       isOwnerDoc: new FormControl(false),
@@ -83,6 +85,12 @@ export class AdditionalDataFormService {
   }
   get partyId() {
     return this.form.controls.partyId
+  }
+  get ownerBirthMonth() {
+    return this.form.controls.birthMonth
+  }
+  get ownerBirthYear() {
+    return this.form.controls.birthYear
   }
 
   get drivers() {

@@ -22,8 +22,8 @@
                             @for(item of choosedProduct()?.benefits; track item){
                                 <div class="col-md-6">
                                     <div class="form-check mt-3">
-                                        <input class="form-check-input" type="checkbox" (change)="toggleBenefit(item, $event)" [id]="item.benefitId">
-                                        <label class="form-check-label font_light grey_color font_size__12" for="flexCheckChecked">
+                                        <input class="form-check-input" type="checkbox" (change)="toggleBenefit(item, $event)" id="benifit-{{item.benefitId}}">
+                                        <label class="form-check-label font_light grey_color font_size__12" for="benifit-{{item.benefitId}}">
                                             {{item?.[quotationStoreQuery.benefitNameKey]}}
                                         </label>
                                     </div>
@@ -62,6 +62,7 @@
                         }
                     </div>
                     <app-base-button-component
+                        (clicked)="submit()"
                         classes="btn-primary mt-3 text-white shadow col-12 rounded-pill font_size__13 text-uppercase">
                         {{'public.buy' | translate}} </app-base-button-component>
                 </div>

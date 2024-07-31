@@ -10,8 +10,6 @@ export interface IInsuranceInquireDTO {
   vehicleYear: number;
   sellerId: number;
   customsNumber: number,
-  birthYear:number,
-  bithMonth:number
 }
 
 export interface IInsuranceInquireFormBuilder extends ITermsConditionsAgree {
@@ -23,8 +21,6 @@ export interface IInsuranceInquireFormBuilder extends ITermsConditionsAgree {
   vehicleYear: FormControl<number | null>;
   sellerId: FormControl<number | null>;
   customsNumber: FormControl<number | null>;
-  birthYear: FormControl<number | null>;
-  birthMonth: FormControl<number | null>;
 }
 
 export interface ITermsConditionsAgree{
@@ -56,5 +52,7 @@ export interface IInsuranceInquireResponse {
   plateText1?: null;
   plateText2?: null;
   plateText3?: null;
+  idNumber?: number;
+  serialNumber?: number;
   vehicleInfo?: any[];
 }

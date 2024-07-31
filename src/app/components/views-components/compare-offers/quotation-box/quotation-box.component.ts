@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { QuotationStoreQuery } from './../../../../store/quotationStore/quotation-store.query';
 import { ChangeDetectionStrategy, Component, inject, input, model, OnInit, signal } from '@angular/core';
 import { BaseImageComponentComponent } from '../../../base-components/base-image-component/base-image-component.component';
@@ -9,10 +10,13 @@ import { BaseButtonComponentComponent } from '../../../base-components/base-butt
 import { EQuotationsTabs } from '../../../../core/enums/quotations.enum';
 import { BaseLabelComponentComponent } from '../../../base-components/base-label-component/base-label-component.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { IBenefit, ICompanyQuotations, IQuotation, IQuotationProduct } from '../../../../models/quotation.interface';
+import { IBenefit, IQuotation, IQuotationProduct } from '../../../../models/quotation.interface';
 import { CompaniesStoreQuery } from '../../../../store/companiesStore/companies-store.query';
 import { ICompany } from '../../../../models/companies.interface';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ERoutes } from '../../../../core/enums';
+import { AuthDialogService } from '../../../../services/auth/auth-dialog.service';
+import { AuthStoreQuery } from '../../../../store/authStore/auth-store.query';
 
 @Component({
   selector: 'app-quotation-box',
@@ -28,6 +32,9 @@ export class QuotationBoxComponent implements OnInit{
   comprehensivePrice = input<number>();
   companiesStoreQuery = inject(CompaniesStoreQuery)
   quotationStoreQuery = inject(QuotationStoreQuery)
+  authDialogService = inject(AuthDialogService)
+  authStoreQuery = inject(AuthStoreQuery)
+  router = inject(Router)
   quotation = input<IQuotation | any>()
   company = input<ICompany | any>()
   choosedProduct = signal<Partial<IQuotationProduct> | any>({});
@@ -57,5 +64,22 @@ export class QuotationBoxComponent implements OnInit{
   changeProduct(product:IQuotationProduct){
     this.choosedProduct.set(product);
     this.choosedBenefits = [];
+  }
+
+  submit(){
+    if(this.authStoreQuery.isAuthenticated){
+      this.quotationStoreQuery.setSelectedQuotationData({
+        quotation: this.quotation(),
+        company: this.company(),
+        choosedBenefits: this.choosedBenefits,
+        choosedProduct: this.choosedProduct()
+      })
+      this.router.navigate([`${ERoutes.insuranceShow}/${ERoutes.orderSummary}`]);
+    }
+    else this.authDialogService.visible.set(true)
+  }
+
+  composeShowQuotation(){
+
   }
 }

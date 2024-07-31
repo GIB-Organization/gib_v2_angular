@@ -10,12 +10,13 @@ import { VALIDATORS } from '../../core/validations/global.validators';
 export class RegisterFormService {
   #fb = inject(FormBuilder);
   form= this.#fb.group<IRegisterDTOFormGroup>({
-    fullName: new FormControl('', [Validators.minLength(8), Validators.required]),
-    nationalId: new FormControl('', INSURNACE_INQUIRE_VALIDATORS['idNumber']),
-    phoneNumber: new FormControl('', [VALIDATORS['phone'], Validators.required]),
-    email: new FormControl('', [VALIDATORS['email'], Validators.required]),
-    password: new FormControl('', [VALIDATORS['password'], Validators.required]),
-    confirmPassword: new FormControl('', [VALIDATORS['password'], Validators.required]),
+    fullName: this.#fb.control('', [Validators.minLength(8), Validators.required]),
+    nationalId: this.#fb.control('', INSURNACE_INQUIRE_VALIDATORS['idNumber']),
+    phoneNumber: this.#fb.control('', [VALIDATORS['phone'], Validators.required]),
+    email: this.#fb.control('', [VALIDATORS['email'], Validators.required]),
+    password: this.#fb.control('', [VALIDATORS['password'], Validators.required]),
+    confirmPassword: this.#fb.control('', [VALIDATORS['password'], Validators.required]),
+    agreeTerms: this.#fb.control(true, [Validators.requiredTrue]),
   })
 
   get fullName(){
@@ -35,5 +36,12 @@ export class RegisterFormService {
   }
   get confirmPassword(){
     return this.form.controls.confirmPassword;
+  }
+  get agreeTerms(){
+    return this.form.controls.agreeTerms;
+  }
+
+  get formIsValid(){
+    return this.form.valid && this.password.value === this.confirmPassword.value
   }
 }

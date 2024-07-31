@@ -16,4 +16,7 @@ export class LocalStorageService implements IStorageModel{
   setStorageElement(name: EStorageEnum, value: any) {
     if(isPlatformBrowser(this.#platformId)) localStorage.setItem(name, value);
   }
+  removeStorageElement(name: EStorageEnum) {
+    localStorage.removeItem(name);
+  }
 }

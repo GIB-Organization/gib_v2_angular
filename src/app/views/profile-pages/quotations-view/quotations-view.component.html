@@ -1,0 +1,28 @@
+<div class="row mb-3">
+    <aside class="col-3">
+        <p-inputNumber [maxlength]="10" placeholder="{{'views.home.insuranceForm.policyId' | translate}}" inputStyleClass="form-control" inputId="idInput" [useGrouping]="false">
+        </p-inputNumber>
+    </aside>
+    <aside class="col-3">
+        <p-inputNumber [maxlength]="10" placeholder="{{'views.home.insuranceForm.serialNumber' | translate}}" inputStyleClass="form-control" inputId="idInput" [useGrouping]="false">
+        </p-inputNumber>
+    </aside>
+    <aside class="col-3">
+        <p-inputNumber [maxlength]="10" placeholder="{{'views.home.insuranceForm.id' | translate}}" inputStyleClass="form-control" inputId="idInput" [useGrouping]="false">
+        </p-inputNumber>
+    </aside>
+    <aside class="col-3">
+        <app-base-button-component classes="btn-primary w-100 font_size__13"> Search </app-base-button-component>
+    </aside>
+</div>
+
+<app-shadow-box-component classes="profile_cards p-4">
+    <app-defer-block-component>
+        <app-policy-box></app-policy-box>
+        <p-divider />
+        <app-policy-box></app-policy-box>
+        <!-- <app-empty-data-component [empty]="true">
+        
+        </app-empty-data-component> -->
+    </app-defer-block-component>
+</app-shadow-box-component>

@@ -13,6 +13,7 @@
             </li>
             <li>
                 <app-base-button-component
+                (clicked)="authStoreService.logout()"
                     classes="col-12 text-start p-3 font_size__13 border border-top-0 border-start-0 border-bottom-0 rounded-0">
                     <app-base-image-component path="svg/logout.svg" alt="icon"
                         classes="me-3"></app-base-image-component>

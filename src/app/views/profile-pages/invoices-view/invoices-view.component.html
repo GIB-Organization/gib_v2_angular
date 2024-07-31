@@ -1,0 +1,35 @@
+<div class="row mb-3">
+    <aside class="col-3">
+        <p-inputNumber [maxlength]="10" placeholder="{{'views.profile.invoices.invoiceId' | translate}}" inputStyleClass="form-control" inputId="idInput" [useGrouping]="false">
+        </p-inputNumber>
+    </aside>
+    <aside class="col-3">
+        <app-base-button-component classes="btn-primary w-100 font_size__13"> {{'public.search' | translate}} </app-base-button-component>
+    </aside>
+</div>
+
+<app-shadow-box-component classes="profile_cards p-4">
+    <app-defer-block-component>
+        @for(item of [1,1,1,1,1]; track item){
+            <div class="row font_size__13">
+                <aside class="col-md-4">
+                    <p> {{'views.profile.invoices.invoiceId' | translate}} <span class="p-1 px-2 text-white primary_bg rounded"> 2135545465 </span> </p>
+                    <p class="grey_color"> {{'wgamal@it-arm.com'}} </p>
+                    <p class="grey_color"> 12-11-2022 </p>
+                </aside>
+                <aside class="col-md-4">
+                    <p> {{'views.profile.invoices.invoiceDetails' | translate}} </p>
+                    <p class="grey_color"> Some details </p>
+                </aside>
+                <aside class="col-md-4">
+                    <span class="secondary_color mb-3 d-block"> {{ 2500 | currency : settingsQuery.currency }} </span>
+                    <app-base-button-component classes="btn-outline-primary font_size__12" icon="download"> {{'public.download' | translate}} </app-base-button-component>
+                </aside>
+            </div>
+            <p-divider/>
+        }
+        <!-- <app-empty-data-component [empty]="true">
+        
+        </app-empty-data-component> -->
+    </app-defer-block-component>
+</app-shadow-box-component>

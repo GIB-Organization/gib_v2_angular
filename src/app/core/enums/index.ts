@@ -3,7 +3,7 @@ import { ERouteData, ERoutes } from './routes.enum';
 import { EQuotationsTabs } from './quotations.enum';
 import { EPopover } from './popover.enum';
 import { EInsurancePurpose, EVehicleRegisterType } from './insurance-inquire';
-import { EFormType } from './auth.enum';
+import { EFormType, EOtpType } from './auth.enum';
 import { EEstimatedDistanceEnum, EMotionVectorEnum, EPartyTypeEnum, EPromoTypeEnum } from './additionalData.enum';
 import { ESortingEnum } from './sorting.enum';
 export {
@@ -19,5 +19,6 @@ export {
     EPartyTypeEnum,
     EEstimatedDistanceEnum,
     EMotionVectorEnum,
-    ESortingEnum
+    ESortingEnum,
+    EOtpType
 }

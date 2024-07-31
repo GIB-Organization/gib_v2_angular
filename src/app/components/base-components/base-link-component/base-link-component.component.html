@@ -1,10 +1,10 @@
 @if(external){
-    <a [href]="path" class="btn" [class]="classes + ( icon ? ' d-flex align-items-center' : '')">
+    <a [href]="path" class="btn" [class]="classes">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </a>
 }
 @else {
-    <a [routerLink]="[path]" [routerLinkActive]="activeClasses" class="btn" [class]="classes + ( icon ? ' d-flex align-items-center' : '')">
+    <a [routerLink]="[path]" [routerLinkActive]="activeClasses" class="btn" [class]="classes">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </a>
 }

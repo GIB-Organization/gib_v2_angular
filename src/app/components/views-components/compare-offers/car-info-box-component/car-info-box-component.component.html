@@ -20,7 +20,7 @@
             </div>
         </aside>
         <aside class="col-md col-12">
-            <app-car-pallet-component></app-car-pallet-component>
+            <app-car-pallet-component [plateNumber]="insuranceInquireStoreQuery.inquireResponse.plateNumber??000" carCharsAr="{{this.insuranceInquireStoreQuery.inquireResponse.plateText1}} {{this.insuranceInquireStoreQuery.inquireResponse.plateText2}} {{this.insuranceInquireStoreQuery.inquireResponse.plateText3}}"></app-car-pallet-component>
         </aside>
     </div>
 </div>

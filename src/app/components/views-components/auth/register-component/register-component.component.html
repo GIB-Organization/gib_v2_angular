@@ -1,33 +1,54 @@
 <div class="register_form">
+    @if(isError()){
+        <app-input-validation-alert-component class="mb-3"> {{isError()}} </app-input-validation-alert-component>
+    }
     <div class="mb-2">
         <app-base-label-component for="nameInput" classes="form-label" [required]="true"> {{'public.name' | translate}} </app-base-label-component>
         <input type="text" class="form-control" [formControl]="registerService.fullName" id="nameInput">
+        @if(registerService.fullName.invalid && registerService.fullName.touched){
+            <app-input-validation-alert-component> {{'errors.name' | translate}} </app-input-validation-alert-component>
+        }
     </div>
     <div class="mb-2">
-        <app-base-label-component for="idInput" classes="form-label" [required]="true"> {{'views.home.insuranceForm.id' | translate}} </app-base-label-component>
-        <input type="text" class="form-control" [formControl]="registerService.nationalId" id="idInput">
+        <app-base-label-component for="nationalId" classes="form-label" [required]="true"> {{'views.home.insuranceForm.id' | translate}} </app-base-label-component>
+        <p-inputNumber [maxlength]="10" [minlength]="10" [formControl]="registerService.nationalId" inputStyleClass="form-control" inputId="nationalId" [useGrouping]="false">
+        </p-inputNumber>
+        @if(registerService.nationalId.invalid && registerService.nationalId.touched){
+            <app-input-validation-alert-component> {{'errors.idNumber' | translate}} </app-input-validation-alert-component>
+        }
     </div>
     <div class="mb-2">
         <app-base-label-component for="numberInput" classes="form-label" [required]="true"> {{'public.phone' | translate}} </app-base-label-component>
-        <input type="text" class="form-control" [formControl]="registerService.phoneNumber" id="numberInput">
+        <p-inputNumber [formControl]="registerService.phoneNumber" inputStyleClass="form-control" inputId="numberInput" [useGrouping]="false">
+        </p-inputNumber>
+        @if(registerService.phoneNumber.invalid && registerService.phoneNumber.touched){
+            <app-input-validation-alert-component> {{'errors.phone' | translate}} </app-input-validation-alert-component>
+        }
     </div>
     <div class="mb-2">
         <app-base-label-component for="emailInput" classes="form-label" [required]="true"> {{'public.email' | translate}} </app-base-label-component>
         <input type="email" class="form-control" [formControl]="registerService.email" id="emailInput">
+        @if(registerService.email.invalid && registerService.email.touched){
+            <app-input-validation-alert-component> {{'errors.email' | translate}} </app-input-validation-alert-component>
+        }
     </div>
     <div class="mb-2">
         <app-base-label-component for="passwordInput" classes="form-label" [required]="true"> {{'public.password' | translate}} </app-base-label-component>
-        <input type="password" class="form-control" [formControl]="registerService.password" id="passwordInput">
+        <p-password [formControl]="registerService.password" [toggleMask]="true" inputStyleClass="form-control" inputId="passwordInput"/>
+        @if(registerService.password.invalid && registerService.password.touched){
+            <app-input-validation-alert-component> {{'errors.password' | translate}} </app-input-validation-alert-component>
+        }
     </div>
     <div class="mb-3">
         <app-base-label-component for="confirmPasswordInput" classes="form-label" [required]="true"> {{'public.confirmPassword' | translate}} </app-base-label-component>
-        <input type="password" class="form-control" [formControl]="registerService.confirmPassword" id="confirmPasswordInput">
+        <p-password [formControl]="registerService.confirmPassword" [toggleMask]="true" inputStyleClass="form-control" inputId="confirmPasswordInput"/>
+        @if(registerService.confirmPassword.touched && registerService.password.value !== registerService.confirmPassword.value){
+            <app-input-validation-alert-component> {{'errors.confirmPassword' | translate}} </app-input-validation-alert-component>
+        }
     </div>
     <div class="form-check mb-4">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-        <label class="form-check-label font_light grey_color font_size__12" for="flexCheckChecked">
-            {{'views.home.insuranceForm.termsConditionsAgree' | translate}}
-        </label>
+        <input class="form-check-input" [formControl]="registerService.agreeTerms"  type="checkbox" id="flexCheckChecked">
+        <app-base-label-component for="flexCheckChecked" classes="form-label ms-2" [required]="true"> {{'views.home.insuranceForm.termsConditionsAgree' | translate}} </app-base-label-component>
     </div>
-    <app-base-button-component classes="btn-primary rounded-pill col-12 font_size__13 shadow"> {{'views.auth.register' | translate | uppercase}} </app-base-button-component>
+    <app-base-button-component [loading]="isLoading()" [disabled]="!registerService.formIsValid" (clicked)="register()" classes="btn-primary rounded-pill col-12 font_size__13 shadow"> {{'views.auth.register' | translate | uppercase}} </app-base-button-component>
 </div>

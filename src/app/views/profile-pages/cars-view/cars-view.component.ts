@@ -2,11 +2,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DeferBlockComponentComponent } from '../../../components/shared-components/defer-block-component/defer-block-component.component';
 import { EmptyDataComponentComponent } from '../../../components/shared-components/empty-data-component/empty-data-component.component';
 import { ShadowBoxComponentComponent } from '../../../components/views-components/profile/shadow-box-component/shadow-box-component.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { TranslateModule } from '@ngx-translate/core';
+import { BaseButtonComponentComponent } from '../../../components/base-components/base-button-component/base-button-component.component';
+import { BaseImageComponentComponent } from '../../../components/base-components/base-image-component/base-image-component.component';
+import { CarPalletComponentComponent } from '../../../components/views-components/compare-offers/car-pallet-component/car-pallet-component.component';
 
 @Component({
   selector: 'app-cars-view',
   standalone: true,
-  imports: [DeferBlockComponentComponent, EmptyDataComponentComponent, ShadowBoxComponentComponent],
+  imports: [DeferBlockComponentComponent, EmptyDataComponentComponent, ShadowBoxComponentComponent, InputNumberModule, TranslateModule, BaseButtonComponentComponent, BaseImageComponentComponent, CarPalletComponentComponent],
   templateUrl: './cars-view.component.html',
   styleUrl: './cars-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
