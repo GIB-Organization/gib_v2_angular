@@ -20,11 +20,11 @@
                     @if(comprehensiveOrThird() === EQuotationsTabs.comprehensive){
                         <div class="row">
                             @for(item of choosedProduct()?.benefits; track item){
-                                <div class="col-md-6">
-                                    <div class="form-check mt-3">
-                                        <input class="form-check-input" type="checkbox" (change)="toggleBenefit(item, $event)" id="benifit-{{item.benefitId}}">
-                                        <label class="form-check-label font_light grey_color font_size__12" for="benifit-{{item.benefitId}}">
-                                            {{item?.[quotationStoreQuery.benefitNameKey]}}
+                                <div class="col-md-12">
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input" type="checkbox" (change)="toggleBenefit(item, $event)" id="benifit-{{choosedProduct().productId}}-{{item.benefitId}}">
+                                        <label class="form-check-label font_light grey_color font_size__12" for="benifit-{{choosedProduct().productId}}-{{item.benefitId}}">
+                                            {{item?.[quotationStoreQuery.benefitNameKey]}} <span class="secondary_color font_bold"> ({{ item.benefitPrice | currency : settingsQuery.currency }}) </span>
                                         </label>
                                     </div>
                                 </div>
