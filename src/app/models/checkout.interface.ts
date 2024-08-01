@@ -12,6 +12,10 @@ export interface ICreateCheckoutDTO{
     phone: string;
 }
 
+export interface ICreateCheckoutResponse{
+    checkoutId:string
+}
+
 export interface ICheckoutDataFormGroup{
     bankName: FormControl<string>;
     iban: FormControl<string>;

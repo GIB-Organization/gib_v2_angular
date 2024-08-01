@@ -6,11 +6,12 @@ import { BaseLinkComponentComponent } from '../../components/base-components/bas
 import { BaseImageComponentComponent } from '../../components/base-components/base-image-component/base-image-component.component';
 import { ERoutes } from '../../core/enums';
 import { TranslateModule } from '@ngx-translate/core';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-payment-status-view',
   standalone: true,
-  imports: [BaseLinkComponentComponent, BaseImageComponentComponent, TranslateModule],
+  imports: [BaseLinkComponentComponent, BaseImageComponentComponent, TranslateModule, UpperCasePipe],
   templateUrl: './payment-status-view.component.html',
   styleUrl: './payment-status-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, I
 import { PaymentStoreQuery } from '../../store/paymentStore/payment-store.query';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-payment-view',
   standalone: true,
@@ -13,6 +14,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 export class PaymentViewComponent implements AfterViewInit{
   paymentStoreQuery = inject(PaymentStoreQuery);
   detectRef = inject(ChangeDetectorRef);
+  translate = inject(TranslateService);
   doc =  inject( DOCUMENT)
   isBrowser = false;
   constructor(@Inject(PLATFORM_ID) public platform_id: Object){
@@ -23,10 +25,11 @@ export class PaymentViewComponent implements AfterViewInit{
     if(this.isBrowser){
       const FORM_SCRIPT = this.doc.createElement('script');
       const CODE_SCRIPT = this.doc.createElement('script');
-      CODE_SCRIPT.type = 'text/javascript'
+      CODE_SCRIPT.type = 'text/javascript';
+      const lang = this.translate.getDefaultLang();
       const SCRIPT_CONTENT = `
         var wpwlOptions = {
-          locale: "ar",
+          locale: "${lang}",
           paymentTarget: '_blank',
           shopperResultTarget: '_blank',
         }

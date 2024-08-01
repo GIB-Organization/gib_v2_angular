@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { BASE_URL_TOKEN } from '../../../core/injection-tokens/base-url.token';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICreateCheckoutDTO } from '../../../models/checkout.interface';
+import { ICreateCheckoutDTO, ICreateCheckoutResponse } from '../../../models/checkout.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class PaymentApiService {
   private path = 'payment'
   private http = inject(HttpClient)
 
-  createPaymentCheckout(data:ICreateCheckoutDTO): Observable<string>{
-    return this.http.post<string>(`${this.baseUrl}/${this.path}/createCheckout`, data)
+  createPaymentCheckout(data:ICreateCheckoutDTO): Observable<ICreateCheckoutResponse>{
+    return this.http.post<ICreateCheckoutResponse>(`${this.baseUrl}/${this.path}/createCheckout`, data)
   }
 
   getPaymentStatus(requestId:string): Observable<any>{

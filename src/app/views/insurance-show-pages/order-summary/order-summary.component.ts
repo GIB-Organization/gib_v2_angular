@@ -86,7 +86,9 @@ export class OrderSummaryComponent {
     const DATA:ICreateCheckoutDTO = {
       productId: this.quotationStoreQuery.selectedQuotationData?.choosedProduct.productId??'',
       companyId: this.quotationStoreQuery.selectedQuotationData?.company.insuranceCompanyID??0,
-      selectedBenfitCodes:[],
+      selectedBenfitCodes:[
+        ...(this.quotationStoreQuery.selectedQuotationData?.choosedBenefits??[]).map((item:IBenefit)=> item.benefitCode)
+      ],
       totalAmount: this.quotationStoreQuery.selectedQuotationData?.choosedProduct.productPrice??0,
       referenceId: this.insuranceInquireStoreQuery.inquireResponse.refId??'',
       bankName: this.bankName.value,

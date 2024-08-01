@@ -7,7 +7,7 @@
             <!-- <p class="my-4 secondary_color"> {{'views.paymentStatus.fail' | translate}} </p> -->
             <p class="my-4 secondary_color"> {{'views.paymentStatus.success' | translate}} </p>
             <br>
-            <app-base-link-component icon="arrow-right" classes="btn btn-primary px-4 py-3 font_size__13" [path]="'/' + ERoutes.profile"> {{'views.paymentStatus.goToPolicies' | translate}} </app-base-link-component>
+            <app-base-link-component icon="arrow-right" classes="btn btn-primary px-4 py-3 font_size__13" [path]="'/' + ERoutes.profile"> {{'views.paymentStatus.goToPolicies' | translate | uppercase}} </app-base-link-component>
             <p>{{paymentStoreQuery.checkoutStatus}}</p>
         </aside>
     </div>
