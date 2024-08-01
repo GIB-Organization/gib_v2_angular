@@ -18,17 +18,13 @@ export class PaymentStoreService {
     this.store.setLoading(true)
     return this.api.createPaymentCheckout(data).pipe(take(1)).subscribe({
         next:(res)=>{
-            console.log(res) 
             this.store.update({
-              checkoutId:res
+              checkoutId:res.checkoutId
             })
             this.router.navigate([ERoutes.chechout])
         },
         complete:()=>{this.store.setLoading(false)},
-        error:(err)=>{
-          console.log(err)
-          this.store.setLoading(false)
-        }
+        error:(err)=> this.store.setLoading(false)
     })
   }
   getPaymentStatus(id:string){

@@ -357,7 +357,7 @@
             "enduranceTooltip":"Deductable is the amount of money you agreed to pay for car repairs or replacement after accident"
         },
         "paymentStatus":{
-            "goToPolicies":"Go To Policies!",
+            "goToPolicies":"Go to your policies!",
             "success":"Payment confirmed. Enjoy your coverage.",
             "fail":"We were unable to process your payment. Please try again later"
         }
