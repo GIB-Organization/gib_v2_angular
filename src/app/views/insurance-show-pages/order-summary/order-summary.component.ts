@@ -1,3 +1,4 @@
+import { ConstantsService } from './../../../services/core/constants/constants.service';
 import { PaymentStoreQuery } from '../../../store/paymentStore/payment-store.query';
 import { InsuranceInquireStoreQueryService } from './../../../store/insuranceInquireStore/insurance-inquire-store.query';
 import { BaseLinkComponentComponent } from './../../../components/base-components/base-link-component/base-link-component.component';
@@ -12,16 +13,17 @@ import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { SettingsQuery } from '../../../store/settings/settings.query';
 import { TitleBoxComponentComponent } from '../../../components/views-components/compare-offers/title-box-component/title-box-component.component';
 import { QuotationStoreQuery } from '../../../store/quotationStore/quotation-store.query';
-import { ERoutes } from '../../../core/enums';
+import { EPaymentsTypes, ERoutes } from '../../../core/enums';
 import { PaymentStoreService } from '../../../store/paymentStore/payment-store.service';
 import { IBenefit } from '../../../models/quotation.interface';
 import { CarPalletComponentComponent } from '../../../components/views-components/compare-offers/car-pallet-component/car-pallet-component.component';
 import { ICheckoutDataFormGroup, ICreateCheckoutDTO } from '../../../models/checkout.interface';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { VALIDATORS } from '../../../core/validations/global.validators';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputValidationAlertComponentComponent } from '../../../components/shared-components/input-validation-alert-component/input-validation-alert-component.component';
+import { AuthStoreQuery } from '../../../store/authStore/auth-store.query';
 
 @Component({
   selector: 'app-order-summary',
@@ -33,17 +35,20 @@ import { InputValidationAlertComponentComponent } from '../../../components/shar
 })
 export class OrderSummaryComponent {
  settingsQuery = inject(SettingsQuery);
+ authStoreQuery = inject(AuthStoreQuery);
  fb = inject(FormBuilder);
  quotationStoreQuery = inject(QuotationStoreQuery);
  paymentStoreService = inject(PaymentStoreService);
  paymentStoreQuery = inject(PaymentStoreQuery);
+ constantsService = inject(ConstantsService);
  insuranceInquireStoreQuery = inject(InsuranceInquireStoreQueryService);
  isLoading = toSignal(this.paymentStoreQuery.selectLoading());
+ paymentForm = new FormControl<EPaymentsTypes>(EPaymentsTypes.visa);
  form = this.fb.nonNullable.group<ICheckoutDataFormGroup>({
-  bankName: this.fb.nonNullable.control('', [Validators.required]),
-  iban: this.fb.nonNullable.control('', [Validators.required]),
-  phone: this.fb.nonNullable.control('', [VALIDATORS['phone']]),
-  email: this.fb.nonNullable.control('', [VALIDATORS['email']]),
+  bankName: this.fb.nonNullable.control(this.authStoreQuery.bankName, [Validators.required]),
+  iban: this.fb.nonNullable.control(this.authStoreQuery.iban, [Validators.required]),
+  phoneNumber: this.fb.nonNullable.control(this.authStoreQuery.phoneNumber, [VALIDATORS['phone']]),
+  email: this.fb.nonNullable.control(this.authStoreQuery.email, [VALIDATORS['email']]),
   termsConditions: this.fb.nonNullable.control(true, [Validators.requiredTrue]),
  })
  get fullName(){
@@ -75,7 +80,7 @@ export class OrderSummaryComponent {
   return this.formGetter.controls.email
  }
  get phone(){
-  return this.formGetter.controls.phone
+  return this.formGetter.controls.phoneNumber
  }
  get termsConditions(){
   return this.formGetter.controls.termsConditions
@@ -93,9 +98,10 @@ export class OrderSummaryComponent {
       referenceId: this.insuranceInquireStoreQuery.inquireResponse.refId??'',
       bankName: this.bankName.value,
       iban: this.iban.value,
-      phone: `${this.phone.value}`,
+      phoneNumber: `${this.phone.value}`,
       email: this.email.value
     }
+    this.paymentStoreQuery.setPaymentMethod = (this.paymentForm.value as EPaymentsTypes);
     this.paymentStoreService.createCheckout(DATA)
   }
  }

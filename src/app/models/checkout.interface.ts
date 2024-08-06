@@ -9,7 +9,7 @@ export interface ICreateCheckoutDTO{
     bankName: string;
     iban: string;
     email: string;
-    phone: string;
+    phoneNumber: string;
 }
 
 export interface ICreateCheckoutResponse{
@@ -20,6 +20,6 @@ export interface ICheckoutDataFormGroup{
     bankName: FormControl<string>;
     iban: FormControl<string>;
     email: FormControl<string>;
-    phone: FormControl<string>;
+    phoneNumber: FormControl<string>;
     termsConditions: FormControl<boolean>;
 }

@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
       translateModuleImport()
     ]),
     {
-      provide: BASE_URL_TOKEN, useValue: environment.apiUrl
+      provide: BASE_URL_TOKEN, useValue: environment.apiUrl,
     },
     provideRouter(routes, withInMemoryScrolling(scrollConfig)), 
     provideClientHydration(),

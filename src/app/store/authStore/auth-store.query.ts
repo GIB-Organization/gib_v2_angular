@@ -12,8 +12,23 @@ export class AuthStoreQuery extends Query<IAuthStore> {
     super(_store)
   }
 
+  get user(){
+    return this._store.getValue().authData
+  }
   get userId(){
     return this._store.getValue().authData?.userId
+  }
+  get bankName(){
+    return this._store.getValue().authData?.bankName??''
+  }
+  get email(){
+    return this._store.getValue().authData?.email??''
+  }
+  get phoneNumber(){
+    return this._store.getValue().authData?.phoneNumber??''
+  }
+  get iban(){
+    return this._store.getValue().authData?.iban??''
   }
   get userName(){
     return this._store.getValue().authData?.username
