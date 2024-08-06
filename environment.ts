@@ -1,7 +1,7 @@
 // environment.ts (default)
 export const environment = {
-    production: false,
+    production: true,
     apiUrl: 'https://itarm-insurance.com/api/v1',
-    hyperpayShopperUrl: 'http://localhost:4200/payment-status/',
+    hyperpayShopperUrl: 'http://gib-v2.netlify.app/payment-status/',
     hyperpayUrl: 'https://eu-test.oppwa.com/v1/paymentWidgets.js?checkoutId=',
   };
