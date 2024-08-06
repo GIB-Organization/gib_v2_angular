@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { LocalStorageService } from '../core/localStorage/local-storage.service';
 import { EStorageEnum } from '../../core/enums';
-import { ILoginResponse } from '../../models/auth.interface';
+import { ILoginResponse, IRefreshTokenDTO } from '../../models/auth.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class AuthService {
     return  USER ? JSON.parse(USER??''):null
   }
 
-  getToken(){
+  getToken():IRefreshTokenDTO | null{
     const TOKEN = this.#localstorage.getStorageElement(EStorageEnum.token)
     return TOKEN ? JSON.parse(TOKEN??'') : null;
   }
@@ -26,5 +26,9 @@ export class AuthService {
   logout(){
     this.#localstorage.removeStorageElement(EStorageEnum.token);
     this.#localstorage.removeStorageElement(EStorageEnum.user);
+  }
+
+  isAuthenticated(){
+    return !!this.getToken();
   }
 }

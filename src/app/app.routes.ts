@@ -1,4 +1,4 @@
-import { authGuard } from './core/guards/auth/auth.guard';
+import { AuthGuard } from './core/guards/auth/auth.guard';
 import { Routes } from '@angular/router';
 import { ERoutes } from './core/enums/routes.enum';
 import { IRoutingData } from './models/routing.interface';
@@ -202,7 +202,7 @@ const breadcrumbLayoutRoutes: Routes = [
             {
                 path: ERoutes.profile,
                 loadComponent: () => import('./layouts/profile-layout/profile-layout.component').then(m => m.ProfileLayoutComponent),
-                canActivate: [authGuard],
+                canActivate: [AuthGuard],
                 children:[
                     ...profileLayoutRoutes
                 ],

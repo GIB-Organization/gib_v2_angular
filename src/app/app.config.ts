@@ -1,4 +1,4 @@
-import { environment } from './../../environment';
+import { environment } from '../environments/environment';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
       translateModuleImport()
     ]),
     {
-      provide: BASE_URL_TOKEN, useValue: environment.apiUrl
+      provide: BASE_URL_TOKEN, useValue: environment.apiUrl,
     },
     provideRouter(routes, withInMemoryScrolling(scrollConfig)), 
     provideClientHydration(),

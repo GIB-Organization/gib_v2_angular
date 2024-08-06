@@ -40,6 +40,10 @@ export interface IRefreshTokenDTO {
 export interface ILoginResponse {
   userId?: string;
   username?: string;
+  bankName?: string;
+  email?: string;
+  phoneNumber?: string;
+  iban?: string;
   token?: IRefreshTokenDTO;
 }
 
