@@ -1,4 +1,4 @@
-import { environment } from './../../environment';
+import { environment } from '../environments/environment';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';

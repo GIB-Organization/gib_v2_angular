@@ -1,10 +1,9 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, inject, OnInit, PLATFORM_ID, viewChild } from '@angular/core';
 import { PaymentStoreQuery } from '../../store/paymentStore/payment-store.query';
-import { DomSanitizer } from '@angular/platform-browser';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { HYPER_PAY_SHOPPER_URL, HYPER_PAY_URL } from '../../core/injection-tokens/payments.token';
-import { environment } from '../../../../environment';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-payment-view',
   standalone: true,
