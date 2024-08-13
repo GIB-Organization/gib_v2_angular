@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from 'primeng/toast';
@@ -13,13 +13,14 @@ import { routeFadeAnimation } from './core/animations/animations.animation';
   styleUrl: './app.component.scss',
   animations:[routeFadeAnimation]
 })
-export class AppComponent implements OnInit, AfterContentInit{
+export class AppComponent implements OnInit, AfterViewInit{
   authStoreService = inject(AuthStoreService);
   contentLoading:boolean = true;
   ngOnInit(): void {
       this.authStoreService.getUserFromLocal();
   }
-  ngAfterContentInit(): void {
-    this.contentLoading = false
+  ngAfterViewInit(): void {
+    console.log('content-init')
+    setTimeout(()=>{this.contentLoading = false}, 3000)
   }
 } 
