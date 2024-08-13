@@ -29,7 +29,6 @@ export class AuthStoreService {
     this.store.reset();
     this.authService.logout();
     this.router.navigate(['/'])
-    console.log(!!this.store.getValue().authData?.token)
   }
   login(data: ILoginDTO) {
     this.store.setLoading(true)
@@ -77,7 +76,6 @@ export class AuthStoreService {
       },
       complete: () => this.store.setLoading(false),
       error: (err) => {
-        console.log(err)
         this.toasterService.addError(err.error)
         this.store.setError(err.error)
         this.store.setLoading(false)
@@ -88,14 +86,12 @@ export class AuthStoreService {
     this.store.setLoading(true)
     this.api.sendLoginOtp(data).pipe(take(1)).subscribe({
       next: (res) => {
-        console.log(res)
         this.authDialogService.otpDialogType = EOtpType.login;
         this.authDialogService.openComponent(EFormType.otp);
         this.store.update({ otp: res });
       },
       complete: () => this.store.setLoading(false),
       error: (err) => {
-        console.log(err)
         this.toasterService.addError(err.error)
         this.store.setError(err.error)
         this.store.setLoading(false)

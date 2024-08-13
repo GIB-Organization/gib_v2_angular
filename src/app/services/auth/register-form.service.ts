@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { FormBuilder, FormControl, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { IRegisterDTOFormGroup } from '../../models/auth.interface';
 import { INSURNACE_INQUIRE_VALIDATORS } from '../../core/validations';
 import { VALIDATORS } from '../../core/validations/global.validators';
@@ -11,8 +11,8 @@ export class RegisterFormService {
   #fb = inject(FormBuilder);
   form= this.#fb.group<IRegisterDTOFormGroup>({
     fullName: this.#fb.control('', [Validators.minLength(8), Validators.required]),
-    nationalId: this.#fb.control('', INSURNACE_INQUIRE_VALIDATORS['idNumber']),
-    phoneNumber: this.#fb.control('', [VALIDATORS['phone'], Validators.required]),
+    nationalId: this.#fb.control(null, INSURNACE_INQUIRE_VALIDATORS['idNumber']),
+    phoneNumber: this.#fb.control(null, [VALIDATORS['phone'], Validators.required]),
     email: this.#fb.control('', [VALIDATORS['email'], Validators.required]),
     password: this.#fb.control('', [VALIDATORS['password'], Validators.required]),
     confirmPassword: this.#fb.control('', [VALIDATORS['password'], Validators.required]),

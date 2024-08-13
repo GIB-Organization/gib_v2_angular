@@ -1,6 +1,4 @@
 import { trigger, transition, style, animate, query, group, animateChild } from '@angular/animations';
-import { inject } from '@angular/core';
-import { ChildrenOutletContexts } from '@angular/router';
 
 export const routeAnimations = trigger('routeAnimations', [
   transition('* <=> *', [

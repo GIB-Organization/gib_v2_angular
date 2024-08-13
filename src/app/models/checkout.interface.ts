@@ -10,6 +10,7 @@ export interface ICreateCheckoutDTO{
     iban: string;
     email: string;
     phoneNumber: string;
+    paymentMethodId: number;
 }
 
 export interface ICreateCheckoutResponse{

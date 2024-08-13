@@ -41,7 +41,7 @@
     </div>
     <div class="mb-3">
         <app-base-label-component for="confirmPasswordInput" classes="form-label" [required]="true"> {{'public.confirmPassword' | translate}} </app-base-label-component>
-        <p-password [formControl]="registerService.confirmPassword" [toggleMask]="true" inputStyleClass="form-control" inputId="confirmPasswordInput"/>
+        <p-password [feedback]="false" [formControl]="registerService.confirmPassword" [toggleMask]="true" inputStyleClass="form-control" inputId="confirmPasswordInput"/>
         @if(registerService.confirmPassword.touched && registerService.password.value !== registerService.confirmPassword.value){
             <app-input-validation-alert-component> {{'errors.confirmPassword' | translate}} </app-input-validation-alert-component>
         }

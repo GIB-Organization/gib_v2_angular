@@ -1,2 +1,6 @@
+@if(contentLoading){
+<app-loading-spinner [@routeFadeAnimation]></app-loading-spinner>
+}@else{
 <router-outlet></router-outlet>
-<p-toast/>
+<p-toast />
+}
