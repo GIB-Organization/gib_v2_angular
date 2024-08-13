@@ -99,7 +99,8 @@ export class OrderSummaryComponent {
       bankName: this.bankName.value,
       iban: this.iban.value,
       phoneNumber: `${this.phone.value}`,
-      email: this.email.value
+      email: this.email.value,
+      paymentMethodId:1,
     }
     this.paymentStoreQuery.setPaymentMethod = (this.paymentForm.value as EPaymentsTypes);
     this.paymentStoreService.createCheckout(DATA)

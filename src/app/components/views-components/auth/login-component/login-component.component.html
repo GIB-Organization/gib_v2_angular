@@ -7,7 +7,7 @@
 </div>
 <div class="mb-2">
     <app-base-label-component for="passwordInput" classes="form-label" [required]="true"> {{'public.password' | translate}} </app-base-label-component>
-    <p-password [formControl]="loginFormService.password" [toggleMask]="true" inputStyleClass="form-control" inputId="passwordInput"/>
+    <p-password [feedback]="false" [formControl]="loginFormService.password" [toggleMask]="true" inputStyleClass="form-control" inputId="passwordInput"/>
     @if(loginFormService.password.invalid && loginFormService.password.touched){
         <app-input-validation-alert-component> {{'errors.password' | translate}} </app-input-validation-alert-component>
     }
