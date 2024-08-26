@@ -58,8 +58,7 @@
                             <div>
                                 <app-base-label-component for="phone" classes="mb-2" [required]="true"> {{'views.insuranceShow.requesterNumber' |
                                     translate}} </app-base-label-component>
-                                    <p-inputNumber [formControl]="phone" inputStyleClass="form-control" inputId="phone" [useGrouping]="false">
-                                    </p-inputNumber>
+                                    <input InputNumber [maxLength]="10" [minLength]="10" [formControl]="phone" class="form-control" id="phone"/>
                                     @if(phone.invalid && phone.touched){
                                         <app-input-validation-alert-component> {{'errors.phone' | translate}} </app-input-validation-alert-component>
                                     }
@@ -90,10 +89,10 @@
                     <div class="mb-3 d-flex flex-wrap">
                         @for(payment of constantsService.paymentLogos; track payment.id){
                             <div class="form-check form-check-inline col">
-                                <app-base-label-component classes="btn d-flex justify-content-center {{(paymentForm.value === payment.id) && 'btn-outline-primary' }}" [for]="payment.id + '-payment'"> 
+                                <app-base-label-component classes="btn d-flex justify-content-center {{(paymentMethodId.value === payment.id) && 'btn-outline-primary' }}" [for]="payment.id + '-payment'"> 
                                     <app-base-image-component [path]="payment.path" alt="payment logo"></app-base-image-component>
                                 </app-base-label-component>
-                                <input [value]="payment.id" type="radio" class="btn-check" [id]="payment.id + '-payment'" [formControl]="paymentForm" />
+                                <input [value]="payment.id" type="radio" class="btn-check" [id]="payment.id + '-payment'" [formControl]="paymentMethodId" />
                             </div>
                         }
                     </div>

@@ -25,7 +25,6 @@ export class RegisterComponentComponent {
   registerService = inject(RegisterFormService);
   authStoreQuery = inject(AuthStoreQuery);
   authStoreService = inject(AuthStoreService);
-  isError = toSignal(this.authStoreQuery.selectError())
   isLoading = toSignal(this.authStoreQuery.selectLoading())
 
   register(){

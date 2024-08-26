@@ -1,14 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Message, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToasterService {
-  messages: Message[] = [];
-  messageService = inject(MessageService);
-  translate = inject(TranslateService);
+  private messageService = inject(MessageService);
+  private translate = inject(TranslateService);
   addSuccess(message:string){
     this.messageService.add({
       severity: 'success',

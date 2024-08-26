@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BaseButtonComponentComponent } from '../../../base-components/base-button-component/base-button-component.component';
 import { ShadowBoxComponentComponent } from '../shadow-box-component/shadow-box-component.component';
 import { AuthStoreService } from '../../../../store/authStore/auth-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-sidebar-component',
@@ -18,6 +19,7 @@ import { AuthStoreService } from '../../../../store/authStore/auth-store.service
 export class ProfileSidebarComponentComponent {
   private localePath = 'views.profile.';
   public authStoreService = inject(AuthStoreService);
+  public router = inject(Router);
   sidedLinks: {icon:string, path: ERoutes, text: string}[] = [
     {
       path: ERoutes.quotations,
@@ -60,4 +62,9 @@ export class ProfileSidebarComponentComponent {
       icon: 'svg/personal-info.svg'
     } 
   ] 
+
+  logout(){
+    this.authStoreService.logout();
+    this.router.navigate(['/']);
+  }
 }

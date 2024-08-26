@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
-  Input,
 } from '@angular/core';
 import { PlaceholderContentComponentComponent } from '../placeholder-content-component/placeholder-content-component.component';
 
@@ -15,5 +14,5 @@ import { PlaceholderContentComponentComponent } from '../placeholder-content-com
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadingContentComponentComponent {
-  loading = input<boolean>(true);
+  loading = input<boolean>();
 }

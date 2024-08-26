@@ -184,8 +184,9 @@ const breadcrumbLayoutRoutes: Routes = [
                 } as IRoutingData
             },
             {
-                path: ERoutes.chechout,
+                path: ERoutes.checkout,
                 loadComponent: () => import('./views/payment-view/payment-view.component').then(m => m.PaymentViewComponent),
+                canActivate:[insuranceAdditionalData],
                 data:{
                     animation: 'Checkout',
                     title: 'Checkout'

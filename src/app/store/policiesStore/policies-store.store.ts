@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { IPoliciesStore } from './policies-store.interface';
+import { Store, StoreConfig } from '@datorama/akita';
+
+const initialState = () : IPoliciesStore =>{
+  return {
+    policies:[]
+  } 
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+@StoreConfig({ name: 'PoliciesStore', resettable: true })
+export class PoliciesStore extends Store<IPoliciesStore> {
+
+  constructor() { super(initialState()) }
+}

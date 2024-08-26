@@ -1,7 +1,4 @@
 <div class="register_form">
-    @if(isError()){
-        <app-input-validation-alert-component class="mb-3"> {{isError()}} </app-input-validation-alert-component>
-    }
     <div class="mb-2">
         <app-base-label-component for="nameInput" classes="form-label" [required]="true"> {{'public.name' | translate}} </app-base-label-component>
         <input type="text" class="form-control" [formControl]="registerService.fullName" id="nameInput">
@@ -19,8 +16,7 @@
     </div>
     <div class="mb-2">
         <app-base-label-component for="numberInput" classes="form-label" [required]="true"> {{'public.phone' | translate}} </app-base-label-component>
-        <p-inputNumber [formControl]="registerService.phoneNumber" inputStyleClass="form-control" inputId="numberInput" [useGrouping]="false">
-        </p-inputNumber>
+        <input [minlength]="10" [maxlength]="10" InputNumber [formControl]="registerService.phoneNumber" class="form-control" inputId="numberInput"/>
         @if(registerService.phoneNumber.invalid && registerService.phoneNumber.touched){
             <app-input-validation-alert-component> {{'errors.phone' | translate}} </app-input-validation-alert-component>
         }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
 import { IAuthStore } from './auth-store.interface';
 import { AuthStore } from './auth-store.store';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,9 @@ export class AuthStoreQuery extends Query<IAuthStore> {
 
   get isAuthenticated(){
     return !!this.token
+  }
+  get isAuthenticated$(){
+    return this.select(state=> state.authData?.token);
   }
 
 }

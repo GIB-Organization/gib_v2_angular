@@ -43,12 +43,12 @@ export class OrderSummaryComponent {
  constantsService = inject(ConstantsService);
  insuranceInquireStoreQuery = inject(InsuranceInquireStoreQueryService);
  isLoading = toSignal(this.paymentStoreQuery.selectLoading());
- paymentForm = new FormControl<EPaymentsTypes>(EPaymentsTypes.visa);
  form = this.fb.nonNullable.group<ICheckoutDataFormGroup>({
   bankName: this.fb.nonNullable.control(this.authStoreQuery.bankName, [Validators.required]),
   iban: this.fb.nonNullable.control(this.authStoreQuery.iban, [Validators.required]),
   phoneNumber: this.fb.nonNullable.control(this.authStoreQuery.phoneNumber, [VALIDATORS['phone']]),
   email: this.fb.nonNullable.control(this.authStoreQuery.email, [VALIDATORS['email']]),
+  paymentMethod: this.fb.nonNullable.control(EPaymentsTypes.visa),
   termsConditions: this.fb.nonNullable.control(true, [Validators.requiredTrue]),
  })
  get fullName(){
@@ -85,6 +85,9 @@ export class OrderSummaryComponent {
  get termsConditions(){
   return this.formGetter.controls.termsConditions
  }
+ get paymentMethodId(){
+  return this.formGetter.controls.paymentMethod
+ }
 
  createCheckout(){
   if(this.formGetter.valid){
@@ -100,9 +103,9 @@ export class OrderSummaryComponent {
       iban: this.iban.value,
       phoneNumber: `${this.phone.value}`,
       email: this.email.value,
-      paymentMethodId:1,
+      paymentMethod:this.paymentMethodId.value,
     }
-    this.paymentStoreQuery.setPaymentMethod = (this.paymentForm.value as EPaymentsTypes);
+    this.paymentStoreQuery.setPaymentMethod = (this.paymentMethodId.value as EPaymentsTypes);
     this.paymentStoreService.createCheckout(DATA)
   }
  }
