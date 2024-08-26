@@ -220,7 +220,7 @@
                 "invoiceDetails":"Invoice Details"
             },
             "quotations":{
-                "title": "Quotations",
+                "title": "Policies",
                 "policyId":"Policy ID",
                 "companyName":"Company Name",
                 "status":"Status",
