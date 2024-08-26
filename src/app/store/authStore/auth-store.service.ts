@@ -28,7 +28,6 @@ export class AuthStoreService {
   logout(){
     this.store.reset();
     this.authService.logout();
-    this.router.navigate(['/'])
   }
   login(data: ILoginDTO) {
     this.store.setLoading(true)
@@ -69,7 +68,6 @@ export class AuthStoreService {
     this.store.setLoading(true)
     this.api.sendRegisterOtp(data).pipe(take(1)).subscribe({
       next: (res) => {
-        console.log(res)
         this.authDialogService.otpDialogType = EOtpType.register;
         this.authDialogService.openComponent(EFormType.otp);
         this.store.update({ otp: res });

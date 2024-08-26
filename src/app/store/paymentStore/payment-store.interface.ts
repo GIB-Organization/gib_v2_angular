@@ -1,7 +1,7 @@
-import { EPaymentsTypes } from "../../core/enums";
+import { EPaymentStatus, EPaymentsTypes } from "../../core/enums";
 
 export interface IPaymentStore{
     checkoutId?: string,
-    checkoutStatus?:string,
-    paymentMethod?:EPaymentsTypes
+    checkoutStatus?:EPaymentStatus,
+    paymentMethod?:EPaymentsTypes,
 }

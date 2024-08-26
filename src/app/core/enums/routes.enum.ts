@@ -19,7 +19,7 @@ export enum ERoutes{
     additionalData= 'additional-data',
     quotations= 'quotations',
     invoices= 'invoices',
-    chechout= 'chechout',
+    checkout= 'checkout',
     paymentStatus= 'payment-status',
 }
 

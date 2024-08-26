@@ -10,7 +10,7 @@ export class LoginFormService {
   #fb = inject(FormBuilder);
   form= this.#fb.group<ILoginDTOFormGroup>({
     email: this.#fb.control('', [VALIDATORS['email'], Validators.required]),
-    password: this.#fb.control('', [VALIDATORS['password'], Validators.required]),
+    password: this.#fb.control('', [Validators.required]),
   })
   get email(){
     return this.form.controls.email;

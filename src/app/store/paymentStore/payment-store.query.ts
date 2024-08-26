@@ -18,6 +18,9 @@ export class PaymentStoreQuery extends Query<IPaymentStore>{
   get checkoutStatus(){
     return this._store.getValue().checkoutStatus
   }
+  get checkoutStatus$(){
+    return this.select('checkoutStatus');
+  }
   get paymentMethod(){
     return this._store.getValue().paymentMethod;
   }

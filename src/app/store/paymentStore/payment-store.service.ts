@@ -21,24 +21,24 @@ export class PaymentStoreService {
             this.store.update({
               checkoutId:res.checkoutId
             })
-            this.router.navigate([ERoutes.chechout])
+            this.router.navigate([ERoutes.checkout])
         },
         complete:()=>{this.store.setLoading(false)},
-        error:(err)=> this.store.setLoading(false)
+        error:(err)=> {
+          this.store.setLoading(false)
+        }
     })
   }
-  getPaymentStatus(id:string){
+  getPaymentStatus(checkoutId:string, resourcePath:string){
     this.store.setLoading(true)
-    return this.api.getPaymentStatus(id).pipe(take(1)).subscribe({
+    return this.api.getPaymentStatus(checkoutId, resourcePath).pipe(take(1)).subscribe({
         next:(res)=>{
-            console.log(res) 
             this.store.update({
-              checkoutStatus:res
+              checkoutStatus:res.result
             })
         },
         complete:()=>{this.store.setLoading(false)},
         error:(err)=>{
-          console.log(err)
           this.store.setLoading(false)
         }
     })

@@ -1,4 +1,5 @@
 import { FormControl } from "@angular/forms";
+import { EPaymentsTypes } from "../core/enums";
 
 export interface ICreateCheckoutDTO{
     referenceId: string;
@@ -10,7 +11,7 @@ export interface ICreateCheckoutDTO{
     iban: string;
     email: string;
     phoneNumber: string;
-    paymentMethodId: number;
+    paymentMethod: EPaymentsTypes;
 }
 
 export interface ICreateCheckoutResponse{
@@ -23,4 +24,5 @@ export interface ICheckoutDataFormGroup{
     email: FormControl<string>;
     phoneNumber: FormControl<string>;
     termsConditions: FormControl<boolean>;
+    paymentMethod: FormControl<EPaymentsTypes>;
 }

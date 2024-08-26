@@ -1,13 +1,11 @@
 <div class="car_insurance__form" [formGroup]="insuranceForm">
     <div class="form_box secondary_bg text-light border_radius__60 p-4 mt-5">
         <div class="row py-3 align-items-stretch">
-            <aside class="col-md-4 my-3">
-                <div class="mb-4 d-flex align-items-center">
-                    <aside class="flex-fill">
-                        <app-base-label-component classes="form-label mb-0 me-3" [required]="true">
-                            {{insuranceFormStructure.insurancePurpose.label | translate}} </app-base-label-component>
-                    </aside>
-                    <div>
+            <aside class="col-lg-4 col-md-6 my-3">
+                <div class="mb-4 d-flex align-items-center flex-nowrap">
+                    <app-base-label-component classes="form-label mb-0 me-3" [required]="true">
+                        {{insuranceFormStructure.insurancePurpose.label | translate}} </app-base-label-component>
+                    <div class="d-flex flex-nowrap">
                         @for(item of insuranceFormStructure.insurancePurpose.radioButtons; track item.id; let index =
                         $index){
                         <div class="form-check form-check-inline">
@@ -31,10 +29,6 @@
                                 <span class="required_input text-danger font_size__16 me-1"> * </span>
                             </label>
                         </p-floatLabel>
-                        <!-- <app-base-label-component classes="form-label" [required]="true"
-                            for="idInput">{{'views.home.insuranceForm.id' | translate}}</app-base-label-component>
-                        <p-inputNumber [maxlength]="10" [minlength]="10" formControlName="idNumber" inputStyleClass="form-control" inputId="idInput" [useGrouping]="false">
-                        </p-inputNumber> -->
                         @if(controlNotValid('idNumber')){
                             <app-input-validation-alert-component> {{'errors.idNumber' | translate}} </app-input-validation-alert-component>
                         }
@@ -51,10 +45,6 @@
                                     <span class="required_input text-danger font_size__16 me-1"> * </span>
                                 </label>
                             </p-floatLabel>
-                            <!-- <app-base-label-component classes="form-label" [required]="true"
-                                for="sellerId">{{'views.home.insuranceForm.sellerId' | translate}}</app-base-label-component>
-                            <p-inputNumber [maxlength]="10" [minlength]="10" formControlName="sellerId" inputStyleClass="form-control" inputId="sellerId" [useGrouping]="false">
-                            </p-inputNumber> -->
                             @if(controlNotValid('sellerId')){
                                 <app-input-validation-alert-component> {{'errors.idNumber' | translate}} </app-input-validation-alert-component>
                             }
@@ -62,8 +52,7 @@
                     }
                 </div>
             </aside>
-
-            <aside class="col-md-4 my-3">
+            <aside class="col-lg-4 col-md-6 my-3">
                 <div class="mb-4 d-flex align-items-center">
                     <app-base-label-component classes="form-label mb-0 me-3"
                         [required]="true">{{insuranceFormStructure.registrationType.label|
@@ -157,7 +146,7 @@
                 }
             </div>
             </aside>
-            <aside class="col-md-4 my-3">
+            <aside class="col-lg-4 col-md-12 my-3">
                 <div class="h-100 row">
                     <div class="col">
                         <div class="d-flex flex-column h-100">
@@ -173,9 +162,6 @@
                     </div>
                     <div class="col">
                         <div class="mb-2">
-                            <!-- <app-base-label-component classes="form-label"
-                                [required]="true">{{'views.home.insuranceForm.confirmCode' |
-                                translate}}</app-base-label-component> -->
                             <app-base-captcha-component (codeIsCorrectChange)="captchaCodeIsCorrect.set($event)" id="baseCaptcha1"></app-base-captcha-component>
                         </div>
                     </div>

@@ -9,14 +9,12 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { authInterceptor } from './core/interceptors/auth/auth.interceptor';
 import { BASE_URL_TOKEN } from './core/injection-tokens/base-url.token';
 import { MessageService } from 'primeng/api';
-
+import { errorHandlerInterceptor } from './core/interceptors/errorHandler/error-handler.interceptor';
 
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
   anchorScrolling: 'enabled',
 };
-
-
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,7 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimations(),
     provideHttpClient(
-      withInterceptors([authInterceptor]),
+      withInterceptors([authInterceptor, errorHandlerInterceptor]), 
     )
   ]
 };

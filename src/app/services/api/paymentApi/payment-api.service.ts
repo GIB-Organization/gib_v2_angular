@@ -16,7 +16,7 @@ export class PaymentApiService {
     return this.http.post<ICreateCheckoutResponse>(`${this.baseUrl}/${this.path}/createCheckout`, data)
   }
 
-  getPaymentStatus(requestId:string): Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/${this.path}/GetPaymentStatus?requestId=${requestId}`)
+  getPaymentStatus(checkoutId:string, resourcePath:string): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/${this.path}/GetPaymentStatus?checkoutId=${checkoutId}&resourcePath=${resourcePath}`)
   }
 }

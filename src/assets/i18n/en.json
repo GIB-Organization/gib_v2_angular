@@ -65,15 +65,15 @@
                 "medicalFaultsInsurance": "Medical Faults Insurance"
             },
             "insuranceForm": {
-                "insurancePurpose": "Insurance purpose",
+                "insurancePurpose": "Insurance Purpose",
                 "newInsurance": "New Insurance",
-                "ownershipTransfer": "Ownership transfer",
+                "ownershipTransfer": "Ownership Transfer",
                 "registerType": "Vehicle Register Type",
                 "form": "Form",
                 "customCard": "Custom Cards",
-                "id": "ID number / residence",
+                "id": "ID Number / Residence",
                 "serialNumber": "Sequence Number",
-                "insuranceDate": "Insurance start date",
+                "insuranceDate": "Insurance Start Date",
                 "confirmCode": "Captcha Code",
                 "termsConditionsAgree": "I agree with terms and conditions",
                 "showOffers": "Show Offers",
@@ -220,7 +220,7 @@
                 "invoiceDetails":"Invoice Details"
             },
             "quotations":{
-                "title": "Quotations",
+                "title": "Policies",
                 "policyId":"Policy ID",
                 "companyName":"Company Name",
                 "status":"Status",
@@ -359,7 +359,8 @@
         "paymentStatus":{
             "goToPolicies":"Go to your policies!",
             "success":"Payment confirmed. Enjoy your coverage.",
-            "fail":"We were unable to process your payment. Please try again later"
+            "fail":"We were unable to process your payment. Please try again later",
+            "pending":"We are awaiting confirmation of your pending payment."
         }
     },
     "errors":{
@@ -370,7 +371,7 @@
         "confirmPassword":"Confirm Password not matching password",
         "name":"Name must be 8-16 characters",
         "email":"Email must be valid",
-        "phone":"Phone must be valid"
+        "phone":"Phone must be like 05xxxxxxxx"
     },
     "months":{
         "gregorian":{
@@ -424,5 +425,9 @@
         "11":"Schemes",
         "12":"Customized Discount 1",
         "13":"Customized Discount 1"
+    },
+    "policyStatusEnum":{
+        "1":"Active",
+        "2": "Expired"
     }
 }

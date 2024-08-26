@@ -20,7 +20,6 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.authStoreService.getUserFromLocal();
   }
   ngAfterViewInit(): void {
-    console.log('content-init')
     setTimeout(()=>{this.contentLoading = false}, 3000)
   }
 } 

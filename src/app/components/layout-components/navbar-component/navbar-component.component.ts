@@ -10,6 +10,7 @@ import { BaseLinkComponentComponent } from '../../base-components/base-link-comp
 import { ILayoutStrategy, LtrDirection, RtlDirection } from '../../../core/classes/LayoutStyleDir';
 import { AuthStoreQuery } from '../../../store/authStore/auth-store.query';
 import { EFormType } from '../../../core/enums';
+import { toSignal } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-navbar-component',
   standalone: true,
@@ -39,6 +40,7 @@ export class NavbarComponentComponent {
   translate = inject(TranslateService)
   authDialogService = inject(AuthDialogService)
   authStoreQuery = inject(AuthStoreQuery)
+  isAuthenticated = toSignal(this.authStoreQuery.isAuthenticated$);
   navLinks: { lang: string, link: string }[] = [
     {
       lang: 'whoWeAre',

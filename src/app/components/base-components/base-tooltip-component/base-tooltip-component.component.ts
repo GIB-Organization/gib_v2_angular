@@ -17,6 +17,7 @@ export class BaseTooltipComponentComponent {
   @Input() popoverContent!:string;
   @Input() popoverType:EPopover = EPopover.text;
   @Input() isQuestionHead:boolean = true;
+  @Input() imgWidth:number = 200;
   get EPopover(){
     return EPopover
   }
