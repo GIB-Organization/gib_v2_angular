@@ -369,7 +369,7 @@
         "required":"Field is Required",
         "password":"Password must contains lowercase & uppercase characters with at least one number and one special character",
         "confirmPassword":"Confirm Password not matching password",
-        "name":"Name must be 8-16 characters",
+        "name":"Name must be > 8 characters",
         "email":"Email must be valid",
         "phone":"Phone must be like 05xxxxxxxx"
     },
@@ -429,5 +429,10 @@
     "policyStatusEnum":{
         "1":"Active",
         "2": "Expired"
+    },
+    "policyNajmStatus":{
+        "1":"Pending",
+        "2":"Failed",
+        "3":"Success"
     }
 }

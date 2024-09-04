@@ -34,6 +34,12 @@ export class AuthStoreQuery extends Query<IAuthStore> {
   get userName(){
     return this._store.getValue().authData?.username
   }
+  get fullName(){
+    return this._store.getValue().authData?.fullName
+  }
+  get nationalId(){
+    return this._store.getValue().authData?.nationalId
+  }
   get token(){
     return this._store.getValue().authData?.token
   }

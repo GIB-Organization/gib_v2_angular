@@ -27,3 +27,7 @@ export enum ERouteData{
     animation = 'animation',
     title = 'title'
 }
+
+export enum EQueryParams{
+    redirectTo = 'redirectTo'
+}

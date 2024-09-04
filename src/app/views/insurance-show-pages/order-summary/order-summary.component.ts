@@ -19,7 +19,7 @@ import { IBenefit } from '../../../models/quotation.interface';
 import { CarPalletComponentComponent } from '../../../components/views-components/compare-offers/car-pallet-component/car-pallet-component.component';
 import { ICheckoutDataFormGroup, ICreateCheckoutDTO } from '../../../models/checkout.interface';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { VALIDATORS } from '../../../core/validations/global.validators';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputValidationAlertComponentComponent } from '../../../components/shared-components/input-validation-alert-component/input-validation-alert-component.component';

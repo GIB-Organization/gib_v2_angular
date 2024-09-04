@@ -208,7 +208,8 @@ const breadcrumbLayoutRoutes: Routes = [
                     ...profileLayoutRoutes
                 ],
                 data:{
-                    title: 'views.profile.title'
+                    title: 'views.profile.title',
+                    withLogoutRedirect: true,
                 } as IRoutingData
             },
         ]

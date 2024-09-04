@@ -45,7 +45,31 @@ export interface ILoginResponse {
   phoneNumber?: string;
   iban?: string;
   token?: IRefreshTokenDTO;
+  fullName?: string;
+  nationalId?: string;
 }
 
 export type IRegisterOtp = Pick<IRegisterDTO, 'nationalId' | 'phoneNumber'>;
 export type ILoginOtp = Pick<IRegisterDTO, 'email' | 'password'>;
+
+export interface IChangeInfo{
+  phoneNumber: string,
+  fullName: string,
+  email: string
+}
+export interface IChangeInfoFormGroup{
+  phoneNumber: FormControl<string | null>,
+  fullName: FormControl<string | null>,
+  email: FormControl<string | null>
+}
+
+export interface IChangePassword{
+  oldPassword: string,
+  newPassword: string,
+  confirmPassword: string
+}
+export interface IChangePasswordFormGroup{
+  oldPassword: FormControl<string | null>,
+  newPassword: FormControl<string | null>,
+  confirmPassword: FormControl<string | null>
+}

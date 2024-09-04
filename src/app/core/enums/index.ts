@@ -7,6 +7,7 @@ import { EFormType, EOtpType } from './auth.enum';
 import { EEstimatedDistanceEnum, EMotionVectorEnum, EPartyTypeEnum, EPromoTypeEnum } from './additionalData.enum';
 import { ESortingEnum } from './sorting.enum';
 import { EPaymentStatus, EPaymentsTypes } from './payments.enum';
+import { EPolicyNajmStatus, EPolicyStatus } from './policy.enum';
 export {
     EFormType,
     EInsurancePurpose,
@@ -23,5 +24,7 @@ export {
     ESortingEnum,
     EOtpType,
     EPaymentsTypes,
-    EPaymentStatus
+    EPaymentStatus,
+    EPolicyNajmStatus,
+    EPolicyStatus,
 }

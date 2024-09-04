@@ -19,4 +19,9 @@ export class AuthDialogService {
   openComponent(type : EFormType){
     this.visibleForm.set(this._AuthDialogFactory.createDialogContent( type ))
   }
+
+  openLoginDialog(){
+    this.openComponent(EFormType.login);
+    this.visible.set(true);
+  }
 }

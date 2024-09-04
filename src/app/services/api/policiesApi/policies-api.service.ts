@@ -15,4 +15,9 @@ export class PoliciesApiService {
   getAllPolicies(): Observable<IPolicy[]>{
     return this.http.get<IPolicy[]>(`${this.baseUrl}/${this.path}/getAllPolicy`)
   }
+  getPolicyFile(id:string): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/${this.path}/getPolicyFileById?policyId=${id}`)
+  }
+
+  
 }

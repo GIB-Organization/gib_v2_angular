@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ChangeMainDataComponentComponent } from '../../../components/views-components/profile/change-main-data-component/change-main-data-component.component';
 import { ChangePasswordComponentComponent } from '../../../components/views-components/profile/change-password-component/change-password-component.component';
 
@@ -11,6 +11,6 @@ import { ChangePasswordComponentComponent } from '../../../components/views-comp
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalInfoViewComponent {
-
+  
 }
  

@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuotationStoreQuery } from './../../../../store/quotationStore/quotation-store.query';
 import { ChangeDetectionStrategy, Component, inject, input, model, OnInit, signal } from '@angular/core';
 import { BaseImageComponentComponent } from '../../../base-components/base-image-component/base-image-component.component';
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ERoutes } from '../../../../core/enums';
 import { AuthDialogService } from '../../../../services/auth/auth-dialog.service';
 import { AuthStoreQuery } from '../../../../store/authStore/auth-store.query';
+import { navigateToCurrentRouteWithNewQueryParams } from '../../../../core/utils/setQueryParams';
 
 @Component({
   selector: 'app-quotation-box',
@@ -35,6 +36,7 @@ export class QuotationBoxComponent implements OnInit{
   authDialogService = inject(AuthDialogService)
   authStoreQuery = inject(AuthStoreQuery)
   router = inject(Router)
+  route = inject(ActivatedRoute)
   quotation = input<IQuotation | any>()
   company = input<ICompany | any>()
   choosedProduct = signal<Partial<IQuotationProduct> | any>({});
@@ -67,19 +69,18 @@ export class QuotationBoxComponent implements OnInit{
   }
 
   submit(){
+    this.quotationStoreQuery.setSelectedQuotationData({
+      quotation: this.quotation(),
+      company: this.company(),
+      choosedBenefits: this.choosedBenefits,
+      choosedProduct: this.choosedProduct()
+    })
     if(this.authStoreQuery.isAuthenticated){
-      this.quotationStoreQuery.setSelectedQuotationData({
-        quotation: this.quotation(),
-        company: this.company(),
-        choosedBenefits: this.choosedBenefits,
-        choosedProduct: this.choosedProduct()
-      })
       this.router.navigate([`${ERoutes.insuranceShow}/${ERoutes.orderSummary}`]);
     }
-    else this.authDialogService.visible.set(true)
-  }
-
-  composeShowQuotation(){
-
+    else {
+      navigateToCurrentRouteWithNewQueryParams(this.route, this.router, `${ERoutes.insuranceShow}/${ERoutes.orderSummary}`)
+      this.authDialogService.openLoginDialog()
+    }
   }
 }
