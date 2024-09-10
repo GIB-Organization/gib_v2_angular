@@ -17,7 +17,7 @@ export enum ERoutes{
     orderSummary = 'order-summary',
     compareOffers = 'compare-offers',
     additionalData= 'additional-data',
-    quotations= 'quotations',
+    quotations= 'policies',
     invoices= 'invoices',
     checkout= 'checkout',
     paymentStatus= 'payment-status',

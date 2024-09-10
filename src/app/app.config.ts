@@ -1,3 +1,4 @@
+import { refreshTokenInterceptor } from './core/interceptors/refreshToken/refresh-token.interceptor';
 import { environment } from '../environments/environment';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -30,7 +31,11 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimations(),
     provideHttpClient(
-      withInterceptors([authInterceptor, errorHandlerInterceptor]), 
+      withInterceptors([
+        authInterceptor, 
+        refreshTokenInterceptor, 
+        errorHandlerInterceptor
+      ]), 
     )
   ]
 };

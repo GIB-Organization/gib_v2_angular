@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
 import { IAuthStore } from './auth-store.interface';
 import { AuthStore } from './auth-store.store';
-import { of } from 'rxjs';
+import { ILoginResponse } from '../../models/auth.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,10 @@ export class AuthStoreQuery extends Query<IAuthStore> {
   }
 
   get user(){
-    return this._store.getValue().authData
+    return this._store.getValue().authData;
+  }
+  set setUser(user:ILoginResponse){
+    this._store.update({authData:user});
   }
   get userId(){
     return this._store.getValue().authData?.userId
@@ -41,7 +44,7 @@ export class AuthStoreQuery extends Query<IAuthStore> {
     return this._store.getValue().authData?.nationalId
   }
   get token(){
-    return this._store.getValue().authData?.token
+    return this._store.getValue().authData?.token??null
   }
 
   get isAuthenticated(){

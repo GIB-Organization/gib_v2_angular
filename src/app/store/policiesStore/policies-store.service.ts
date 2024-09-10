@@ -1,7 +1,7 @@
-import { Injectable, inject } from '@angular/core';
+import { DestroyRef, Injectable, inject } from '@angular/core';
 import { PoliciesStore } from './policies-store.store';
 import { PoliciesApiService } from '../../services/api/policiesApi/policies-api.service';
-import { take } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class PoliciesStoreService {
   private api = inject(PoliciesApiService);
   private store = inject(PoliciesStore);
 
-  getAllPolicies(){
+  getAllPolicies(ref:DestroyRef){
     this.store.setLoading(true)
-    return this.api.getAllPolicies().pipe(take(1)).subscribe({
+    return this.api.getAllPolicies().pipe(takeUntilDestroyed(ref)).subscribe({
         next:(res)=>{
             this.store.update({
               policies:res
@@ -24,9 +24,9 @@ export class PoliciesStoreService {
         }
     })
   }
-  getPolicyFile(id:string){
+  getPolicyFile(id:string, ref:DestroyRef){
     this.store.update({fileIsLoading: true})
-    return this.api.getPolicyFile(id).pipe(take(1)).subscribe({
+    return this.api.getPolicyFile(id).pipe(takeUntilDestroyed(ref)).subscribe({
         next:(res)=>{
           this.store.update({fileIsLoading: false})
           const fileData = res.policyFile;
@@ -51,8 +51,6 @@ export class PoliciesStoreService {
         }
     })
   }
-
-
   resetStore(){
     this.store.update({
       policies:[]

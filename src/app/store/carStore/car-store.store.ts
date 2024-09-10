@@ -4,28 +4,7 @@ import { ICarStore } from './car-store.interface';
 
 const initValue = () : ICarStore =>{
   return {
-    cars:[
-      {
-        sequenceNumber: 'adsasdadsa',
-        logoUrl: 'qweqeqweqq',
-        plateNumber: 252,
-        plateChars: 'asasdad',
-        model: 'sdas',
-        brand: 'sdsd',
-        year: '2312',
-        id: '2313212312312'
-      },
-      {
-        sequenceNumber: 'adsasdadsa',
-        logoUrl: 'qweqeqweqq',
-        plateNumber: 2526,
-        plateChars: 'asasdad',
-        model: 'sdas',
-        brand: 'sdsd',
-        year: '2312',
-        id: '2313212312312'
-      },
-    ]
+    cars:[]
   }
 }
 @Injectable({

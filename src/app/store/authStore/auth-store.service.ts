@@ -36,6 +36,10 @@ export class AuthStoreService {
     this.authDialogService.openComponent(EFormType.login);
     this.logoutRedirect();
   }
+  /**
+   * @param  {ActivatedRoute=this.activatedRoute} route
+   * @returns any
+   */
   logoutRedirect(route:ActivatedRoute = this.activatedRoute):any{
     const children: ActivatedRoute[] = route.children;
     for (const child of children) {
@@ -49,6 +53,9 @@ export class AuthStoreService {
       return this.logoutRedirect(child);
     }
   }
+  /**
+   * @param  {ILoginDTO} data
+   */
   login(data: ILoginDTO) {
     this.store.setLoading(true)
     this.api.login(data).pipe(take(1)).subscribe({
@@ -69,6 +76,9 @@ export class AuthStoreService {
       }
     });
   }
+  /**
+   * @param  {IRegisterDTO} data
+   */
   register(data: IRegisterDTO) {
     this.store.setLoading(true)
     this.api.register(data).pipe(take(1)).subscribe({
@@ -89,6 +99,9 @@ export class AuthStoreService {
       }
     });
   }
+  /**
+   * @param  {IRegisterOtp} data
+   */
   sendRegisterOtp(data: IRegisterOtp) {
     this.store.setLoading(true)
     this.api.sendRegisterOtp(data).pipe(take(1)).subscribe({
@@ -105,6 +118,9 @@ export class AuthStoreService {
       }
     });
   }
+  /**
+   * @param  {ILoginOtp} data
+   */
   sendLoginOtp(data: ILoginOtp) {
     this.store.setLoading(true)
     this.api.sendLoginOtp(data).pipe(take(1)).subscribe({
@@ -121,6 +137,9 @@ export class AuthStoreService {
       }
     });
   }
+  /**
+   * @param  {IRefreshTokenDTO} data
+   */
   refreshToken(data: IRefreshTokenDTO) {
     this.store.setLoading(true)
     this.api.refreshToken(data).pipe(take(1)).subscribe({
@@ -139,6 +158,9 @@ export class AuthStoreService {
       }
     });
   }
+  /**
+   * @param  {IChangeInfo} data
+   */
   changeInfo(data: IChangeInfo) {
     this.store.setLoading(true)
     this.api.changeInfo(data).pipe(take(1)).subscribe({
@@ -156,6 +178,9 @@ export class AuthStoreService {
       }
     });
   }
+  /**
+   * @param  {IChangePassword} data
+   */
   changePassword(data: IChangePassword) {
     this.store.setLoading(true)
     this.api.changePassword(data).pipe(take(1)).subscribe({
@@ -171,7 +196,6 @@ export class AuthStoreService {
   }
   afterLoginRedirect(){
     const redirect = this.activatedRoute.snapshot.queryParams[EQueryParams.redirectTo]
-    console.log(redirect);
     redirect && this.router.navigate([redirect]);
   }
 }

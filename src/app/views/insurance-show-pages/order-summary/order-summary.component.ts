@@ -2,7 +2,7 @@ import { ConstantsService } from './../../../services/core/constants/constants.s
 import { PaymentStoreQuery } from '../../../store/paymentStore/payment-store.query';
 import { InsuranceInquireStoreQueryService } from './../../../store/insuranceInquireStore/insurance-inquire-store.query';
 import { BaseLinkComponentComponent } from './../../../components/base-components/base-link-component/base-link-component.component';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseLabelComponentComponent } from '../../../components/base-components/base-label-component/base-label-component.component';
 import { BaseImageComponentComponent } from '../../../components/base-components/base-image-component/base-image-component.component';
@@ -34,6 +34,7 @@ import { AuthStoreQuery } from '../../../store/authStore/auth-store.query';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderSummaryComponent {
+ ref = inject(DestroyRef);
  settingsQuery = inject(SettingsQuery);
  authStoreQuery = inject(AuthStoreQuery);
  fb = inject(FormBuilder);
@@ -106,7 +107,7 @@ export class OrderSummaryComponent {
       paymentMethod:this.paymentMethodId.value,
     }
     this.paymentStoreQuery.setPaymentMethod = (this.paymentMethodId.value as EPaymentsTypes);
-    this.paymentStoreService.createCheckout(DATA)
+    this.paymentStoreService.createCheckout(DATA, this.ref)
   }
  }
 }

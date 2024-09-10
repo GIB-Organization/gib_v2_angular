@@ -1,3 +1,4 @@
+import { ErrorCodes } from './errors.enum';
 import { EStorageEnum } from './storage.enum';
 import { ERouteData, ERoutes } from './routes.enum';
 import { EQuotationsTabs } from './quotations.enum';
@@ -27,4 +28,5 @@ export {
     EPaymentStatus,
     EPolicyNajmStatus,
     EPolicyStatus,
+    ErrorCodes
 }

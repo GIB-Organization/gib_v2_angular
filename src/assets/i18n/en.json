@@ -434,5 +434,8 @@
         "1":"Pending",
         "2":"Failed",
         "3":"Success"
+    },
+    "httpErrors":{
+        "401":"Your session has expired. Please log in again."
     }
 }

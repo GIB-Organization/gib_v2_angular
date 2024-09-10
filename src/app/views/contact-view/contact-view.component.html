@@ -29,7 +29,7 @@
                     <aside class="col-md-6">
                         <div class="mb-4">
                             <app-base-label-component classes="form-label" [required]="true" for="phoneInput"> {{ 'public.phone' | translate }} </app-base-label-component>
-                            <input type="number" class="form-control" id="phoneInput" placeholder="{{'public.phone' | translate}}">
+                            <input type="text" pattern="[0-9]+" class="form-control" id="phoneInput" placeholder="{{'public.phone' | translate}}">
                         </div>
                     </aside>
                     <aside class="col-md-6">

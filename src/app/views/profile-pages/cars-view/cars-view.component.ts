@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { DeferBlockComponentComponent } from '../../../components/shared-components/defer-block-component/defer-block-component.component';
 import { EmptyDataComponentComponent } from '../../../components/shared-components/empty-data-component/empty-data-component.component';
 import { ShadowBoxComponentComponent } from '../../../components/views-components/profile/shadow-box-component/shadow-box-component.component';
@@ -19,10 +19,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './cars-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CarsViewComponent {
+export class CarsViewComponent implements OnInit {
+  ref = inject(DestroyRef)
   carsStoreQuery = inject(CarStoreQuery)
   carsStoreService = inject(CarStoreService)
   isDeleting = toSignal(this.carsStoreQuery.isDeleting$);
   cars = toSignal(this.carsStoreQuery.cars$);
 
+  ngOnInit(): void {
+      this.carsStoreService.getAllCars(this.ref);
+  }
 }

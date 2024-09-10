@@ -11,6 +11,7 @@ import { IResponse } from '../../../models/response.interface';
 export class AuthApiService {
   private baseUrl = inject(BASE_URL_TOKEN);
   private path = 'account'
+  public refreshPath = 'refreshToken'
   private http = inject(HttpClient)
   /**
    * @param  {ILoginDTO} data
@@ -30,8 +31,8 @@ export class AuthApiService {
    * @param  {IRefreshTokenDTO} data
    * @returns Observable
    */
-  refreshToken(data:IRefreshTokenDTO): Observable<IRefreshTokenDTO>{
-    return this.http.post<IRefreshTokenDTO>(`${this.baseUrl}/${this.path}/refreshToken`, data)
+  refreshToken(data:IRefreshTokenDTO | null): Observable<IRefreshTokenDTO>{
+    return this.http.post<IRefreshTokenDTO>(`${this.baseUrl}/${this.path}/${this.refreshPath}`, data)
   }
 
   sendRegisterOtp(data:IRegisterOtp): Observable<string>{
