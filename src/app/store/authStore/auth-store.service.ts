@@ -132,8 +132,7 @@ export class AuthStoreService {
       },
       complete: () => this.store.setLoading(false),
       error: (err) => {
-        this.toasterService.addError(err.error)
-        this.store.setError(err.error)
+        this.toasterService.addError('customRequestErrors.invalidUserOrPassword')
         this.store.setLoading(false)
       }
     });
