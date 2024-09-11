@@ -43,8 +43,8 @@ export class AuthApiService {
     return this.http.post<string>(`${this.baseUrl}/${this.path}/sendLoginOtp`, data)
   }
 
-  changeInfo(data:IChangeInfo): Observable<IResponse<ILoginResponse>>{
-    return this.http.post<IResponse<ILoginResponse>>(`${this.baseUrl}/${this.path}/changeInfo`, data)
+  changeInfo(data:IChangeInfo): Observable<ILoginResponse>{
+    return this.http.post<ILoginResponse>(`${this.baseUrl}/${this.path}/changeInfo`, data)
   }
   
   changePassword(data:IChangePassword): Observable<IResponse<null>>{

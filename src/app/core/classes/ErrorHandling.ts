@@ -12,15 +12,11 @@ interface IErrorHandlingStrategy{
 @Injectable({providedIn:'root'})
 export class ErrorHandlerStrategy{
     injector = inject(Injector)
+    private authApiService = inject(AuthApiService);
     errorInstance!:IErrorHandlingStrategy;
     createErrorInstance(error:HttpErrorResponse){
-        switch (error.status) {
-            case ErrorCodes.unauthorized: // return to 401
-                this.errorInstance = this.injector.get(UnAuthorizedErrorResponse)
-                break;
-            default:
-                // this.errorInstance = this.injector.get(NotFoundErrorResponse)
-                break;
+        if((error.status === ErrorCodes.unauthorized) && error.url?.includes(this.authApiService.refreshPath)) {
+            this.errorInstance = this.injector.get(UnAuthorizedErrorResponse);
         }
     }
 }
@@ -29,12 +25,9 @@ export class ErrorHandlerStrategy{
 export class UnAuthorizedErrorResponse implements IErrorHandlingStrategy{
     private toaster = inject(ToasterService);
     private authStoreService = inject(AuthStoreService);
-    private authApiService = inject(AuthApiService);
     handleErrorResponse(error: HttpErrorResponse): void {
-        if(error.url?.includes(this.authApiService.refreshPath)){
-            this.toaster.addError('httpErrors.401');
-            this.authStoreService.logout();
-        }
+        this.toaster.addError('httpErrors.401');
+        this.authStoreService.logout();
     }
 }
 

@@ -437,5 +437,8 @@
     },
     "httpErrors":{
         "401":"Your session has expired. Please log in again."
+    },
+    "customRequestErrors":{
+        "wrongPassword":"Old password is not correct"
     }
 }

@@ -4,7 +4,7 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { translateModuleImport } from './core/config/translate.config';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { authInterceptor } from './core/interceptors/auth/auth.interceptor';
@@ -31,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimations(),
     provideHttpClient(
+      withFetch(),
       withInterceptors([
         authInterceptor, 
         refreshTokenInterceptor, 

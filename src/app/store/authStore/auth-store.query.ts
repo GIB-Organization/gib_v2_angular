@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
 import { IAuthStore } from './auth-store.interface';
 import { AuthStore } from './auth-store.store';
-import { ILoginResponse } from '../../models/auth.interface';
+import { ILoginResponse, IRefreshTokenDTO } from '../../models/auth.interface';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthStoreQuery extends Query<IAuthStore> {
-
+  authService = inject(AuthService);
   constructor(private _store: AuthStore) { 
     super(_store)
   }
@@ -17,7 +18,10 @@ export class AuthStoreQuery extends Query<IAuthStore> {
     return this._store.getValue().authData;
   }
   set setUser(user:ILoginResponse){
-    this._store.update({authData:user});
+    const USER = this.authService.getUserFromToken((user.token) as IRefreshTokenDTO)
+    console.log(USER)
+    this._store.update({authData:USER});
+    this.authService.saveUserToLocal(USER);
   }
   get userId(){
     return this._store.getValue().authData?.userId
@@ -35,13 +39,13 @@ export class AuthStoreQuery extends Query<IAuthStore> {
     return this._store.getValue().authData?.iban??''
   }
   get userName(){
-    return this._store.getValue().authData?.username
+    return this._store.getValue().authData?.username??''
   }
   get fullName(){
-    return this._store.getValue().authData?.fullName
+    return this._store.getValue().authData?.fullName??''
   }
   get nationalId(){
-    return this._store.getValue().authData?.nationalId
+    return this._store.getValue().authData?.nationalId??''
   }
   get token(){
     return this._store.getValue().authData?.token??null

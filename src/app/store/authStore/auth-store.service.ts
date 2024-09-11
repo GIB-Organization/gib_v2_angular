@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth/auth.service';
 import { ToasterService } from '../../services/toaster/toaster.service';
 import { IRoutingData } from '../../models/routing.interface';
 import { EQueryParams } from '../../core/enums/routes.enum';
+import { IErrorResponse } from '../../models/response.interface';
+import { AuthStoreQuery } from './auth-store.query';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,7 @@ export class AuthStoreService {
   private store = inject(AuthStore);
   private authDialogService = inject(AuthDialogService);
   private authService = inject(AuthService);
+  private authStoreQuery = inject(AuthStoreQuery);
   private toasterService = inject(ToasterService);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
@@ -63,9 +66,8 @@ export class AuthStoreService {
         this.authDialogService.visible.set(false)
         this.authDialogService.otpDialogType = EOtpType.login;
         this.authDialogService.openComponent(EFormType.login);
-        this.store.update({ authData: res });
         this.toasterService.addSuccess('public.successProccess')
-        this.authService.saveUserToLocal(res);
+        this.authStoreQuery.setUser = res
         this.afterLoginRedirect()
       },
       complete: () => this.store.setLoading(false),
@@ -83,8 +85,7 @@ export class AuthStoreService {
     this.store.setLoading(true)
     this.api.register(data).pipe(take(1)).subscribe({
       next: (res) => {
-        this.store.update({ authData: res });
-        this.authService.saveUserToLocal(res);
+        this.authStoreQuery.setUser = res
         this.toasterService.addSuccess('public.successProccess')
         this.authDialogService.visible.set(false)
         this.authDialogService.otpDialogType = EOtpType.login;
@@ -144,12 +145,10 @@ export class AuthStoreService {
     this.store.setLoading(true)
     this.api.refreshToken(data).pipe(take(1)).subscribe({
       next: (res) => {
-        this.store.update(state => ({
-          authData: {
-            ...state.authData,
-            token: res
-          }
-        }));
+        this.authStoreQuery.setUser = {
+          ...this.authStoreQuery.user,
+          token:res
+        }
       },
       complete: () => this.store.setLoading(false),
       error: (err) => {
@@ -166,10 +165,7 @@ export class AuthStoreService {
     this.api.changeInfo(data).pipe(take(1)).subscribe({
       next: (res) => {
         this.toasterService.addSuccess('public.successProccess')
-        this.authService.saveUserToLocal(res.result);
-        this.store.update({
-          authData: res.result
-        });
+        this.authStoreQuery.setUser = res;
       },
       complete: () => this.store.setLoading(false),
       error: (err) => {
@@ -188,9 +184,10 @@ export class AuthStoreService {
         this.toasterService.addSuccess('public.successProccess')
       },
       complete: () => this.store.setLoading(false),
-      error: (err) => {
+      error: (err:IErrorResponse) => {
         this.store.setError(err)
         this.store.setLoading(false)
+        this.toasterService.addError(err.error.message ?? 'customRequestErrors.wrongPassword')
       }
     });
   }

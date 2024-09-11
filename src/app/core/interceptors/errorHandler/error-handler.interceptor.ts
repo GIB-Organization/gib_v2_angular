@@ -10,7 +10,6 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
      return errorHandlerStartegy?.errorInstance;
   }
   return next(req).pipe(catchError((err: HttpErrorResponse) => {
-    console.log(err)
     errorHandler(err)?.handleErrorResponse(err);
     return throwError(() => err);
   }));

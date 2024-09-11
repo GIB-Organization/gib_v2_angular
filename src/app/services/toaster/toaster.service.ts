@@ -8,18 +8,18 @@ import { MessageService } from 'primeng/api';
 export class ToasterService {
   private messageService = inject(MessageService);
   private translate = inject(TranslateService);
-  addSuccess(message:string){
+  addSuccess(message:string = 'public.successProccess'){
     this.messageService.add({
       severity: 'success',
       summary: this.translate.instant('public.success'),
-      detail:  this.translate.instant(message)
+      detail:  message ? this.translate.instant(message): message
     })
   }
-  addError(message:string){
+  addError(message:string = 'public.errorProccess'){
     this.messageService.add({
       severity: 'error',
       summary:  this.translate.instant('public.error'),
-      detail:  this.translate.instant(message)
+      detail:  message ? this.translate.instant(message) : message
     })
   }
 }

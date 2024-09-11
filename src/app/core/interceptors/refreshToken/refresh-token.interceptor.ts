@@ -4,14 +4,12 @@ import { catchError, switchMap, throwError } from 'rxjs';
 import { AuthApiService } from '../../../services/api/authApi/auth-api.service';
 import { AuthStoreQuery } from '../../../store/authStore/auth-store.query';
 import { ErrorCodes } from '../../enums';
-import { AuthService } from '../../../services/auth/auth.service';
-import { ILoginResponse, IRefreshTokenDTO } from '../../../models/auth.interface';
+import { ILoginResponse } from '../../../models/auth.interface';
 import { setHttpHeaders } from '../../utils/setHttpHeaders';
 
 export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authApiService = inject(AuthApiService);
   const authStoreQuery = inject(AuthStoreQuery);
-  const authService = inject(AuthService);
   return next(req).pipe(
     catchError((error) => {
       // Check if the error is due to an expired access token
@@ -22,7 +20,6 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               ...authStoreQuery.user,
               token: newAccessToken
             }
-              authService.saveUserToLocal(USER)
               authStoreQuery.setUser = USER
               return next(setHttpHeaders(req, newAccessToken?.accessToken));
           }),

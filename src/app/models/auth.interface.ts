@@ -33,8 +33,8 @@ export interface IRegisterDTOFormGroup {
 }
 
 export interface IRefreshTokenDTO {
-  accessToken?: string;
-  refreshToken?: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 export interface ILoginResponse {
@@ -72,4 +72,20 @@ export interface IChangePasswordFormGroup{
   oldPassword: FormControl<string | null>,
   newPassword: FormControl<string | null>,
   confirmPassword: FormControl<string | null>
+}
+
+export interface ILegacyTokenUser{
+  nameid: string;
+  fullName: string;
+  phoneNumber: string;
+  email: string;
+  nationalId: string;
+  bankName: string;
+  iban: string;
+  expireTime?: string;
+  nbf?: number;
+  exp?: number;
+  iat?: number;
+  iss?: string;
+  aud?: string;
 }

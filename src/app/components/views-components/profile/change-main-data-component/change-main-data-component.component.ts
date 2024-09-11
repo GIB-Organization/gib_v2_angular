@@ -26,7 +26,7 @@ export class ChangeMainDataComponentComponent {
   fb = inject(FormBuilder);
   form = this.fb.nonNullable.group<IChangeInfoFormGroup>({
     email: this.fb.nonNullable.control(this.authStoreQuery.email, [VALIDATORS['email']]),
-    fullName: this.fb.nonNullable.control(null, [Validators.minLength(8)]),
+    fullName: this.fb.nonNullable.control(this.authStoreQuery.fullName, [Validators.minLength(8)]),
     phoneNumber:this.fb.nonNullable.control(this.authStoreQuery.phoneNumber, [VALIDATORS['phone']] )
   })
   get email(){
