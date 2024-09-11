@@ -37,7 +37,7 @@ export class BaseCaptchaComponentComponent {
   }
 
   setCaptchaTimeout() {
-    this.captchaTimeout = setTimeout(() => {
+    this.captchaTimeout = setInterval(() => {
       this.refreshCaptcha();
     }, 1 * 60000);
   }
