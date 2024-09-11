@@ -1,3 +1,4 @@
+import { AuthStoreService } from './../../../store/authStore/auth-store.service';
 import { AuthDialogService } from './../../../services/auth/auth-dialog.service';
 import { ERoutes } from './../../../core/enums/routes.enum';
 import { ChangeDetectionStrategy, Component, Inject, inject, OnInit } from '@angular/core';
@@ -40,6 +41,7 @@ export class NavbarComponentComponent {
   translate = inject(TranslateService)
   authDialogService = inject(AuthDialogService)
   authStoreQuery = inject(AuthStoreQuery)
+  authStoreService = inject(AuthStoreService)
   isAuthenticated = toSignal(this.authStoreQuery.isAuthenticated$);
   navLinks: { lang: string, link: string }[] = [
     {
@@ -65,8 +67,4 @@ export class NavbarComponentComponent {
     this.switchDirection.switchDirection();
   }
 
-  openLoginDialog(){
-    this.authDialogService.openComponent(EFormType.login);
-    this.authDialogService.visible.set(true);
-  }
 }

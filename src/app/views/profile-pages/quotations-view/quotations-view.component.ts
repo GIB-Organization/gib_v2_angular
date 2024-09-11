@@ -3,7 +3,7 @@ import { BaseButtonComponentComponent } from '../../../components/base-component
 import { ShadowBoxComponentComponent } from '../../../components/views-components/profile/shadow-box-component/shadow-box-component.component';
 import { DeferBlockComponentComponent } from './../../../components/shared-components/defer-block-component/defer-block-component.component';
 import { EmptyDataComponentComponent } from './../../../components/shared-components/empty-data-component/empty-data-component.component';
-import { ChangeDetectionStrategy, Component, inject, OnInit, WritableSignal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, WritableSignal, signal, DestroyRef } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { PolicyBoxComponent } from '../../../components/views-components/profile/policy-box/policy-box.component';
 import { DividerModule } from 'primeng/divider';
@@ -22,6 +22,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuotationsViewComponent implements OnInit {
+  ref = inject(DestroyRef);
   policiesStoreQuery = inject(PoliciesStoreQuery)
   policiesStoreService = inject(PoliciesStoreService)
   isLoading= toSignal<boolean>(this.policiesStoreQuery.selectLoading())
@@ -32,7 +33,7 @@ export class QuotationsViewComponent implements OnInit {
   })
   
   ngOnInit(): void {
-      this.policiesStoreService.getAllPolicies();
+      this.policiesStoreService.getAllPolicies(this.ref);
   }
 
 

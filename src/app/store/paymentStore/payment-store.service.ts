@@ -1,10 +1,11 @@
-import { inject, Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
 import { PaymentApiService } from '../../services/api/paymentApi/payment-api.service';
 import { PaymentStore } from './payment-store.store';
 import { take } from 'rxjs';
 import { ICreateCheckoutDTO } from '../../models/checkout.interface';
 import { Router } from '@angular/router';
 import { ERoutes } from '../../core/enums';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +15,9 @@ export class PaymentStoreService {
   private store = inject(PaymentStore);
   private router = inject(Router);
 
-  createCheckout(data:ICreateCheckoutDTO){
+  createCheckout(data:ICreateCheckoutDTO, ref:DestroyRef){
     this.store.setLoading(true)
-    return this.api.createPaymentCheckout(data).pipe(take(1)).subscribe({
+    return this.api.createPaymentCheckout(data).pipe(takeUntilDestroyed(ref)).subscribe({
         next:(res)=>{
             this.store.update({
               checkoutId:res.checkoutId

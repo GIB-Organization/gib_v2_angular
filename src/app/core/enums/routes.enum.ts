@@ -17,7 +17,7 @@ export enum ERoutes{
     orderSummary = 'order-summary',
     compareOffers = 'compare-offers',
     additionalData= 'additional-data',
-    quotations= 'quotations',
+    quotations= 'policies',
     invoices= 'invoices',
     checkout= 'checkout',
     paymentStatus= 'payment-status',
@@ -26,4 +26,8 @@ export enum ERoutes{
 export enum ERouteData{
     animation = 'animation',
     title = 'title'
+}
+
+export enum EQueryParams{
+    redirectTo = 'redirectTo'
 }

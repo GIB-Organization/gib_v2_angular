@@ -4,7 +4,8 @@ import { Store, StoreConfig } from '@datorama/akita';
 
 const initialState = () : IPoliciesStore =>{
   return {
-    policies:[]
+    policies:[],
+    fileIsLoading: false,
   } 
 }
 

@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { LocalStorageService } from '../core/localStorage/local-storage.service';
 import { EStorageEnum } from '../../core/enums';
-import { ILoginResponse, IRefreshTokenDTO } from '../../models/auth.interface';
+import { ILegacyTokenUser, ILoginResponse, IRefreshTokenDTO } from '../../models/auth.interface';
+import { payloadFromToken, tokenUserAdapter } from '../../core/utils/payloadfromToken';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,11 @@ export class AuthService {
 
   isAuthenticated(){
     return !!this.getToken();
+  }
+
+  getUserFromToken(token:IRefreshTokenDTO):ILoginResponse{
+    const TOKEN_USER = payloadFromToken(token.accessToken) as ILegacyTokenUser;
+    const adaptedUser = tokenUserAdapter(TOKEN_USER, token)
+    return adaptedUser
   }
 }
