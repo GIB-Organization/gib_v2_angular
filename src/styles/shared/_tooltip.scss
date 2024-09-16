@@ -5,7 +5,9 @@
         }
         &.image_tooltip{
             .p-tooltip-text{
-                width: 500px;
+                width: 550px;
+                background-color: var(--white);
+                padding: 0;
             }
         }
     }

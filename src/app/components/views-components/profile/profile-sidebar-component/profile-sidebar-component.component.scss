@@ -3,7 +3,8 @@
         .btn{
             color: var(--bs-gray-600);
             img{
-                filter: var(--greyColorFilter)
+                filter: var(--greyColorFilter);
+                width: 24px;
             }
             &.active_link{
                 img{
