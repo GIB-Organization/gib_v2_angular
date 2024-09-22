@@ -1,9 +1,10 @@
 import { HttpRequest } from "@angular/common/http";
 
 export function setHttpHeaders(req: HttpRequest<any>, token: string|undefined) {
+    const isFormData:boolean = req.body instanceof FormData;
     const REQ = req.clone({
         setHeaders: {
-            'Content-Type': 'application/json',
+            ...!isFormData&&{'Content-Type':'application/json'},
             'Authorization': `Bearer ${token}`
         }
     })

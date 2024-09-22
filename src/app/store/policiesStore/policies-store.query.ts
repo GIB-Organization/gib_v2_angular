@@ -12,6 +12,9 @@ export class PoliciesStoreQuery extends Query<IPoliciesStore>{
   get policies(){
     return this._store.getValue().policies
   }
+  get policies$(){
+    return this.select(state=> state.policies)
+  }
   get fileIsLoading$(){
     return this.select(state=> state.fileIsLoading);
   }

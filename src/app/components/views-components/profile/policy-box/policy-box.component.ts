@@ -19,6 +19,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class PolicyBoxComponent {
   ref = inject(DestroyRef);
   policy = input.required<IPolicy>();
+  carPlateChars = computed(()=> `${this.policy().carPlateChars[0]} ${this.policy().carPlateChars[1]} ${this.policy().carPlateChars[2]}`);
   policiesStoreService = inject(PoliciesStoreService)
   policiesStoreQuery = inject(PoliciesStoreQuery)
   isLoading = toSignal(this.policiesStoreQuery.fileIsLoading$)

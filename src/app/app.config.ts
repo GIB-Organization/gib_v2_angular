@@ -34,8 +34,9 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([
         authInterceptor, 
+        errorHandlerInterceptor,
         refreshTokenInterceptor, 
-        errorHandlerInterceptor
+        
       ]), 
     )
   ]

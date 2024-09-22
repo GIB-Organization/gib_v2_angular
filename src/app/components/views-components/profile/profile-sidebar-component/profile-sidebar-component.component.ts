@@ -39,7 +39,7 @@ export class ProfileSidebarComponentComponent {
     {
       path: ERoutes.invoices,
       text: `${this.localePath}invoices.title`,
-      icon: 'svg/cars.svg'
+      icon: 'svg/invoice.svg'
     },
     // {
     //   path: ERoutes.uncompletedOrders,

@@ -7,3 +7,10 @@ export enum EPolicyNajmStatus{
     failed = 2,
     success = 3,
 }
+
+export enum EPolicyTabs{
+    active = 1,
+    toRenew = 2,
+    expired = 3,
+    underPublish = 4
+}

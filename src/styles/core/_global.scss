@@ -279,4 +279,10 @@ body{
     border-width: 0 0 0 3px !important;
     color: var(--primaryColor) !important;
 }
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+    border-color: var(--primaryColor) !important;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link{
+    color: var(--secondaryColor) !important;
+}
 /*------------------------- end global -----------------------*/
