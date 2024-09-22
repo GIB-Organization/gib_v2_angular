@@ -1,11 +1,12 @@
+import { EPolicyNajmStatus, EPolicyStatus } from "../core/enums";
 
 export interface IPolicy{
     policyId: string,
     companyName: string,
-    policyStatus: string,  
+    policyStatus: EPolicyStatus,  
     policyStartDate: string,
     policyEndDate: string,
-    najmStatus: string, 
+    najmStatus: EPolicyNajmStatus, 
     carPlateChars: string,
     carPlateNumber: number,
     carModel: string,

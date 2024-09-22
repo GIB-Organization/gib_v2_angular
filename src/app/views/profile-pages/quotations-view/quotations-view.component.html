@@ -10,17 +10,26 @@
     </aside>
 </div> -->
 
-<app-shadow-box-component classes="profile_cards p-4">
+
+
+<app-shadow-box-component classes="profile_cards py-4">
     <app-loading-content-component [loading]="isLoading()">
-        <app-defer-block-component>
-            <app-empty-data-component [empty]="!(policiesStoreQuery.policies | policiesFilter : filter.value).length">
-                @for(item of policiesStoreQuery.policies | policiesFilter : filter.value; track item.policyId; let last = $last){
-                    <app-policy-box [policy]="item"></app-policy-box>
-                    @if(!last){
-                        <p-divider />
-                    }
-                }
-            </app-empty-data-component>
-        </app-defer-block-component>
+        <p-tabView styleClass="tabs_view">
+            @for(status of policyStatusEnumKeys; track status){
+            <p-tabPanel class="px-0"
+                header="{{'policyTabsStatus.' + EPolicyTabs[status] | translate}}({{policiesTabs()[EPolicyTabs[status]] ? policiesTabs()[EPolicyTabs[status]].length:0}})">
+                <app-defer-block-component>
+                    <app-empty-data-component [empty]="!policiesTabs()[EPolicyTabs[status]]">
+                        @for(item of policiesTabs()[EPolicyTabs[status]]; track item.policyId; let last = $last){
+                            <app-policy-box [policy]="item"></app-policy-box>
+                            @if(!last){
+                                <p-divider />
+                            }
+                        }
+                    </app-empty-data-component>
+                </app-defer-block-component>
+            </p-tabPanel>
+            }
+        </p-tabView>
     </app-loading-content-component>
 </app-shadow-box-component>

@@ -4,13 +4,13 @@
             <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.policyId' | translate}}</span> <span> {{ policy().policyId }} </span> </li>
             <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.companyName' | translate}}</span> <span> {{ policy().companyName }} </span> </li>
             <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.status' | translate}}</span> <span> {{ 'policyStatusEnum.' + policy().policyStatus | translate }} </span> </li>
-            <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.startDate' | translate}}</span> <span> {{ policy().policyStartDate | date : 'medium' }} </span> </li>
-            <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.endDate' | translate}}</span> <span> {{ policy().policyEndDate | date : 'medium' }} </span> </li>
+            <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.startDate' | translate}}</span> <span> {{ policy().policyStartDate | date }} </span> </li>
+            <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.endDate' | translate}}</span> <span> {{ policy().policyEndDate | date }} </span> </li>
             <li class="mb-2"> <span class="me-3 grey_color">{{'views.profile.quotations.najmStatus' | translate}}</span> <span class="primary_color"> {{ 'policyNajmStatus.' + policy().najmStatus | translate}} </span> </li>
         </ul>
     </aside>
     <aside class="col-md-3">
-        <app-car-pallet-component [plateNumber]="policy().carPlateNumber" [carCharsAr]=" policy().carPlateChars "></app-car-pallet-component>
+        <app-car-pallet-component [plateNumber]="policy().carPlateNumber" [carCharsAr]=" carPlateChars() "></app-car-pallet-component>
         <p class="font_size__13 mt-2 secondary_color"> {{cardBrand()}} </p>
     </aside>
     <aside class="col-md-3">

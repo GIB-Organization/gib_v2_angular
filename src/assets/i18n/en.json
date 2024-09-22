@@ -227,7 +227,7 @@
                 "startDate":"Policy Start Date",
                 "endDate":"Policy End Date",
                 "najmStatus":"Najm Policy Status",
-                "leftDays":"Days left for policy end"
+                "leftDays":"Days left"
             },
             "cards":{
                 "title": "Cards"
@@ -248,7 +248,8 @@
                 "howToAddTicket":"How To Add Ticket",
                 "subject":"Subject",
                 "details":"Details",
-                "uploadFile":"Upload File"
+                "uploadFile":"Upload File",
+                "status":"Status"
             },
             "personalInfo":{
                 "title": "Personal Info",
@@ -434,6 +435,16 @@
         "1":"Pending",
         "2":"Failed",
         "3":"Success"
+    },
+    "policyTabsStatus":{
+        "1":"Active",
+        "2":"To Renew",
+        "3":"Expired",
+        "4":"Under Version"
+    },
+    "ticketStatus":{
+        "1":"Processing",
+        "2":"Closed"
     },
     "httpErrors":{
         "401":"Your session has expired. Please log in again."
