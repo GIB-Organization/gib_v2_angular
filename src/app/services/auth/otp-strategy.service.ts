@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { EOtpType } from '../../core/enums';
 import { AuthStoreService } from '../../store/authStore/auth-store.service';
-import { ILoginDTO, ILoginOtp, IRegisterDTO, IRegisterOtp } from '../../models/auth.interface';
+import { ILoginDTO, IRegisterDTO } from '../../models/auth.interface';
 import { RegisterFormService } from './register-form.service';
 import { LoginFormService } from './login-form.service';
 

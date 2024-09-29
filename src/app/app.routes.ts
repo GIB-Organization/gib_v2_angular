@@ -156,7 +156,7 @@ const breadcrumbLayoutRoutes: Routes = [
                 loadComponent: () => import('./views/contact-view/contact-view.component').then(m => m.ContactViewComponent),
                 data:{
                     animation: 'contact',
-                    title: 'contact'
+                    title: 'views.contact.title'
                 } as IRoutingData
             },
             {
@@ -164,7 +164,7 @@ const breadcrumbLayoutRoutes: Routes = [
                 loadComponent: () => import('./views/blog-view/blog-view.component').then(m => m.BlogViewComponent),
                 data:{
                     animation: 'blog',
-                    title: 'blog'
+                    title: 'views.blog.title'
                 } as IRoutingData
             },
             {
@@ -172,7 +172,7 @@ const breadcrumbLayoutRoutes: Routes = [
                 loadComponent: () => import('./views/privacy-policy-view/privacy-policy-view.component').then(m => m.PrivacyPolicyViewComponent),
                 data:{
                     animation: 'privacy policy',
-                    title: 'privacy policy'
+                    title: 'views.privacyPolicy.privacyPolicy'
                 } as IRoutingData
             },
             {
@@ -180,7 +180,7 @@ const breadcrumbLayoutRoutes: Routes = [
                 loadComponent: () => import('./views/terms-conditions-view/terms-conditions-view.component').then(m => m.TermsConditionsViewComponent),
                 data:{
                     animation: 'terms and conditions',
-                    title: 'terms and conditions'
+                    title: 'views.termsAndConditions.termsAndConditions'
                 } as IRoutingData
             },
             {
@@ -189,7 +189,7 @@ const breadcrumbLayoutRoutes: Routes = [
                 canActivate:[insuranceAdditionalData],
                 data:{
                     animation: 'Checkout',
-                    title: 'Checkout'
+                    title: 'views.checkout.checkout'
                 } as IRoutingData
             },
             {
@@ -197,7 +197,7 @@ const breadcrumbLayoutRoutes: Routes = [
                 loadComponent: () => import('./views/payment-status-view/payment-status-view.component').then(m => m.PaymentStatusViewComponent),
                 data:{
                     animation: 'PayomentStatus',
-                    title: 'Payoment Status'
+                    title: 'views.paymentStatus.paymentStatus'
                 } as IRoutingData
             },
             {

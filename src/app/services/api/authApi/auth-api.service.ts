@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { BASE_URL_TOKEN } from '../../../core/injection-tokens/base-url.token';
 import { HttpClient } from '@angular/common/http';
-import { IChangeInfo, IChangePassword, ILoginDTO, ILoginOtp, ILoginResponse, IRefreshTokenDTO, IRegisterDTO, IRegisterOtp } from '../../../models/auth.interface';
+import { IChangeInfo, IChangePassword, IForgotPassword, ILoginDTO, ILoginOtp, ILoginResponse, IRefreshTokenDTO, IRegisterDTO, IRegisterOtp, IResetPassword } from '../../../models/auth.interface';
 import { Observable } from 'rxjs';
 import { IResponse } from '../../../models/response.interface';
 
@@ -49,5 +49,13 @@ export class AuthApiService {
   
   changePassword(data:IChangePassword): Observable<IResponse<null>>{
     return this.http.post<IResponse<null>>(`${this.baseUrl}/${this.path}/changePassword`, data)
+  }
+
+  forgotPassword(data:IForgotPassword): Observable<IResponse<string>>{
+    return this.http.post<IResponse<string>>(`${this.baseUrl}/${this.path}/sendForgotPasswordOtp`, data)
+  }
+
+  resetPassword(data:IResetPassword): Observable<IResponse<null>>{
+    return this.http.post<IResponse<null>>(`${this.baseUrl}/${this.path}/resetPassword`, data)
   }
 }
