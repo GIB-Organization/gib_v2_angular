@@ -1,19 +1,23 @@
 <div class="blogs">
     <section class="container">
         <h6 class="h3 mb-5 font_semi__bold"> {{'views.blog.title' | translate}} </h6>
-        <div class="row">
-            <aside class="col-md-4 mb-3">
-                <app-blog-box-component></app-blog-box-component>
-            </aside>
-            <aside class="col-md-4 mb-3">
-                <app-blog-box-component></app-blog-box-component>
-            </aside>
-            <aside class="col-md-4 mb-3">
-                <app-blog-box-component></app-blog-box-component>
-            </aside>
-        </div>
-        <div class="d-flex justify-content-center mb-5 mt-4">
-            <ngb-pagination [collectionSize]="70" [pageSize]="5" [(page)]="page" aria-label="Default pagination" />
-        </div>
+        <app-loading-content-component [loading]="isLoading()">
+            <app-empty-data-component [empty]="!blogs()?.length">
+                <div class="row">
+                    @for(item of blogs();track item.id ){
+                    <aside class="col-md-4 mb-3">
+                        <app-defer-block-component>
+                            <app-blog-box-component [blog]="item"></app-blog-box-component>
+                        </app-defer-block-component>
+                    </aside>
+                    }
+
+                </div>
+                <div class="d-flex justify-content-center mb-5 mt-4">
+                    <app-paginator-component (paginationChange)="getBlogs($event)"
+                        [(pagination)]="pagination"></app-paginator-component>
+                </div>
+            </app-empty-data-component>
+        </app-loading-content-component>
     </section>
-</div> 
+</div>

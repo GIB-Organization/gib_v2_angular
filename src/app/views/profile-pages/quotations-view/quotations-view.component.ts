@@ -12,7 +12,7 @@ import { PoliciesStoreService } from '../../../store/policiesStore/policies-stor
 import { LoadingContentComponentComponent } from '../../../components/shared-components/loading-content-component/loading-content-component.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PoliciesFilterPipe } from '../../../core/pipes/policiesFilter/policies-filter.pipe';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TabViewModule } from 'primeng/tabview';
 import { IPolicy } from '../../../models/policy.interface';
 import { EPolicyNajmStatus, EPolicyStatus, EPolicyTabs } from '../../../core/enums';
@@ -51,11 +51,11 @@ export class QuotationsViewComponent implements OnInit {
     })
     return tabs
   });
-  filter = new FormGroup({
-    policyId: new FormControl(''),
-    sequenceNumber: new FormControl(''),
-    idNumber: new FormControl(''),
-  })
+  // filter = new FormGroup({
+  //   policyId: new FormControl(''),
+  //   sequenceNumber: new FormControl(''),
+  //   idNumber: new FormControl(''),
+  // })
 
   get EPolicyTabs(){
     return EPolicyTabs

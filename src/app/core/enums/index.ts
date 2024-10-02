@@ -2,7 +2,7 @@ import { ETicketStatus } from './ticket.enum';
 import { ErrorCodes } from './errors.enum';
 import { EStorageEnum } from './storage.enum';
 import { ERouteData, ERoutes } from './routes.enum';
-import { EQuotationsTabs } from './quotations.enum';
+import { EPriceDetailCode, EQuotationsTabs } from './quotations.enum';
 import { EPopover } from './popover.enum';
 import { EInsurancePurpose, EVehicleRegisterType } from './insurance-inquire';
 import { EFormType, EOtpType } from './auth.enum';
@@ -32,4 +32,5 @@ export {
     ErrorCodes,
     ETicketStatus,
     EPolicyTabs,
+    EPriceDetailCode,
 }

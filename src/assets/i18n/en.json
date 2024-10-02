@@ -60,6 +60,7 @@
     },
     "views": {
         "home": {
+            "title":"Home",
             "insuranceTabs": {
                 "carInsurance": "Car Insurance",
                 "medicalInsurance": "Medical Insurance",
@@ -122,7 +123,8 @@
         "contact": {
             "title": "Contact Us",
             "description": "Send any inquiry you have so that we can communicate with you and answer it",
-            "contactDirect": "Or contact us directly"
+            "contactDirect": "Or contact us directly",
+            "messageRecieved":"We recieved your message successfully and our team will be in contact with you."
         },
         "blog": {
             "title": "Blog"

@@ -56,7 +56,7 @@ const mainLayoutRoutes: Routes = [
                 } as IRoutingData
             },
             {
-                path: `${ERoutes.blogPage}/:id`,
+                path: `${ERoutes.blogPage}/:slug`,
                 loadComponent: () => import('./views/blog-single-view/blog-single-view.component').then(m => m.BlogSingleViewComponent),
                 data:{
                     animation: 'blogPage',

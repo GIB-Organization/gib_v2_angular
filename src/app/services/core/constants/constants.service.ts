@@ -28,4 +28,5 @@ export class ConstantsService {
       path:'payment/mada.png'
     },
   ]
+  taxPercentage : number = 15;
 }
