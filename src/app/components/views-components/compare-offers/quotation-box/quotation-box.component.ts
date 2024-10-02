@@ -1,3 +1,4 @@
+import { EPriceDetailCode } from './../../../../core/enums/quotations.enum';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuotationStoreQuery } from './../../../../store/quotationStore/quotation-store.query';
 import { ChangeDetectionStrategy, Component, inject, input, model, OnInit, signal } from '@angular/core';
@@ -10,7 +11,7 @@ import { BaseButtonComponentComponent } from '../../../base-components/base-butt
 import { EQuotationsTabs } from '../../../../core/enums/quotations.enum';
 import { BaseLabelComponentComponent } from '../../../base-components/base-label-component/base-label-component.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { IBenefit, IQuotation, IQuotationProduct } from '../../../../models/quotation.interface';
+import { IBenefit, IPriceDetail, IQuotation, IQuotationProduct } from '../../../../models/quotation.interface';
 import { CompaniesStoreQuery } from '../../../../store/companiesStore/companies-store.query';
 import { ICompany } from '../../../../models/companies.interface';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ import { ERoutes } from '../../../../core/enums';
 import { AuthDialogService } from '../../../../services/auth/auth-dialog.service';
 import { AuthStoreQuery } from '../../../../store/authStore/auth-store.query';
 import { navigateToCurrentRouteWithNewQueryParams } from '../../../../core/utils/setQueryParams';
+import { ConstantsService } from '../../../../services/core/constants/constants.service';
 
 @Component({
   selector: 'app-quotation-box',
@@ -28,6 +30,7 @@ import { navigateToCurrentRouteWithNewQueryParams } from '../../../../core/utils
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuotationBoxComponent implements OnInit{
+  constants = inject(ConstantsService);
   settingsQuery = inject(SettingsQuery);
   comprehensiveOrThird = model<EQuotationsTabs>(EQuotationsTabs.thirdParty);
   comprehensivePrice = input<number>();
@@ -39,7 +42,7 @@ export class QuotationBoxComponent implements OnInit{
   route = inject(ActivatedRoute)
   quotation = input<IQuotation | any>()
   company = input<ICompany | any>()
-  choosedProduct = signal<Partial<IQuotationProduct> | any>({});
+  choosedProduct = signal<Partial<IQuotationProduct>>({});
   choosedBenefits:IBenefit[] = []
 
   get EQuotationsTabs(){
@@ -55,11 +58,13 @@ export class QuotationBoxComponent implements OnInit{
     let product = this.choosedProduct();
     if(ckecked){
       this.choosedBenefits.push(benefit);
-      this.choosedProduct.set({...product, productPrice:product.productPrice + benefit.benefitPrice});
+      this.choosedProduct.set({...product, productPrice: ((product.productPrice as number) + this.calculateBenifitWithTax(benefit))});
+      this.benifitVatAdd(benefit)
     }else{
       let index = this.choosedBenefits.findIndex(item=>{item.benefitId === benefit.benefitId});
       this.choosedBenefits.splice(index, 1);
-      this.choosedProduct.set({...product, productPrice:product.productPrice - benefit.benefitPrice});
+      this.choosedProduct.set({...product, productPrice: ((product.productPrice as number) - this.calculateBenifitWithTax(benefit))});
+      this.benifitVatRemove(benefit)
     }
   }
 
@@ -68,12 +73,43 @@ export class QuotationBoxComponent implements OnInit{
     this.choosedBenefits = [];
   }
 
+  
+
+  isDefaultBenefit(benifit:IBenefit){
+    return benifit.benefitPrice === 0
+  }
+
+  get getTaxPriceDetailIndex():number | null{
+    return this.choosedProduct().priceDetails?.findIndex(item=> item.priceTypeCode === EPriceDetailCode.vat)??null;
+  }
+
+  calculateBenifitWithTax(benefit:IBenefit):number{
+    return benefit.benefitPrice + (benefit.benefitPrice * this.constants.taxPercentage / 100);
+  }
+
+  benifitVatAdd(benefit:IBenefit){
+    if(this.getTaxPriceDetailIndex){
+      let priceDetails:IPriceDetail[] = JSON.parse(JSON.stringify(this.choosedProduct().priceDetails??[]));
+      let priceDetail = priceDetails[this.getTaxPriceDetailIndex];
+      priceDetail.priceValue = priceDetail.priceValue + (benefit.benefitPrice * this.constants.taxPercentage / 100);
+      this.choosedProduct.update(value=>({...value, priceDetails: priceDetails}))
+    }
+  }
+  benifitVatRemove(benefit:IBenefit){
+    if(this.getTaxPriceDetailIndex){
+      let priceDetails:IPriceDetail[] = JSON.parse(JSON.stringify(this.choosedProduct().priceDetails??[]));
+      let priceDetail = priceDetails[this.getTaxPriceDetailIndex];
+      priceDetail.priceValue = priceDetail.priceValue - (benefit.benefitPrice * this.constants.taxPercentage / 100);
+      this.choosedProduct.update(value=>({...value, priceDetails: priceDetails}))
+    }
+  }
+
   submit(){
     this.quotationStoreQuery.setSelectedQuotationData({
       quotation: this.quotation(),
       company: this.company(),
       choosedBenefits: this.choosedBenefits,
-      choosedProduct: this.choosedProduct()
+      choosedProduct: this.choosedProduct() as IQuotationProduct
     })
     if(this.authStoreQuery.isAuthenticated){
       this.router.navigate([`${ERoutes.insuranceShow}/${ERoutes.orderSummary}`]);
@@ -83,4 +119,5 @@ export class QuotationBoxComponent implements OnInit{
       this.authDialogService.openLoginDialog()
     }
   }
+
 }

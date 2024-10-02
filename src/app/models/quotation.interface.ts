@@ -44,7 +44,7 @@ export interface IBenefit {
   benefitPrice: number;
 }
 
-interface IPriceDetail {
+export interface IPriceDetail {
   priceTypeCode: number;
   priceValue: number;
   percentageValue: number;
