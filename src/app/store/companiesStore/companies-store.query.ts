@@ -3,6 +3,7 @@ import { Query } from '@datorama/akita';
 import { ICompaniesStore } from './companies-store.interface';
 import { CompaniesStore } from './companies-store.store';
 import { LanguageService } from '../../services/language/language.service';
+import { TCompanyDescKey, TCompanyNameKey } from '../../models/companies.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,10 @@ export class CompaniesStoreQuery extends Query<ICompaniesStore> {
   get companies(){
     return this._store.getValue().companies;
   }
-  get companyNameKey(){
+  get companyNameKey(): TCompanyNameKey{
     return this.translate.handleBackendLocalKeys('name')
   }
-  get companyDescKey(){
+  get companyDescKey(): TCompanyDescKey{
     return this.translate.handleBackendLocalKeys('desc')
   }
 }

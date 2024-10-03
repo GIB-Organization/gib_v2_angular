@@ -16,3 +16,5 @@ export interface ICity {
     mappingCode: string;
     regionId: number;
 }
+
+export type TAddressNameKey = 'nameAr' | 'nameEn';

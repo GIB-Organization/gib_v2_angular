@@ -3,6 +3,7 @@ import { Query } from '@datorama/akita';
 import { IAddressStore } from './address-store.interface';
 import { AddressStore } from './address-store.store';
 import { LanguageService } from '../../services/language/language.service';
+import { TAddressNameKey } from '../../models/address.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class AddressStoreQuery extends Query<IAddressStore> {
   get cities(){
     return this._store.getValue().cities
   }
-  get keyName(){
-    return `${this.translate.handleBackendLocalKeys('name')}`
+  get keyName():TAddressNameKey{
+    return this.translate.handleBackendLocalKeys('name')
   }
 }

@@ -1,7 +1,7 @@
 import { EPriceDetailCode } from './../../../../core/enums/quotations.enum';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuotationStoreQuery } from './../../../../store/quotationStore/quotation-store.query';
-import { ChangeDetectionStrategy, Component, inject, input, model, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, model } from '@angular/core';
 import { BaseImageComponentComponent } from '../../../base-components/base-image-component/base-image-component.component';
 import { CompanySpeedRateComponent } from '../company-speed-rate/company-speed-rate.component';
 import { SettingsQuery } from '../../../../store/settings/settings.query';
@@ -29,7 +29,7 @@ import { ConstantsService } from '../../../../services/core/constants/constants.
   styleUrl: './quotation-box.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuotationBoxComponent implements OnInit{
+export class QuotationBoxComponent{
   constants = inject(ConstantsService);
   settingsQuery = inject(SettingsQuery);
   comprehensiveOrThird = model<EQuotationsTabs>(EQuotationsTabs.thirdParty);
@@ -40,17 +40,13 @@ export class QuotationBoxComponent implements OnInit{
   authStoreQuery = inject(AuthStoreQuery)
   router = inject(Router)
   route = inject(ActivatedRoute)
-  quotation = input<IQuotation | any>()
-  company = input<ICompany | any>()
-  choosedProduct = signal<Partial<IQuotationProduct>>({});
+  quotation = input<IQuotation>()
+  company = input<ICompany>()
+  choosedProduct = model<Partial<IQuotationProduct>>({});
   choosedBenefits:IBenefit[] = []
 
   get EQuotationsTabs(){
     return EQuotationsTabs;
-  }
-
-  ngOnInit(): void {
-    this.choosedProduct.set(this.quotation()?.products[0]);
   }
 
   toggleBenefit(benefit:IBenefit, $event:any){
@@ -106,8 +102,8 @@ export class QuotationBoxComponent implements OnInit{
 
   submit(){
     this.quotationStoreQuery.setSelectedQuotationData({
-      quotation: this.quotation(),
-      company: this.company(),
+      quotation: this.quotation() as IQuotation,
+      company: this.company() as ICompany,
       choosedBenefits: this.choosedBenefits,
       choosedProduct: this.choosedProduct() as IQuotationProduct
     })
