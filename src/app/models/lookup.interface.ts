@@ -17,3 +17,5 @@ export type ILookupCategories = {
 export type IDefaultLookupsCategories = {
   [key in ELookupCategory | number] : ILookup
 }
+
+export type TLookupNameKey = 'nameAr' | 'nameEn';

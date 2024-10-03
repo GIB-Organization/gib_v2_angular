@@ -22,3 +22,6 @@ export interface ICompany {
     addressEn?: string;
     addressAr?: string;
   }
+
+  export type TCompanyNameKey = 'nameAr'|'nameEn';
+  export type TCompanyDescKey = 'descAr'|'descEn';

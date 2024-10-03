@@ -74,3 +74,7 @@ export interface ISelectedQuotation{
   choosedBenefits: IBenefit[],
   company: Partial<ICompany>
 }
+
+export type TProductNameKey = 'productNameAr'|'productNameEn';
+export type TProductDescKey = 'productDescAr'|'productDescEn';
+export type TBenefitNameKey = 'benefitNameAr'|'benefitNameEn';
