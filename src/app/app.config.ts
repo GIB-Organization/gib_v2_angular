@@ -1,7 +1,7 @@
 import { refreshTokenInterceptor } from './core/interceptors/refreshToken/refresh-token.interceptor';
 import { environment } from '../environments/environment';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling } from '@angular/router';
+import { InMemoryScrollingOptions, provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
@@ -27,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: BASE_URL_TOKEN, useValue: environment.apiUrl,
     },
-    provideRouter(routes, withInMemoryScrolling(scrollConfig)), 
+    provideRouter(routes, withInMemoryScrolling(scrollConfig), withComponentInputBinding()), 
     provideClientHydration(),
     provideAnimations(),
     provideHttpClient(
@@ -36,7 +36,6 @@ export const appConfig: ApplicationConfig = {
         authInterceptor, 
         errorHandlerInterceptor,
         refreshTokenInterceptor, 
-        
       ]), 
     )
   ]

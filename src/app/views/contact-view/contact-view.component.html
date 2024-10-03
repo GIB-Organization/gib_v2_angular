@@ -17,35 +17,50 @@
                     <aside class="col-md-6">
                         <div class="mb-4">
                             <app-base-label-component classes="form-label" [required]="true" for="nameInput"> {{ 'public.name' | translate }} </app-base-label-component>
-                            <input type="text" class="form-control" id="nameInput" placeholder="{{'public.name' | translate}}">
+                            <input [formControl]="fullName" type="text" class="form-control" id="nameInput" placeholder="{{'public.name' | translate}}">
+                            @if(fullName.invalid && fullName.touched){
+                                <app-input-validation-alert-component> {{'errors.required' | translate}} </app-input-validation-alert-component>
+                            }
                         </div>
                     </aside>
                     <aside class="col-md-6">
                         <div class="mb-4">
                             <app-base-label-component classes="form-label" [required]="true" for="emailInput"> {{ 'public.email' | translate }} </app-base-label-component>
-                            <input type="email" class="form-control" id="emailInput" placeholder="{{'public.email' | translate}}">
+                            <input [formControl]="email" type="email" class="form-control" id="emailInput" placeholder="{{'public.email' | translate}}">
+                            @if(email.invalid && email.touched){
+                                <app-input-validation-alert-component> {{'errors.email' | translate}} </app-input-validation-alert-component>
+                            }
                         </div>
                     </aside>
                     <aside class="col-md-6">
                         <div class="mb-4">
                             <app-base-label-component classes="form-label" [required]="true" for="phoneInput"> {{ 'public.phone' | translate }} </app-base-label-component>
-                            <input type="text" pattern="[0-9]+" class="form-control" id="phoneInput" placeholder="{{'public.phone' | translate}}">
+                            <input [formControl]="phone" type="phone" [minLength]="10" [maxLength]="10" pattern="[0-9]+" class="form-control" id="phoneInput" placeholder="{{'public.phone' | translate}}">
+                            @if(phone.invalid && phone.touched){
+                                <app-input-validation-alert-component> {{'errors.phone' | translate}} </app-input-validation-alert-component>
+                            }
                         </div>
                     </aside>
                     <aside class="col-md-6">
                         <div class="mb-4">
                             <app-base-label-component classes="form-label" [required]="true" for="subjectInput"> {{ 'public.subject' | translate }} </app-base-label-component>
-                            <input type="text" class="form-control" id="subjectInput" placeholder="{{'public.subject' | translate}}">
+                            <input [formControl]="subject" type="text" class="form-control" id="subjectInput" placeholder="{{'public.subject' | translate}}">
+                            @if(subject.invalid && subject.touched){
+                                <app-input-validation-alert-component> {{'errors.required' | translate}} </app-input-validation-alert-component>
+                            }
                         </div>
                     </aside>
                     <aside class="col-md-12">
                         <div class="mb-4">
                             <app-base-label-component classes="form-label" [required]="true" for="messageInput"> {{ 'public.message' | translate }} </app-base-label-component>
-                            <textarea cols="20" rows="6" class="form-control" id="messageInput" placeholder="{{'public.message' | translate}}"></textarea>
+                            <textarea [formControl]="message" cols="20" rows="6" class="form-control" id="messageInput" placeholder="{{'public.message' | translate}}"></textarea>
+                            @if(message.invalid && message.touched){
+                                <app-input-validation-alert-component> {{'errors.required' | translate}} </app-input-validation-alert-component>
+                            }
                         </div>
                     </aside>
                     <aside class="col-md-3 mb-5">
-                        <app-base-button-component classes="btn-primary text-light rounded-pill w-100"> {{'public.send' | translate}} </app-base-button-component>
+                        <app-base-button-component [disabled]="form.invalid" [loading]="isContacting()" (clicked)="submit()" classes="btn-primary text-light rounded-pill w-100"> {{'public.send' | translate}} </app-base-button-component>
                     </aside>
                 </div>
             </aside>

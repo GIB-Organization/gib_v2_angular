@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { AuthApiService } from '../../services/api/authApi/auth-api.service';
 import { AuthStore } from './auth-store.store';
-import { IChangeInfo, IChangePassword, ILoginDTO, ILoginOtp, IRefreshTokenDTO, IRegisterDTO, IRegisterOtp } from '../../models/auth.interface';
+import { IChangeInfo, IChangePassword, IForgotPassword, ILoginDTO, ILoginOtp, IRefreshTokenDTO, IRegisterDTO, IRegisterOtp, IResetPassword } from '../../models/auth.interface';
 import { take } from 'rxjs';
 import { AuthDialogService } from '../../services/auth/auth-dialog.service';
 import { EFormType, EOtpType, ERoutes } from '../../core/enums';
@@ -66,7 +66,7 @@ export class AuthStoreService {
         this.authDialogService.visible.set(false)
         this.authDialogService.otpDialogType = EOtpType.login;
         this.authDialogService.openComponent(EFormType.login);
-        this.toasterService.addSuccess('public.successProccess')
+        this.toasterService.addSuccess()
         this.authStoreQuery.setUser = res
         this.afterLoginRedirect()
       },
@@ -86,7 +86,7 @@ export class AuthStoreService {
     this.api.register(data).pipe(take(1)).subscribe({
       next: (res) => {
         this.authStoreQuery.setUser = res
-        this.toasterService.addSuccess('public.successProccess')
+        this.toasterService.addSuccess()
         this.authDialogService.visible.set(false)
         this.authDialogService.otpDialogType = EOtpType.login;
         this.authDialogService.openComponent(EFormType.login);
@@ -163,7 +163,7 @@ export class AuthStoreService {
     this.store.setLoading(true)
     this.api.changeInfo(data).pipe(take(1)).subscribe({
       next: (res) => {
-        this.toasterService.addSuccess('public.successProccess')
+        this.toasterService.addSuccess()
         this.authStoreQuery.setUser = res;
       },
       complete: () => this.store.setLoading(false),
@@ -180,7 +180,7 @@ export class AuthStoreService {
     this.store.setLoading(true)
     this.api.changePassword(data).pipe(take(1)).subscribe({
       next: () => {
-        this.toasterService.addSuccess('public.successProccess')
+        this.toasterService.addSuccess()
       },
       complete: () => this.store.setLoading(false),
       error: (err:IErrorResponse) => {
@@ -190,8 +190,42 @@ export class AuthStoreService {
       }
     });
   }
+
   afterLoginRedirect(){
     const redirect = this.activatedRoute.snapshot.queryParams[EQueryParams.redirectTo]
     redirect && this.router.navigate([redirect]);
+  }
+
+  forgotPassword(data: IForgotPassword) {
+    // this.authDialogService.openComponent(EFormType.resetPassword);
+    this.store.setLoading(true)
+    this.api.forgotPassword(data).pipe(take(1)).subscribe({
+      next: (res) => {
+        this.authDialogService.openComponent(EFormType.resetPassword);
+        this.store.update({ otp: res.result });
+      },
+      complete: () => this.store.setLoading(false),
+      error: (err) => {
+        this.toasterService.addError('customRequestErrors.invalidUserOrPassword')
+        this.store.setLoading(false)
+      }
+    });
+  }
+
+  resetPassword(data: IResetPassword) {
+    // this.authDialogService.openComponent(EFormType.login);
+    // this.toasterService.addSuccess('views.auth.passwordChanged')
+    this.store.setLoading(true)
+    this.api.resetPassword(data).pipe(take(1)).subscribe({
+      next: () => {
+        this.authDialogService.openComponent(EFormType.login);
+        this.toasterService.addSuccess('views.auth.passwordChanged')
+      },
+      complete: () => this.store.setLoading(false),
+      error: (err) => {
+        this.toasterService.addError('customRequestErrors.invalidUserOrPassword')
+        this.store.setLoading(false)
+      }
+    });
   }
 }

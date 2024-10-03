@@ -25,7 +25,8 @@
         "error":"Error",
         "download":"Download",
         "delete":"Delete",
-        "search":"Search"
+        "search":"Search",
+        "or":"OR"
     },
     "layout": {
         "navbar": {
@@ -59,6 +60,7 @@
     },
     "views": {
         "home": {
+            "title":"Home",
             "insuranceTabs": {
                 "carInsurance": "Car Insurance",
                 "medicalInsurance": "Medical Insurance",
@@ -121,7 +123,8 @@
         "contact": {
             "title": "Contact Us",
             "description": "Send any inquiry you have so that we can communicate with you and answer it",
-            "contactDirect": "Or contact us directly"
+            "contactDirect": "Or contact us directly",
+            "messageRecieved":"We recieved your message successfully and our team will be in contact with you."
         },
         "blog": {
             "title": "Blog"
@@ -266,13 +269,15 @@
             "registerAccount": "Register your information to get a new account, or if you have an account, log in",
             "login":"Log In",
             "noProblem":"No problem!",
-            "ifForgot":"If you remember your password, you can go back to logging in and using it",
+            "ifForgot":"If you forgot your password, you can reset it",
             "forgotPassword": "Forgot Password?",
             "reset":"Reset Password",
+            "resetDesc":"Please enter the code you received on your phone and your new password",
             "register":"Register",
             "codeSent":"Code Sent",
             "enterCodeDesc":"Please enter code sent on your phone number",
-            "enterCode":"Enter Code"
+            "enterCode":"Enter Code",
+            "passwordChanged":"Password is successfully changed."
         },
         "insuranceShow":{
             "enterData":"Enter Data",
@@ -358,10 +363,14 @@
             "enduranceTooltip":"Deductable is the amount of money you agreed to pay for car repairs or replacement after accident"
         },
         "paymentStatus":{
+            "paymentStatus":"Payment Status",
             "goToPolicies":"Go to your policies!",
             "success":"Payment confirmed. Enjoy your coverage.",
             "fail":"We were unable to process your payment. Please try again later",
             "pending":"We are awaiting confirmation of your pending payment."
+        },
+        "checkout":{
+            "checkout":"Checkout"
         }
     },
     "errors":{

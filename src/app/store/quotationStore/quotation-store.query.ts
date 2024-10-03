@@ -24,13 +24,13 @@ export class QuotationStoreQuery extends Query<IQuotationStore>{
   get quotations$(){
     return this.select('quotations')
   }
-  get productNameKey(){
+  get productNameKey(): 'productNameAr'|'productNameEn'{
     return this.translate.handleBackendLocalKeys('productName')
   }
-  get productDescKey(){
+  get productDescKey(): 'productDescAr'|'productDescEn'{
     return this.translate.handleBackendLocalKeys('productDesc')
   }
-  get benefitNameKey(){
+  get benefitNameKey(): 'benefitNameAr'|'benefitNameEn'{
     return this.translate.handleBackendLocalKeys('benefitName')
   }
 

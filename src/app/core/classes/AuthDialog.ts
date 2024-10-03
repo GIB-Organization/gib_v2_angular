@@ -2,6 +2,7 @@ import { ForgotPasswordComponentComponent } from "../../components/views-compone
 import { LoginComponentComponent } from "../../components/views-components/auth/login-component/login-component.component";
 import { OtpComponentComponent } from "../../components/views-components/auth/otp-component/otp-component.component";
 import { RegisterComponentComponent } from "../../components/views-components/auth/register-component/register-component.component";
+import { ResetPasswordComponentComponent } from "../../components/views-components/auth/reset-password-component/reset-password-component.component";
 import { IAuthDialog } from "../../models/layout-models/auth.interface";
 import { EFormType } from "../enums/auth.enum";
 
@@ -18,6 +19,9 @@ export class AuthDialogFactory {
 
             case EFormType.forgotPassword:
                 return new ForgotPasswordDialog()
+
+            case EFormType.resetPassword:
+                return new ResetPasswordDialog()
 
             case EFormType.otp:
                 return new OtpDialog()
@@ -50,6 +54,14 @@ export class ForgotPasswordDialog implements IAuthDialog {
     subtitle: string = 'views.auth.ifForgot';
     buttonText: string = 'views.auth.login';
     component = ForgotPasswordComponentComponent;
+    headingText: string = 'views.auth.forgotPassword'
+}
+export class ResetPasswordDialog implements IAuthDialog {
+    currentComponent: EFormType = EFormType.resetPassword;
+    title: string = 'views.auth.reset';
+    subtitle: string = 'views.auth.resetDesc';
+    buttonText: string = 'views.auth.login';
+    component = ResetPasswordComponentComponent;
     headingText: string = 'views.auth.reset'
 }
 export class OtpDialog implements IAuthDialog {

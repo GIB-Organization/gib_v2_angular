@@ -116,6 +116,12 @@ textarea {
     }
 }
 
+.single_line__ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
 // bootstrap
 .container{
     max-width: 95%;

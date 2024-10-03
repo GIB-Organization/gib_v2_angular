@@ -2,6 +2,7 @@ export enum EFormType {
   login = 'LOGIN',
   register = 'REGISTER',
   forgotPassword = 'FORGOT_PASSWORD',
+  resetPassword = 'RESET_PASSWORD',
   otp = 'OTP',
 }
 

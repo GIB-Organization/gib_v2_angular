@@ -6,26 +6,13 @@
         <div class="row">
             <aside class="col-md-7 mx-auto">
                 <p-accordion [activeIndex]="0" styleClass="faqs_accordion">
-                    <p-accordionTab tabStyleClass="mb-3 border_radius__10" header="Header I">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                            officia deserunt mollit anim id est laborum.
-                        </p>
-                    </p-accordionTab>
-                    <p-accordionTab tabStyleClass="mb-3 border_radius__10" header="Header II">
-                        <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim
-                            ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed
-                            quia non numquam eius modi.
-                        </p>
-                    </p-accordionTab>
+                    @for(item of faqs(); track item){
+                        <p-accordionTab tabStyleClass="mb-3 border_radius__10" [header]="item[websiteStoreQuery.faqTitleKey]">
+                            <p>
+                                {{item[websiteStoreQuery.faqDescKey]}}
+                            </p>
+                        </p-accordionTab>
+                    }
                 </p-accordion>
             </aside>
         </div>

@@ -19,7 +19,6 @@ export class AuthStoreQuery extends Query<IAuthStore> {
   }
   set setUser(user:ILoginResponse){
     const USER = this.authService.getUserFromToken((user.token) as IRefreshTokenDTO)
-    console.log(USER)
     this._store.update({authData:USER});
     this.authService.saveUserToLocal(USER);
   }

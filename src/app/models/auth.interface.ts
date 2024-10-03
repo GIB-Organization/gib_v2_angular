@@ -89,3 +89,23 @@ export interface ILegacyTokenUser{
   iss?: string;
   aud?: string;
 }
+
+export interface IForgotPassword{
+  email: string,
+  nationalId: string
+}
+export interface IForgotPasswordFormGroup{
+  email: FormControl<string>,
+  nationalId: FormControl<string | null>
+}
+
+export interface IResetPassword{
+  otp: string,
+  newPassword:string,
+}
+
+export interface IResetPasswordFormGroup{
+  otp: FormControl<string>,
+  newPassword:FormControl<string>,
+  confirmPassword:FormControl<string>,
+}
