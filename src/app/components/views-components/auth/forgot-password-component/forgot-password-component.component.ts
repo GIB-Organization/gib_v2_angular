@@ -41,6 +41,6 @@ export class ForgotPasswordComponentComponent {
 
 
   submit(){
-    (this.email.valid || this.nationalId.valid) && this.authStoreService.forgotPassword(this.form.value as IForgotPassword);
+    (this.email.valid || this.nationalId.valid) && this.authStoreService.forgotPassword({...this.form.value, nationalId: String(this.form.value.nationalId)} as IForgotPassword);
   }
 }
