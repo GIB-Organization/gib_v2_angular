@@ -213,8 +213,6 @@ export class AuthStoreService {
   }
 
   resetPassword(data: IResetPassword) {
-    // this.authDialogService.openComponent(EFormType.login);
-    // this.toasterService.addSuccess('views.auth.passwordChanged')
     this.store.setLoading(true)
     this.api.resetPassword(data).pipe(take(1)).subscribe({
       next: () => {
@@ -223,7 +221,7 @@ export class AuthStoreService {
       },
       complete: () => this.store.setLoading(false),
       error: (err) => {
-        this.toasterService.addError('customRequestErrors.invalidUserOrPassword')
+        this.toasterService.addError('customRequestErrors.invalidEmailOrId')
         this.store.setLoading(false)
       }
     });

@@ -256,6 +256,7 @@
             },
             "personalInfo":{
                 "title": "Personal Info",
+                "changePassword": "Change Password",
                 "oldPassword":"Old Password",
                 "newPassword":"New Password",
                 "confirmPassword":"Confirm Password"
@@ -460,6 +461,7 @@
     },
     "customRequestErrors":{
         "wrongPassword":"Old password is not correct",
-        "invalidUserOrPassword":"Invalid username or password..."
+        "invalidUserOrPassword":"Invalid username or password...",
+        "invalidEmailOrId":"Invalid email or national Id..."
     }
 }
