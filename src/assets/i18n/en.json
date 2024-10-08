@@ -361,7 +361,8 @@
             "replaceWithComprehensive": "Replace with comprehensive insurance at a price {{price}}",
             "chooseComprehensive":"Choose Comprehensive",
             "endurance":"Endurance value",
-            "enduranceTooltip":"Deductable is the amount of money you agreed to pay for car repairs or replacement after accident"
+            "enduranceTooltip":"Deductable is the amount of money you agreed to pay for car repairs or replacement after accident",
+            "noCut":"No Insurance Cut"
         },
         "paymentStatus":{
             "paymentStatus":"Payment Status",
