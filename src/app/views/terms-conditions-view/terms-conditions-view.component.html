@@ -11,7 +11,7 @@
                 <p> <b class="text-dark"> {{'views.termsAndConditions.userDefintion' | translate}}: </b> {{'views.termsAndConditions.userDefintionText' | translate}} </p>
                 <p> <b class="text-dark"> {{'views.termsAndConditions.weDefintion' | translate}}: </b> {{'views.termsAndConditions.weDefintionText' | translate : { appName: ( 'appName' | translate ) } }} </p>
                 <p> <b class="text-dark"> {{'appName' | translate}}: </b> {{'views.termsAndConditions.appDefintionText' | translate : { appName: ( 'appName' | translate ) } }} </p>
-                <p> <b class="text-dark"> {{'views.termsAndConditions.userInfoDefintion' | translate}}: </b> {{'views.termsAndConditions.userInfoDefintionText' | translate }} </p>
+                <p> <b class="text-dark"> {{'views.termsAndConditions.userInfoDefintion' | translate}}: </b> {{'views.termsAndConditions.userInfoDefintionText' | translate  : {appName : ('appName' | translate)} }} </p>
                 <p> <b class="text-dark"> {{'views.termsAndConditions.websiteDefintion' | translate}}: </b> {{'views.termsAndConditions.websiteDefintionText' | translate }} </p>
                 <p> <b class="text-dark"> {{'views.termsAndConditions.contentDefintion' | translate}}: </b> {{'views.termsAndConditions.contentDefintionText' | translate }} </p>
             </div>
@@ -19,7 +19,7 @@
                 <app-underline-title-component> {{'views.termsAndConditions.userEligibility' | translate}} </app-underline-title-component>
                 <ol class="ps-3">
                     @for(item of [1,2,3]; track item){
-                        <li class="mb-3"> {{'views.termsAndConditions.userEligibilityText' + item | translate}} </li>
+                        <li class="mb-3"> {{'views.termsAndConditions.userEligibilityText' + item | translate : {appName : ('appName' | translate)} }} </li>
                     }
                 </ol>
             </div>
