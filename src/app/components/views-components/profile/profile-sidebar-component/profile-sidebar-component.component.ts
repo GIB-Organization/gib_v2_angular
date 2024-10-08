@@ -26,11 +26,6 @@ export class ProfileSidebarComponentComponent {
       text: `${this.localePath}quotations.title`,
       icon: 'svg/cards.svg'
     },
-    // {
-    //   path: ERoutes.cards,
-    //   text: `${this.localePath}cards.title`,
-    //   icon: 'svg/cards.svg'
-    // },
     {
       path: ERoutes.cars,
       text: `${this.localePath}cars.title`,
@@ -41,16 +36,6 @@ export class ProfileSidebarComponentComponent {
       text: `${this.localePath}invoices.title`,
       icon: 'svg/invoice.svg'
     },
-    // {
-    //   path: ERoutes.uncompletedOrders,
-    //   text: `${this.localePath}uncompletedOrders.title`,
-    //   icon: 'svg/uncompleted-orders.svg'
-    // },
-    // {
-    //   path: ERoutes.epayments,
-    //   text: `${this.localePath}epayments.title`,
-    //   icon: 'svg/epayments.svg'
-    // },
     {
       path: ERoutes.supportTicket,
       text: `${this.localePath}supportTicket.title`,

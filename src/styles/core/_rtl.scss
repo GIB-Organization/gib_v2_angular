@@ -1,0 +1,9 @@
+html[lang='ar']{
+    .p-float-label > label{
+        left: unset;
+        right: 0.75rem;
+    }
+    .company_goals .underline_title:before{
+        right: 0 !important;
+    }
+}
