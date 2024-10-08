@@ -1,13 +1,11 @@
-import { TranslateService } from '@ngx-translate/core';
 import { IDateService, IMonth } from './../../models/date.interface';
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IslamicDateService implements IDateService {
 
-  translateService = inject(TranslateService);
   months = this.generateArrayOfMonths();
   years = this.generateArrayOfYears();
 
@@ -25,7 +23,7 @@ export class IslamicDateService implements IDateService {
   generateArrayOfMonths() {
     let months:IMonth[] = []
     for (var i = 1; i <= 12; i++) {
-      months.push({id: i, name: this.translateService.instant(`months.hijri.${i}`)})
+      months.push({id: i, name: `months.hijri.${i}`})
     }
     return months
   };

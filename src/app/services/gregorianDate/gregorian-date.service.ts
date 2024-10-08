@@ -1,6 +1,5 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IDateService, IMonth } from '../../models/date.interface';
-import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -9,7 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class GregorianDateService implements IDateService {
 
-  translateService = inject(TranslateService);
   months = this.generateArrayOfMonths();
   years = this.generateArrayOfYears();
 
@@ -27,7 +25,7 @@ export class GregorianDateService implements IDateService {
   generateArrayOfMonths() {
     let months:IMonth[] = []
     for (var i = 1; i <= 12; i++) {
-      months.push({id: i, name: this.translateService.instant(`months.gregorian.${i}`)})
+      months.push({id: i, name: `months.gregorian.${i}`})
     }
     return months
   };

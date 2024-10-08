@@ -252,6 +252,7 @@ body{
 .p-dropdown{
     .p-dropdown-label{
         line-height: 1;
+        min-height: 37px;
     }
     .p-placeholder{
         @extend .font_size__13, .font_regular;
@@ -290,5 +291,8 @@ body{
 }
 .p-tabview .p-tabview-nav li .p-tabview-nav-link{
     color: var(--secondaryColor) !important;
+}
+.p-inputotp{
+    justify-content: space-evenly !important;
 }
 /*------------------------- end global -----------------------*/
