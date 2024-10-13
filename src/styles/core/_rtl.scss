@@ -3,7 +3,7 @@ html[lang='ar']{
         left: unset;
         right: 0.75rem;
     }
-    .underline_title:before{
+    :is(.company_goals, .privacy_policy) .underline_title:before{
         right: 0 !important;
     }
     .p-input-icon-right > .p-icon-wrapper {
