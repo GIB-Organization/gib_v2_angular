@@ -1,5 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -11,9 +12,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BaseLinkComponentComponent {
+  sanitizer = inject(DomSanitizer)
   @Input() classes!: string;
   @Input() icon!: string;
   @Input({required: true}) path: string='';
   @Input() external: boolean = false;
   @Input() activeClasses: string = '';
+  @Input() download: string|null=null;
 }

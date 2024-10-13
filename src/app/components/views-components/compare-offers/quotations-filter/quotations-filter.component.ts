@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, model, signal } from '@angular/core';
 import { BaseButtonComponentComponent } from '../../../base-components/base-button-component/base-button-component.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { CurrencyPipe } from '@angular/common';

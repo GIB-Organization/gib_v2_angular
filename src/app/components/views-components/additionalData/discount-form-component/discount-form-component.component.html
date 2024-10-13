@@ -39,8 +39,15 @@
             <div class="mb-4">
                 <app-base-label-component classes="form-label d-block"
                     for="birthMonth" [required]="true">{{'views.home.insuranceForm.birthMonth' | translate}}</app-base-label-component>
-                <p-dropdown [formControl]="additionalDataFormService.ownerBirthMonth" optionValue="id" inputId="birthMonth"
-                    [options]="dateFactoryService.createDateLists(insuranceInquireStoreQuery.inquireResponse.idNumber??1).months" optionLabel="name"></p-dropdown>
+                <p-dropdown [formControl]="additionalDataFormService.ownerBirthMonth" optionLabel="name" optionValue="id" inputId="birthMonth"
+                    [options]="dateFactoryService.createDateLists(insuranceInquireStoreQuery.inquireResponse.idNumber??1).months">
+                    <ng-template let-selectedItem pTemplate="selectedItem">
+                        {{selectedItem.name | translate}}
+                    </ng-template>
+                    <ng-template let-item pTemplate="item">
+                        {{item.name | translate}}
+                    </ng-template>
+                </p-dropdown>
                 @if(false){
                 <app-input-validation-alert-component> {{'errors.required' | translate}}
                 </app-input-validation-alert-component>

@@ -153,7 +153,7 @@
                                 <app-base-label-component style="height: 50px;" classes="form-label"
                                 [required]="true">{{'views.home.insuranceForm.insuranceDate' |
                                 translate}}</app-base-label-component>
-                            <input formControlName="startDate" class="mb-2 date_picker__input form-control" (click)="d.toggle()" type="text" ngbDatepicker
+                            <input readonly formControlName="startDate" class="mb-2 date_picker__input form-control" (click)="d.toggle()" type="text" ngbDatepicker
                             #d="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate" />
                             @if(controlNotValid('startDate')){
                                 <app-input-validation-alert-component> {{'errors.required' | translate}} </app-input-validation-alert-component>

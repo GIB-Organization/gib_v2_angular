@@ -27,7 +27,14 @@
         </aside>
         <aside class="col-md-4 mb-md-0 mb-3">
             <app-base-label-component classes="form-label"> {{'views.insuranceShow.sorting' | translate}} </app-base-label-component>
-            <p-dropdown [(ngModel)]="sortingModel" [showClear]="true" inputId="sorting" [options]="sortingService.sortingList" optionLabel="name" optionValue="key"></p-dropdown>
+            <p-dropdown [(ngModel)]="sortingModel" [showClear]="true" inputId="sorting" [options]="sortingService.sortingList" optionValue="key">
+                <ng-template let-selectedItem pTemplate="selectedItem">
+                    {{selectedItem.name | translate}}
+                </ng-template>
+                <ng-template let-item pTemplate="item">
+                    {{item.name | translate}}
+                </ng-template>
+            </p-dropdown>
         </aside>
     </div>
 </div>

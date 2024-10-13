@@ -53,7 +53,14 @@
                             translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.birthMonth(index)" inputId="birthMonth"
                             [options]="dateFactoryService.createDateLists(additionalDataFormService.idNumber(index).value??1).months"
-                            optionLabel="name" optionValue="id"></p-dropdown>
+                            optionValue="id">
+                            <ng-template let-selectedItem pTemplate="selectedItem">
+                                {{selectedItem.name | translate}}
+                            </ng-template>
+                            <ng-template let-item pTemplate="item">
+                                {{item.name | translate}}
+                            </ng-template>
+                        </p-dropdown>
                         @if(additionalDataFormService.birthMonth(index).touched &&
                         additionalDataFormService.birthMonth(index).invalid){
                         <app-input-validation-alert-component> {{'errors.required' | translate}}
@@ -126,7 +133,14 @@
                             for="anyViolations">{{'views.insuranceShow.anyViolations' |
                             translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.otherViolations(index)"
-                            inputId="anyViolations" [options]="YES_NO" optionLabel="name" optionValue="id"></p-dropdown>
+                            inputId="anyViolations" [options]="YES_NO" optionValue="id">
+                            <ng-template let-selectedItem pTemplate="selectedItem">
+                                {{selectedItem.name | translate}}
+                            </ng-template>
+                            <ng-template let-item pTemplate="item">
+                                {{item.name | translate}}
+                            </ng-template>
+                        </p-dropdown>
                     </div>
                 </aside>
                 <!-- hidden -->
@@ -158,8 +172,15 @@
                             for="isOwnerAddress">{{'views.insuranceShow.isOwnerAddress' |
                             translate}}</app-base-label-component>
                         <p-dropdown [formControl]="additionalDataFormService.sameAddress(index)"
-                            inputId="isOwnerAddress" [options]="YES_NO" optionLabel="name"
-                            optionValue="id"></p-dropdown>
+                            inputId="isOwnerAddress" [options]="YES_NO"
+                            optionValue="id">
+                            <ng-template let-selectedItem pTemplate="selectedItem">
+                                {{selectedItem.name | translate}}
+                            </ng-template>
+                            <ng-template let-item pTemplate="item">
+                                {{item.name | translate}}
+                            </ng-template>
+                        </p-dropdown>
                     </div>
                 </aside>
                 <!-- hidden -->
@@ -212,8 +233,15 @@
                             translate}}</app-base-label-component>
                         <p-dropdown (onChange)="additionalDataFormService.hasCountryLicense($event.value, index)"
                             [formControl]="additionalDataFormService.anotherCountryLicense(index)"
-                            inputId="anotherCountryLicense" [options]="YES_NO" optionLabel="name"
-                            optionValue="id"></p-dropdown>
+                            inputId="anotherCountryLicense" [options]="YES_NO"
+                            optionValue="id">
+                            <ng-template let-selectedItem pTemplate="selectedItem">
+                                {{selectedItem.name | translate}}
+                            </ng-template>
+                            <ng-template let-item pTemplate="item">
+                                {{item.name | translate}}
+                            </ng-template>
+                        </p-dropdown>
                     </div>
                 </aside>
             </div>

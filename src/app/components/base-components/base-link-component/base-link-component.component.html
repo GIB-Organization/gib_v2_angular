@@ -1,5 +1,5 @@
 @if(external){
-    <a [href]="path" class="btn" [class]="classes">
+    <a target="_blank" [href]="sanitizer.bypassSecurityTrustUrl(path)" [download]="download" class="btn" [class]="classes"  rel="noopener noreferrer">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </a>
 }
