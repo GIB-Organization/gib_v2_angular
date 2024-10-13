@@ -13,6 +13,7 @@ import { InvoiceStoreService } from '../../../store/invoiceStore/invoice-store.s
 import { BaseLinkComponentComponent } from '../../../components/base-components/base-link-component/base-link-component.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { LoadingContentComponentComponent } from '../../../components/shared-components/loading-content-component/loading-content-component.component';
+import { DownloadService } from '../../../services/download/download.service';
 
 @Component({
   selector: 'app-invoices-view',
@@ -25,6 +26,7 @@ import { LoadingContentComponentComponent } from '../../../components/shared-com
 export class InvoicesViewComponent implements OnInit{
   
   settingsQuery = inject(SettingsQuery);
+  downloadService = inject(DownloadService);
   ref = inject(DestroyRef);
   invoiceStoreQuery = inject(InvoiceStoreQuery);
   invoiceStoreService = inject(InvoiceStoreService);

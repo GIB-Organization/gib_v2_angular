@@ -25,7 +25,8 @@
                 </aside>
                 <aside class="col-md-3">
                     <span class="secondary_color mb-3 d-block"> {{ item.totalPrice | currency : settingsQuery.currency }} </span>
-                    <app-base-link-component [external]="true" [path]="item.invoiceUrl" download="file.pdf" classes="btn-outline-primary font_size__12" icon="download"> {{'public.download' | translate}} </app-base-link-component>
+                    <app-base-link-component [external]="true" [path]="item.invoiceUrl" download="true"  classes="btn-outline-primary font_size__12" icon="download"> {{'public.download' | translate}} </app-base-link-component>
+                    <!-- <app-base-button-component (clicked)="downloadService.downloadFileByUrl(item.invoiceUrl)"  classes="btn-outline-primary font_size__12" icon="download"> {{'public.download' | translate}} </app-base-button-component> -->
                 </aside>
             </div>
             @if(!last){
