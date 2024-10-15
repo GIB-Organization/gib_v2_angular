@@ -8,7 +8,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 export const provideTranslation = () => ({
-    defaultLanguage: 'en',
+    defaultLanguage: 'ar',
     loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,

@@ -1,4 +1,4 @@
 export enum ErrorCodes{
-    unauthorized = 0,
+    unauthorized = 401,
     notFound = 400,
 }

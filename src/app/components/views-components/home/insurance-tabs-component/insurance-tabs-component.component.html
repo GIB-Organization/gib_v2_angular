@@ -1,5 +1,5 @@
 <div class="insurance_tabs">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-4 mx-auto">
         <div class="border rounded-pill d-flex flex-nowrap align-content-center">
             @for(item of tabs; track item.lang){
                 <span role="button" class="col text-center font_size__13 py-3 rounded-pill text-uppercase" [ngClass]="{'primary_bg secondary_color': item.active, 'grey_color': !item.active}"> {{'views.home.insuranceTabs.'+ item.lang | translate}} </span>

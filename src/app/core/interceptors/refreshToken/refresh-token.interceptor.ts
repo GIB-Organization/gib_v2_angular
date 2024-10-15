@@ -12,7 +12,6 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authStoreQuery = inject(AuthStoreQuery);
   return next(req).pipe(
     catchError((error) => {
-      // Check if the error is due to an expired access token
       if (error.status === ErrorCodes.unauthorized && !error.url.includes(authApiService.refreshPath)) {
         return authApiService.refreshToken(authStoreQuery.token).pipe(
           switchMap((newAccessToken) => {
@@ -24,7 +23,6 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               return next(setHttpHeaders(req, newAccessToken?.accessToken));
           }),
           catchError((error) => {
-            // Handle refresh token error (e.g., redirect to login page)
             return throwError({
               ...error,
               status: ErrorCodes.unauthorized
