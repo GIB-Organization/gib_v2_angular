@@ -1,9 +1,8 @@
 import { DOCUMENT } from "@angular/common";
 import { inject } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import { dirType, langType } from "../enums/language.enum";
 
-export type dirType = 'ltr' | 'rtl';
-export type langType = 'en' | 'ar';
 
 
 export interface ILayoutStrategy {

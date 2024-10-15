@@ -16,13 +16,13 @@ export class InsuranceTabsComponentComponent {
       lang:'carInsurance',
       active:true,
     },
-    {
-      lang:'medicalInsurance',
-      active:false,
-    },
-    {
-      lang:'medicalFaultsInsurance',
-      active:false,
-    },
+    // {
+    //   lang:'medicalInsurance',
+    //   active:false,
+    // },
+    // {
+    //   lang:'medicalFaultsInsurance',
+    //   active:false,
+    // },
   ]
 }

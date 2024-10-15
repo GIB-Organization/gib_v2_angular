@@ -14,4 +14,7 @@ html[lang='ar']{
         right: unset;
         left: 3rem;
     }
+    .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text{
+        margin: 0 1rem 0 0 !important;
+    }
 }
