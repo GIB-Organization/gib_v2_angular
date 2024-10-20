@@ -32,7 +32,7 @@ export class NavbarComponentComponent {
     this.switchDirection = LtrDirection;
     this.ltrDirection = LtrDirection;
     this.rtlDirection = RtlDirection;
-    this.switchLang()
+    // this.switchLang()
   }
   isMenuCollapsed: boolean = true;
 

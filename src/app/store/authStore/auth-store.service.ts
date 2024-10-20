@@ -197,7 +197,6 @@ export class AuthStoreService {
   }
 
   forgotPassword(data: IForgotPassword) {
-    // this.authDialogService.openComponent(EFormType.resetPassword);
     this.store.setLoading(true)
     this.api.forgotPassword(data).pipe(take(1)).subscribe({
       next: (res) => {
